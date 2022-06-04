@@ -1,0 +1,22 @@
+{
+  "name": "georgejmx",
+  "version": "1.0.0",
+  "description": "hi i'm george",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "personal",
+    "blog",
+    "fractals"
+  ],
+  "author": "georgejmx",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
