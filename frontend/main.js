@@ -2,7 +2,8 @@ import {
   Scene, PerspectiveCamera, WebGL1Renderer, Mesh, TetrahedronGeometry, 
   MeshStandardMaterial, TextureLoader, BoxGeometry, PointLight, AmbientLight,
   CircleGeometry, MathUtils
-} from 'https://cdn.skypack.dev/three@0.132.2'
+} from 'three'
+import 'virtual:windi.css'
 
 // Initializing scene, camera and renderer
 const scene = new Scene()
@@ -57,15 +58,9 @@ const addFractal = (imageSrc, colour) => {
   scene.add(frac)
 }
 
-Array(15).fill().forEach(() => {
-  addFractal('images/textures/fractal-1.png', 0xfa7603)
-})
-Array(15).fill().forEach(() => {
-  addFractal('images/textures/fractal-2.png', 0xfab903)
-})
-Array(15).fill().forEach(() => {
-  addFractal('images/textures/fractal-3.png', 0xfc6501)
-})
+Array(15).fill().forEach(() => { addFractal('images/textures/fractal-1.png', 0xfa7603)} )
+Array(15).fill().forEach(() => { addFractal('images/textures/fractal-2.png', 0xfab903)} )
+Array(15).fill().forEach(() => { addFractal('images/textures/fractal-3.png', 0xfc6501)} )
 
 // Adding background then animating
 scene.background = new TextureLoader().load('images/gloop.png')
