@@ -34,5 +34,3 @@ function changeTabSelection(val) {
             break
     }
 }
-
-module.exports = { changeTabSelection }

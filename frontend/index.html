@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="fractal.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/background.js" defer></script>
     <script type="module" src="/main.js" defer></script>
-    <title>georgejmx</title>
+    <title>George | Home</title>
   </head>
   <body>
     <canvas id="bg" style="position: fixed; top: 0; left: 0;"></canvas>
@@ -14,16 +14,16 @@
       <div class="absolute left-0 top-20 p-6">
         <div class="py-4">
           <button class="text-orange-400 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-400" id='home-btn'>Home</button>
+            border rounded border-b-4 border-orange-400 hover:bg-[#360202]" id='home-btn'>Home</button>
           <button class="text-yellow-500 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-yellow-500" id='projects-btn'>Projects</button>
+            border rounded border-b-4 border-yellow-500 hover:bg-[#360202]" id='projects-btn'>Projects</button>
           <button class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-600" id='blog-btn'>Blog</button>
+            border rounded border-b-4 border-orange-600 hover:bg-[#360202]" id='blog-btn'>Blog</button>
         </div>
         <!-- Home Box -->
         <div id='home-box' style="display:initial">
           <div>
-            <p class="text-slate-300 font-mono bg-black">Junior developer lost in fractal space;
+            <p class="text-slate-300 font-mono bg-black md:text-sm">Junior developer lost in fractal space;
               currently pursuing my passion for web development after graduating. Motivated about the
               potential of technology to drive change, and also the chance to be creative in and out
               of work. Away from fractalspace I enjoy travelling, reading and picking up a Uke.</p>
@@ -39,8 +39,13 @@
               <tbody>
                 <tr>
                   <td><img src="images/logos/linkedin.jpg" class="w-4"/></td>
-                  <td><a href="https://linkedin/in/georgejmx/"
+                  <td><a href="https://linkedin.com/in/georgejmx/"
                     class="font-mono text-yellow-200 hover:text-yellow-500">LinkedIn</a></td>
+                </tr>
+                <tr>
+                  <td><img src="images/logos/github.png" class="w-4 invert"/></td>
+                  <td><a href="https://github.com/georgejmx/"
+                    class="font-mono text-yellow-200 hover:text-yellow-500">GitHub</a></td>
                 </tr>
                 <tr>
                   <td><img src="images/logos/twitter.jpg" class="w-4"/></td>
@@ -49,7 +54,7 @@
                 </tr>
                 <tr>
                   <td><img src="images/logos/opensea.jpg" class="w-4"/></td>
-                  <td><a href="https://twitter.com/hologjm/"
+                  <td><a href="https://opensea.io/hologjm"
                     class="font-mono text-yellow-200 hover:text-yellow-500">OpenSea</a></td>
                 </tr>
                 <tr>
@@ -107,15 +112,46 @@
             p-2 mb-6">
             <img src="images/projects/flowpass.png" class="max-h-70 p-2" />
             <div class="font-bold text-xl mb-2 font-mono text-yellow-500">FlowPass</div>
-            <a class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic" 
-            href="https://github.com/georgejmx/FlowPass"><i>find me on github</i></a>
+            <a class="font-mono text-cyan-200 hover:text-cyan-300 mb-2" 
+            href="https://github.com/georgejmx/FlowPass">fork me</a>
             <p class="font-mono text-white text-sm py-2">Custom android password manager for
               personal use</p>
           </div>
-          <!-- Blog Box -->
+          <p class="text-white font-mono">Many more projects can be found on my 
+            <a href="https://github.com/georgejmx/"
+            class="font-mono text-yellow-200 hover:text-yellow-500">GitHub</a></p>
         </div>
+        <!-- Blog Box -->
         <div id='blog-box' style="display:none">
-          <p class="text-white">This is where my blog cards will go..</p>
+          <div class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black
+            p-2 mx-4 mb-6">
+            <div class="flex border-1 border-black border-b-orange-600 justify-around">
+              <div class="font-bold text-l mb-2 font-mono text-orange-600">
+                Ultimate Decentralisation</div>
+              <p class="font-bold text-l mb-2 font-mono text-yellow-500">5/6/22</p>
+            </div>
+            <p class="font-mono text-white text-xs py-2">The dominance of cloud providers is
+              intrinsically linked to centralisation of
+              the internet, which facilitates easier censorship, financial monopolisation of
+              servers, data privacy concerns: the list goes on. Decentralisation of digital
+              society can only happen if big cloud players are either made redundant, or
+              embrace change. So why this situation in the first place?
+              
+              HTTP is an amazing invention that is great for ease of use for developers,
+              scalability and somewhat openness. It also facilitated the rise of big cloud.
+              URLs are a mapping between client resources e.g. HTML file and the web server
+              that serves the file. This largely 1-1 mapping lends to reliance on big cloud,
+              as there is a central source of web server compute ability. IPFS, an alternate
+              protocol,  breaks this
+              link by using Uniform Resource Hashes instead, meaning a greater pool of servers
+              can cache the same resource, where each IPFS node (the equivalent to a HTTP web
+              server) is part of a decentralised network. Each IPFS node caches all URHs they
+              wish to host, and also caches other URHs that are served on the node. As
+              requesting a resource is not tied to a particular server, any node that has an
+              outage, is censored or is even too far away to serve a resource quick enough,
+              is not a point of failure. Decentralisation from the ground up in this way
+              would remove the problematic monopolisation of the internet.</p>
+          </div>
         </div>
       </div>
     </main>
