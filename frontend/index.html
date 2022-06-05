@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>georgejmx demo</title>
+    <script type="module" src="/background.js" defer></script>
+    <script type="module" src="/main.js" defer></script>
+    <title>georgejmx</title>
   </head>
   <body>
     <canvas id="bg" style="position: fixed; top: 0; left: 0;"></canvas>
@@ -12,75 +14,85 @@
       <div class="absolute left-0 top-20 p-6">
         <div class="py-4">
           <button class="text-orange-400 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-400">Home</button>
+            border rounded border-b-4 border-orange-400" id='home-btn'>Home</button>
           <button class="text-yellow-500 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-yellow-500">Projects</button>
+            border rounded border-b-4 border-yellow-500" id='projects-btn'>Projects</button>
           <button class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-600">Blog</button>
+            border rounded border-b-4 border-orange-600" id='blog-btn'>Blog</button>
         </div>
-        <div>
-          <p class="text-slate-300 font-mono bg-black">Junior developer lost in fractal space;
-            currently pursuing my passion for web development after graduating. Motivated about the
-            potential of technology to drive change, and also the chance to be creative in and out
-            of work. Away from fractalspace I enjoy travelling, reading and picking up a Uke.</p>
-        </div>
-        <div class="py-6 max-w-sm w-full border-orange-400 text-orange-400 text-sm
-          bg-black font-mono font-bold mt-4">
-          <img class="inline" src="images/logos/spotify-16.png" />
-          Latest top artists: james blunt, florida skyline, miley cyrus
-        </div>
-        <div>
-          <h2 class="text-lg text-white font-mono py-2 font-bold">Find Me</h2>
-          <table class="table-auto">
-            <tbody>
-              <tr>
-                <td><img src="images/logos/linkedin.jpg" class="w-4"/></td>
-                <td><a href="https://linkedin/georgejmx/"
-                  class="font-mono text-yellow-200 hover:text-yellow-500">LinkedIn</a></td>
-              </tr>
-              <tr>
-                <td><img src="images/logos/twitter.jpg" class="w-4"/></td>
-                <td><a href="https://twitter.com/hologjm/"
-                  class="font-mono text-yellow-200 hover:text-yellow-500">Twitter</a></td>
-              </tr>
-              <tr>
-                <td><img src="images/logos/opensea.jpg" class="w-4"/></td>
-                <td><a href="https://twitter.com/hologjm/"
-                  class="font-mono text-yellow-200 hover:text-yellow-500">OpenSea</a></td>
-              </tr>
-              <tr>
-                <td><img src="images/logos/instagram.jpg" class="w-4"/></td>
-                <td><a href="https://instagram.com/georgeunlocked/"
-                  class="font-mono text-yellow-200 hover:text-yellow-500">Instagram</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h2 class="text-lg text-white font-mono py-2 mt-4 font-bold">Current Fascinations</h2>
-          <div class="flex">
-            <svg class="w-24 h-4">
-              <rect width="150" height="60" class="fill-orange-600" />
-            </svg>
-            <p class="ml-2 text-orange-600 font-mono bg-black">nuxtjs</p>
+        <!-- Home Box -->
+        <div id='home-box' style="display:initial">
+          <div>
+            <p class="text-slate-300 font-mono bg-black">Junior developer lost in fractal space;
+              currently pursuing my passion for web development after graduating. Motivated about the
+              potential of technology to drive change, and also the chance to be creative in and out
+              of work. Away from fractalspace I enjoy travelling, reading and picking up a Uke.</p>
           </div>
-          <div class="flex">
-            <svg class="w-28 h-4">
-              <rect width="150" height="60" class="fill-yellow-500" />
-            </svg>
-            <p class="ml-2 text-yellow-500 font-mono bg-black">ibiza</p>
+          <div class="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm
+            bg-black font-mono font-bold mt-4">
+            <img class="inline" src="images/logos/spotify-16.png" />
+            Latest top artists: james blunt, florida skyline, miley cyrus
           </div>
-          <div class="flex">
-            <svg class="w-20 h-4">
-              <rect width="150" height="60" class="fill-orange-400" />
-            </svg>
-            <p class="ml-2 text-orange-400 font-mono bg-black">virginia woolfe</p>
+          <div>
+            <h2 class="text-lg text-white font-mono py-2 font-bold">Find Me</h2>
+            <table class="table-auto">
+              <tbody>
+                <tr>
+                  <td><img src="images/logos/linkedin.jpg" class="w-4"/></td>
+                  <td><a href="https://linkedin/georgejmx/"
+                    class="font-mono text-yellow-200 hover:text-yellow-500">LinkedIn</a></td>
+                </tr>
+                <tr>
+                  <td><img src="images/logos/twitter.jpg" class="w-4"/></td>
+                  <td><a href="https://twitter.com/hologjm/"
+                    class="font-mono text-yellow-200 hover:text-yellow-500">Twitter</a></td>
+                </tr>
+                <tr>
+                  <td><img src="images/logos/opensea.jpg" class="w-4"/></td>
+                  <td><a href="https://twitter.com/hologjm/"
+                    class="font-mono text-yellow-200 hover:text-yellow-500">OpenSea</a></td>
+                </tr>
+                <tr>
+                  <td><img src="images/logos/instagram.jpg" class="w-4"/></td>
+                  <td><a href="https://instagram.com/georgeunlocked/"
+                    class="font-mono text-yellow-200 hover:text-yellow-500">Instagram</a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <div>
+            <h2 class="text-lg text-white font-mono py-2 mt-4 font-bold">Current Fascinations</h2>
+            <div class="flex">
+              <svg class="w-24 h-4">
+                <rect width="150" height="60" class="fill-orange-600" />
+              </svg>
+              <p class="ml-2 text-orange-600 font-mono bg-black">nuxtjs</p>
+            </div>
+            <div class="flex">
+              <svg class="w-28 h-4">
+                <rect width="150" height="60" class="fill-yellow-500" />
+              </svg>
+              <p class="ml-2 text-yellow-500 font-mono bg-black">ibiza</p>
+            </div>
+            <div class="flex">
+              <svg class="w-20 h-4">
+                <rect width="150" height="60" class="fill-orange-400" />
+              </svg>
+              <p class="ml-2 text-orange-400 font-mono bg-black">virginia woolfe</p>
+            </div>
+          </div>
+          <p class="mt-8 text-slate-400 font-mono italic bg-black">“If you do not tell the
+            truth about yourself you cannot tell it about other people.”</p>
         </div>
-        <p class="mt-8 text-slate-400 font-mono italic bg-black">“If you do not tell the truth about yourself
-          you cannot tell it about other people.”</p>
+        <!-- Projects Box -->
+        <div id='projects-box' style="display:none">
+          <p class="text-white">This is where my project cards will go..</p>
+        </div>
+        <!-- Blog Box -->
+        <div id='blog-box' style="display:none">
+          <p class="text-white">This is where the blog goes -_-</p>
+        </div>
       </div>
     </main>
-    <script type="module" src="/main.js"></script>
   </body>
 </html>
