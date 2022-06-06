@@ -1,8 +1,12 @@
 # georgejmx
 
-Enter the fractalverse; my personal website
+Playful junior developer
 
-## How to build and run
+## Personal site
+
+Enter the fractalverse
+
+### How to build and run
 
 - Build frontend
     - `cd frontend`. Run `npm install`, followed by `npm run build`. This uses
@@ -11,4 +15,11 @@ Enter the fractalverse; my personal website
     making further changes
 - Build server
     - Again; `npm install` followed by `node server.js` to spin it all up
+
+### Roadmap
+
+- ~v0.1: static site~
+- deploy to AWS using docker
+- v0.2: spotify top artists from api, other mutating frontend data stored
+    in json mapped to client using html templating
 
