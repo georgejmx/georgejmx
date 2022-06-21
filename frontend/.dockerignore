@@ -1,0 +1,9 @@
+node_modules
+public
+
+background.js
+index.html
+main.js
+
+*.config.js
+*.json

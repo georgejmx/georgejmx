@@ -9,4 +9,4 @@ fileURLToPath(import.meta.url)
 app.use(express.static(path.join(path.dirname(__filename), './frontend/dist')))
 
 const server = new http.Server(app)
-server.listen(3000, () => { console.log('server is up on port 3000') })
+server.listen(3000, () => { console.log('server is up on local port 3000') })
