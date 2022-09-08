@@ -1,0 +1,18 @@
+{
+    "fascinations": [{
+        "name": "nuxtjs",
+        "intensity": 10,
+        "color": 2,
+        "timestamp": 1654700401
+    }, {
+        "name": "ibiza",
+        "intensity": 11,
+        "color": 0,
+        "timestamp": 1654700400
+    }, {
+        "name": "virginia woolfe",
+        "intensity": 15,
+        "color": 1,
+        "timestamp": 1654700402
+    }]
+}
