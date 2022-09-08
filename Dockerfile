@@ -10,4 +10,4 @@ copy . .
 
 expose 80
 
-cmd ["node", "server.js"]
+cmd ["node", "dist/server.js"]

@@ -16,7 +16,9 @@ Enter the fractalverse
     - This can be edited and rebuilt using `npm run dev` to develop on before
     making further changes
 - Build server
-    - Again; `npm install` followed by `node server.js` to spin it all up
+    - Again; `npm install`. This time followed by `npm run build` to create the
+    raw javascript files from our typescript source code. Then `npm run start`
+    will spin everything up
 
 #### Containerise locally
 
