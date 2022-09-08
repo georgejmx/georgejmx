@@ -12,18 +12,29 @@ type Fascination = {
     name: string,
     intensity: number,
     color: number,
-    timestamp: number
+    timestamp: number,
+    rating?: number
 }
 
-// Choosing top 3 fascinations
-function filterFascinations(input: Fascination[]): Fascination[] {
-    return input.slice(0, 3);
+/* Function for calculating the rating multiplier for a fascination */
+function findRating(f: Fascination): Fascination {
+    const recency = 5*Math.floor((Date.now() - f.timestamp)/1000000);
+    f.rating = 100000*f.intensity - recency;
+    return f;
+}
+
+/* Choosing top 3 fascinations from the raw data, by calculating and sorting
+ * by a ratings multiplier */
+function rankFascinations(input: Fascination[]): Fascination[] {
+    const output: Fascination[] = input.map(findRating);
+    output.sort((a, b) => { return (b.rating || 0) - (a.rating || 0); });
+    return output.slice(0, 3);
 }
 
 // Getting fascinations
 app.get('/fascinations', (req: Request, res: Response) => {
     const fsc: Fascination[] = fData.fascinations;
-    res.send(filterFascinations(fsc));
+    res.send(rankFascinations(fsc));
 })
 
 const server: Server = new http.Server(app);
