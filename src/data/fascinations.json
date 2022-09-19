@@ -1,33 +1,40 @@
 {
-    "fascinations": [{
-        "name": "reactjs",
-        "intensity": 3,
-        "color": 2,
-        "timestamp": 1654700401000
-    }, {
-        "name": "san antonio bay",
-        "intensity": 2,
-        "color": 0,
-        "timestamp": 1654700400000
-    }, {
-        "name": "virginia woolfe",
-        "intensity": 8,
-        "color": 1,
-        "timestamp": 1654700402000
-    }, {
-        "name": "creative writing",
-        "intensity": 8,
-        "color": 1,
-        "timestamp": 1662641641000
-    }, {
-        "name": "berlin techno",
-        "intensity": 9,
-        "color": 0,
-        "timestamp": 1654700402000
-    }, {
-        "name": "ukulele",
-        "intensity": 7,
-        "color": 2,
-        "timestamp": 1659963241000
-    }]
+  "fascinations": [
+    {
+      "name": "reactjs",
+      "intensity": 3,
+      "color": 2,
+      "timestamp": 1654700401000
+    },
+    {
+      "name": "san antonio bay",
+      "intensity": 2,
+      "color": 0,
+      "timestamp": 1654700400000
+    },
+    {
+      "name": "virginia woolfe",
+      "intensity": 8,
+      "color": 1,
+      "timestamp": 1654700402000
+    },
+    {
+      "name": "creative writing",
+      "intensity": 8,
+      "color": 1,
+      "timestamp": 1662641641000
+    },
+    {
+      "name": "berlin techno",
+      "intensity": 9,
+      "color": 0,
+      "timestamp": 1654700402000
+    },
+    {
+      "name": "ukulele",
+      "intensity": 7,
+      "color": 2,
+      "timestamp": 1659963241000
+    }
+  ]
 }
