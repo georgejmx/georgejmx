@@ -9,151 +9,225 @@
     <title>George | Home</title>
   </head>
   <body>
-    <canvas id="bg" style="position: fixed; top: 0; left: 0;"></canvas>
+    <canvas id="bg" style="position: fixed; top: 0; left: 0"></canvas>
     <main class="relative w-2/3">
       <div class="absolute left-0 top-20 p-6">
         <div class="py-4">
-          <button class="text-orange-400 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-400 hover:bg-[#360202]" id='home-btn'>Home</button>
-          <button class="text-yellow-500 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-yellow-500 hover:bg-[#360202]" id='projects-btn'>Projects</button>
-          <button class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1
-            border rounded border-b-4 border-orange-600 hover:bg-[#360202]" id='blog-btn'>Blog</button>
+          <button
+            class="text-orange-400 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-orange-400 hover:bg-[#360202]"
+            id="home-btn"
+          >
+            Home
+          </button>
+          <button
+            class="text-yellow-500 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-yellow-500 hover:bg-[#360202]"
+            id="projects-btn"
+          >
+            Projects
+          </button>
+          <button
+            class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-orange-600 hover:bg-[#360202]"
+            id="blog-btn"
+          >
+            Blog
+          </button>
         </div>
         <!-- Home Box -->
-        <div id='home-box' style="display:initial">
+        <div id="home-box" style="display: initial">
           <div>
-            <p class="text-slate-300 font-mono bg-black md:text-sm">Junior developer lost in fractal space;
-              currently pursuing my passion for web development after graduating. Motivated about the
-              potential of technology to drive change, and also the chance to be creative in and out
-              of work. Away from fractalspace I enjoy travelling, reading and picking up a Uke.</p>
+            <p class="text-slate-300 font-mono bg-black md:text-sm">
+              Junior developer lost in fractal space; currently pursuing my
+              passion for web development after graduating. Motivated about the
+              potential of technology to drive change, and also the chance to be
+              creative in and out of work. Away from fractalspace I enjoy
+              travelling, reading and picking up a Uke.
+            </p>
           </div>
-          <div class="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm
-            bg-black font-mono font-bold mt-4">
+          <div
+            class="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm bg-black font-mono font-bold mt-4"
+          >
             <img class="inline" src="images/logos/spotify-16.png" />
-            Latest top artists: james blunt, florida skyline, miley cyrus
+            <p
+              id="artists-text"
+              class="inline text-orange-400 text-sm font-mono font-bold"
+            ></p>
           </div>
           <div>
             <h2 class="text-lg text-white font-mono py-2 font-bold">Find Me</h2>
             <table class="table-auto">
               <tbody>
                 <tr>
-                  <td><img src="images/logos/linkedin.jpg" class="w-4"/></td>
-                  <td><a href="https://linkedin.com/in/georgejmx/"
-                    class="font-mono text-yellow-200 hover:text-yellow-500">LinkedIn</a></td>
+                  <td><img src="images/logos/linkedin.jpg" class="w-4" /></td>
+                  <td>
+                    <a
+                      href="https://linkedin.com/in/georgejmx/"
+                      class="font-mono text-yellow-200 hover:text-yellow-500"
+                      >LinkedIn</a
+                    >
+                  </td>
                 </tr>
                 <tr>
-                  <td><img src="images/logos/github.png" class="w-4 invert"/></td>
-                  <td><a href="https://github.com/georgejmx/"
-                    class="font-mono text-yellow-200 hover:text-yellow-500">GitHub</a></td>
+                  <td>
+                    <img src="images/logos/github.png" class="w-4 invert" />
+                  </td>
+                  <td>
+                    <a
+                      href="https://github.com/georgejmx/"
+                      class="font-mono text-yellow-200 hover:text-yellow-500"
+                      >GitHub</a
+                    >
+                  </td>
                 </tr>
                 <tr>
-                  <td><img src="images/logos/twitter.jpg" class="w-4"/></td>
-                  <td><a href="https://twitter.com/hologjm/"
-                    class="font-mono text-yellow-200 hover:text-yellow-500">Twitter</a></td>
+                  <td><img src="images/logos/twitter.jpg" class="w-4" /></td>
+                  <td>
+                    <a
+                      href="https://twitter.com/hologjm/"
+                      class="font-mono text-yellow-200 hover:text-yellow-500"
+                      >Twitter</a
+                    >
+                  </td>
                 </tr>
                 <tr>
-                  <td><img src="images/logos/opensea.jpg" class="w-4"/></td>
-                  <td><a href="https://opensea.io/hologjm"
-                    class="font-mono text-yellow-200 hover:text-yellow-500">OpenSea</a></td>
+                  <td><img src="images/logos/opensea.jpg" class="w-4" /></td>
+                  <td>
+                    <a
+                      href="https://opensea.io/hologjm"
+                      class="font-mono text-yellow-200 hover:text-yellow-500"
+                      >OpenSea</a
+                    >
+                  </td>
                 </tr>
                 <tr>
-                  <td><img src="images/logos/instagram.jpg" class="w-4"/></td>
-                  <td><a href="https://instagram.com/georgeunlocked/"
-                    class="font-mono text-yellow-200 hover:text-yellow-500">Instagram</a></td>
+                  <td><img src="images/logos/instagram.jpg" class="w-4" /></td>
+                  <td>
+                    <a
+                      href="https://instagram.com/georgeunlocked/"
+                      class="font-mono text-yellow-200 hover:text-yellow-500"
+                      >Instagram</a
+                    >
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div>
-            <h2 class="text-lg text-white font-mono py-2 mt-4 font-bold">Current Fascinations</h2>
-            <div class="flex">
-              <svg class="w-24 h-4">
-                <rect width="150" height="60" class="fill-orange-600" />
-              </svg>
-              <p class="ml-2 text-orange-600 font-mono bg-black">nuxtjs</p>
-            </div>
-            <div class="flex">
-              <svg class="w-28 h-4">
-                <rect width="150" height="60" class="fill-yellow-500" />
-              </svg>
-              <p class="ml-2 text-yellow-500 font-mono bg-black">ibiza</p>
-            </div>
-            <div class="flex">
-              <svg class="w-20 h-4">
-                <rect width="150" height="60" class="fill-orange-400" />
-              </svg>
-              <p class="ml-2 text-orange-400 font-mono bg-black">virginia woolfe</p>
-            </div>
+            <h2 class="text-lg text-white font-mono py-2 mt-4 font-bold">
+              Current Fascinations
+            </h2>
+            <div id="fascination-box"></div>
           </div>
-          <p class="mt-8 text-slate-400 font-mono italic bg-black">“If you do not tell the
-            truth about yourself you cannot tell it about other people.”</p>
+          <p class="mt-8 text-slate-400 font-mono italic bg-black">
+            “If you do not tell the truth about yourself you cannot tell it
+            about other people.”
+          </p>
         </div>
         <!-- Projects Box -->
-        <div id='projects-box' style="display:none">
-          <div class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black
-            p-2 mb-6">
+        <div id="projects-box" style="display: none">
+          <div
+            class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black p-2 mb-6"
+          >
             <img src="images/projects/whisperblog.png" class="max-h-70 p-2" />
-            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">WhisperBlog</div>
-            <a class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic" 
-            href="https://whisperblog.xyz/">www.whisperblog.xyz</a>
-            <p class="font-mono text-white text-sm py-2">My take on what social media should
-              be like</p>
+            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">
+              WhisperBlog
+            </div>
+            <a
+              class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic"
+              href="https://whisperblog.xyz/"
+              >www.whisperblog.xyz</a
+            >
+            <p class="font-mono text-white text-sm py-2">
+              My take on what social media should be like
+            </p>
           </div>
-          <div class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black
-            p-2 mb-6">
+          <div
+            class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black p-2 mb-6"
+          >
             <img src="images/projects/wcne.png" class="max-h-70 p-2" />
-            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">WindowCleanNE</div>
-            <a class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic" 
-            href="https://whisperblog.xyz/">windowcleannortheast.co.uk</a>
-            <p class="font-mono text-white text-sm py-2">Client website made during lockdown</p>
+            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">
+              WindowCleanNE
+            </div>
+            <a
+              class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic"
+              href="https://whisperblog.xyz/"
+              >windowcleannortheast.co.uk</a
+            >
+            <p class="font-mono text-white text-sm py-2">
+              Client website made during lockdown
+            </p>
           </div>
-          <div class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black
-            p-2 mb-6">
+          <div
+            class="flex flex-col max-w-sm border-1 overflow-hidden border-yellow-500 bg-black p-2 mb-6"
+          >
             <img src="images/projects/flowpass.png" class="max-h-70 p-2" />
-            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">FlowPass</div>
-            <a class="font-mono text-cyan-200 hover:text-cyan-300 mb-2" 
-            href="https://github.com/georgejmx/FlowPass">fork me</a>
-            <p class="font-mono text-white text-sm py-2">Custom android password manager for
-              personal use</p>
+            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">
+              FlowPass
+            </div>
+            <a
+              class="font-mono text-cyan-200 hover:text-cyan-300 mb-2"
+              href="https://github.com/georgejmx/FlowPass"
+              >fork me</a
+            >
+            <p class="font-mono text-white text-sm py-2">
+              Custom android password manager for personal use
+            </p>
           </div>
-          <p class="text-white font-mono">Many more projects can be found on my 
-            <a href="https://github.com/georgejmx/"
-            class="font-mono text-yellow-200 hover:text-yellow-500">GitHub</a></p>
+          <p class="text-white font-mono">
+            Many more projects can be found on my
+            <a
+              href="https://github.com/georgejmx/"
+              class="font-mono text-yellow-200 hover:text-yellow-500"
+              >GitHub</a
+            >
+          </p>
         </div>
         <!-- Blog Box -->
-        <div id='blog-box' style="display:none">
-          <div class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black
-            p-2 mx-4 mb-6">
-            <div class="flex border-1 border-black border-b-orange-600 justify-around">
+        <div id="blog-box" style="display: none">
+          <div
+            class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
+          >
+            <div
+              class="flex border-1 border-black border-b-orange-600 justify-around"
+            >
               <div class="font-bold text-l mb-2 font-mono text-orange-600">
-                Ultimate Decentralisation</div>
-              <p class="font-bold text-l mb-2 font-mono text-yellow-500">5/6/22</p>
+                Ultimate Decentralisation
+              </div>
+              <p class="font-bold text-l mb-2 font-mono text-yellow-500">
+                5/6/22
+              </p>
             </div>
-            <p class="font-mono text-white text-xs py-2">The dominance of cloud providers is
-              intrinsically linked to centralisation of
-              the internet, which facilitates easier censorship, financial monopolisation of
-              servers, data privacy concerns: the list goes on. Decentralisation of digital
-              society can only happen if big cloud players are either made redundant, or
-              embrace change. So why this situation in the first place?
-              
-              HTTP is an amazing invention that is great for ease of use for developers,
-              scalability and somewhat openness. It also facilitated the rise of big cloud.
-              URLs are a mapping between client resources e.g. HTML file and the web server
-              that serves the file. This largely 1-1 mapping lends to reliance on big cloud,
-              as there is a central source of web server compute ability. IPFS, an alternate
-              protocol,  breaks this
-              link by using Uniform Resource Hashes instead, meaning a greater pool of servers
-              can cache the same resource, where each IPFS node (the equivalent to a HTTP web
-              server) is part of a decentralised network. Each IPFS node caches all URHs they
-              wish to host, and also caches other URHs that are served on the node. As
-              requesting a resource is not tied to a particular server, any node that has an
-              outage, is censored or is even too far away to serve a resource quick enough,
-              is not a point of failure. Decentralisation from the ground up in this way
-              would remove the problematic monopolisation of the internet.</p>
+            <p class="font-mono text-white text-xs py-2">
+              The dominance of cloud providers is intrinsically linked to
+              centralisation of the internet, which facilitates easier
+              censorship, financial monopolisation of servers, data privacy
+              concerns: the list goes on. Decentralisation of digital society
+              can only happen if big cloud players are either made redundant, or
+              embrace change. So why this situation in the first place? HTTP is
+              an amazing invention that is great for ease of use for developers,
+              scalability and somewhat openness. It also facilitated the rise of
+              big cloud. URLs are a mapping between client resources e.g. HTML
+              file and the web server that serves the file. This largely 1-1
+              mapping lends to reliance on big cloud, as there is a central
+              source of web server compute ability. IPFS, an alternate protocol,
+              breaks this link by using Uniform Resource Hashes instead, meaning
+              a greater pool of servers can cache the same resource, where each
+              IPFS node (the equivalent to a HTTP web server) is part of a
+              decentralised network. Each IPFS node caches all URHs they wish to
+              host, and also caches other URHs that are served on the node. As
+              requesting a resource is not tied to a particular server, any node
+              that has an outage, is censored or is even too far away to serve a
+              resource quick enough, is not a point of failure. Decentralisation
+              from the ground up in this way would remove the problematic
+              monopolisation of the internet.
+            </p>
           </div>
         </div>
       </div>
     </main>
   </body>
 </html>
+
+<!-- Frontend styles generates by JavaScript that WindiCSS needs
+<div
+  class="fill-orange-600 fill-yellow-500 fill-orange-400 text-orange-600 text-yellow-500 text-orange-400 w-18 w-19 w-20 w-21 w-22 w-23 w-24 w-25 w-26 w-27 w-28 w-29 w-30 h-4 ml-2"
+></div> -->

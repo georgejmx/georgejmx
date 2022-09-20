@@ -7,14 +7,14 @@ function findRating(f: t.Fascination): t.Fascination {
   return f;
 }
 
-/* Choosing top 3 fascinations from the raw data, by calculating and sorting
+/* Choosing top 4 fascinations from the raw data, by calculating and sorting
  * by a ratings multiplier */
 export function formatFascinations(input: t.Fascination[]): t.Fascination[] {
   const output: t.Fascination[] = input.map(findRating);
   output.sort((a, b) => {
     return (b.rating || 0) - (a.rating || 0);
   });
-  return output.slice(0, 3);
+  return output.slice(0, 4);
 }
 
 /* Function for cropping the stories for the main view */

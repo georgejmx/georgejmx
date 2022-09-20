@@ -2,9 +2,9 @@
   "fascinations": [
     {
       "name": "reactjs",
-      "intensity": 3,
+      "intensity": 8,
       "color": 2,
-      "timestamp": 1654700401000
+      "timestamp": 1654700403000
     },
     {
       "name": "san antonio bay",
@@ -14,13 +14,13 @@
     },
     {
       "name": "virginia woolfe",
-      "intensity": 8,
+      "intensity": 7,
       "color": 1,
       "timestamp": 1654700402000
     },
     {
       "name": "creative writing",
-      "intensity": 8,
+      "intensity": 7,
       "color": 1,
       "timestamp": 1662641641000
     },
@@ -32,7 +32,7 @@
     },
     {
       "name": "ukulele",
-      "intensity": 7,
+      "intensity": 6,
       "color": 2,
       "timestamp": 1659963241000
     }
