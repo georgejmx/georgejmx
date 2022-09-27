@@ -1,10 +1,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="fractal.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/assets/index.cb938acb.js"></script>
+    <link rel="stylesheet" href="/assets/index.57bafba2.css" />
     <title>George - Story</title>
   </head>
   <body>
-    <h1><u>{{story.name}}</u></h1>
-    <p>{{story.contents}}</p>
+    <canvas id="bg" style="position: fixed; top: 0; left: 0"></canvas>
+    <main class="relative w-2/3">
+      <div class="absolute left-0 top-20 p-6">
+        <div
+          class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
+        >
+          <div
+            class="flex border-1 border-black border-b-orange-600 justify-around"
+          >
+            <div class="font-bold text-l mb-2 font-mono text-orange-600">
+              {{story.name}}
+            </div>
+            <p class="font-bold text-l mb-2 font-mono text-yellow-500">
+              5/6/22
+            </p>
+          </div>
+          <p class="font-mono text-white text-xs py-2">
+            {{story.contents}}
+          </p>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
