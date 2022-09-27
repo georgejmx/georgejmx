@@ -10,11 +10,20 @@ import sData from "./data/stories.json" assert { type: "json" };
 
 const app: Application = express();
 
-// Serving frontent files
+// Serving frontent files and loading templating engine
 const __filename: string = fileURLToPath(import.meta.url);
+app.set("view engine", "hbs");
 app.use(
   express.static(path.join(path.dirname(__filename), "./../frontend/dist"))
 );
+
+app.get("/story/:key", (req: Request, res: Response) => {
+  const keyword = req.params.key;
+  const stories: t.Story[] = sData.stories;
+  const story: t.Story = stories.filter((story) => story.keyword == keyword)[0];
+
+  res.render("story", { story: story });
+});
 
 // Getting fascinations
 app.get("/fascinations", (req: Request, res: Response) => {
