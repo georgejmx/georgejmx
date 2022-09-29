@@ -13,6 +13,7 @@ import {
   AmbientLight,
   CircleGeometry,
   MathUtils,
+  ColorRepresentation,
 } from "three";
 
 // Initializing scene, camera and renderer
@@ -24,8 +25,9 @@ const camera = new PerspectiveCamera(
   100
 );
 
+const bgCanvas = document.getElementById("bg") as HTMLCanvasElement;
 const renderer = new WebGL1Renderer({
-  canvas: document.getElementById("bg"),
+  canvas: bgCanvas,
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -58,7 +60,7 @@ pointLight.position.set(-11, 13, 20);
 scene.add(pointLight, new AmbientLight(0xffffff));
 
 /* Adding the fractals on circles, randomly generated throughout app */
-const addFractal = (imageSrc, colour) => {
+const addFractal = (imageSrc: string, colour: ColorRepresentation) => {
   const fGeometry = new CircleGeometry(3, 32, 0, 2 * Math.PI);
   const fMaterial = new MeshStandardMaterial({
     color: colour,
@@ -67,24 +69,24 @@ const addFractal = (imageSrc, colour) => {
   const frac = new Mesh(fGeometry, fMaterial);
 
   const [x, y, z] = Array(3)
-    .fill()
+    .fill(0)
     .map(() => MathUtils.randFloatSpread(100));
   frac.position.set(x, y, z);
   scene.add(frac);
 };
 
 Array(15)
-  .fill()
+  .fill(0)
   .forEach(() => {
     addFractal("/images/textures/fractal-1.png", 0xfa7603);
   });
 Array(15)
-  .fill()
+  .fill(0)
   .forEach(() => {
     addFractal("/images/textures/fractal-2.png", 0xfab903);
   });
 Array(15)
-  .fill()
+  .fill(0)
   .forEach(() => {
     addFractal("/images/textures/fractal-3.png", 0xfc6501);
   });

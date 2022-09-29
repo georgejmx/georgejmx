@@ -27,17 +27,18 @@ const getProjectsHtml = async () => {
 /* Adding top artists to UI */
 getArtists()
   .then((artists) => {
-    document.getElementById("artists-text").textContent = `Latest top artists:
+    const artistsEl = document.getElementById("artists-text") as HTMLElement;
+    artistsEl.textContent = `Latest top artists:
     ${artists[0].name}, ${artists[1].name}, ${artists[2].name}`;
   })
   .catch((err) => {
     console.error(err);
-    document.getElementById("artists-text").textContent =
-      "Error fetching artists";
+    const artistsEl = document.getElementById("artists-text") as HTMLElement;
+    artistsEl.textContent = "Error fetching artists";
   });
 
 // Generates the correct HTML for a fascination item
-const fascinationHtml = (name, intensity, color) => {
+const fascinationHtml = (name: string, intensity: number, color: number) => {
   const width = intensity + 18;
   let twColor = null;
   switch (color) {
@@ -66,22 +67,30 @@ const fascinationHtml = (name, intensity, color) => {
 // Grabs the HTML for stories from the backend and slaps it in the box
 getStoriesHtml()
   .then((stories) => {
-    document.getElementById("story-box").innerHTML = stories;
+    const storyBox = document.getElementById("story-box") as HTMLDivElement;
+    storyBox.innerHTML = stories;
   })
   .catch((err) => {
     console.error(err);
-    document.getElementById("story-box").innerHTML = `
+    const storyBox = document.getElementById("story-box") as HTMLDivElement;
+    storyBox.innerHTML = `
       <p style="color: white;">Error getting stories from server.</p>`;
   });
 
 // Grabs the HTML for projects from the backend and slaps it in the box
 getProjectsHtml()
   .then((projects) => {
-    document.getElementById("projects-box").innerHTML = projects;
+    const projectsBox = document.getElementById(
+      "projects-box"
+    ) as HTMLDivElement;
+    projectsBox.innerHTML = projects;
   })
   .catch((err) => {
     console.error(err);
-    document.getElementById("projects-box").innerHTML = `
+    const projectsBox = document.getElementById(
+      "projects-box"
+    ) as HTMLDivElement;
+    projectsBox.innerHTML = `
     <p style="color: white;">Error getting projects from server.</p>`;
   });
 
@@ -92,30 +101,35 @@ getFascinations()
     for (let f of fasc) {
       htmlStr += fascinationHtml(f.name, f.intensity, f.color);
     }
-    document.getElementById("fascination-box").innerHTML = htmlStr;
+    const fBox = document.getElementById("fascination-box") as HTMLDivElement;
+    fBox.innerHTML = htmlStr;
   })
   .catch((err) => {
     console.error(err);
-    document.getElementById("fascination-box").innerHTML = `
+    const fBox = document.getElementById("fascination-box") as HTMLDivElement;
+    fBox.innerHTML = `
       <p style="color: white;">Error getting fascinations from server.</p>`;
   });
 
 /* Adding event listeners to top level buttons */
-document.getElementById("home-btn").addEventListener("click", () => {
+const homeBtn = document.getElementById("home-btn") as HTMLButtonElement;
+const projectBtn = document.getElementById("projects-btn") as HTMLButtonElement;
+const storyBtn = document.getElementById("story-btn") as HTMLButtonElement;
+homeBtn.addEventListener("click", () => {
   changeTabSelection(1);
 });
-document.getElementById("projects-btn").addEventListener("click", () => {
+projectBtn.addEventListener("click", () => {
   changeTabSelection(2);
 });
-document.getElementById("story-btn").addEventListener("click", () => {
+storyBtn.addEventListener("click", () => {
   changeTabSelection(3);
 });
 
 /* Updates scrolling content upon menu button selection */
-function changeTabSelection(val) {
-  const home = document.getElementById("home-box");
-  const projects = document.getElementById("projects-box");
-  const stories = document.getElementById("story-box");
+function changeTabSelection(val: number) {
+  const home = document.getElementById("home-box") as HTMLDivElement;
+  const projects = document.getElementById("projects-box") as HTMLDivElement;
+  const stories = document.getElementById("story-box") as HTMLDivElement;
   switch (val) {
     case 1:
       home.style.display = "initial";

@@ -1,9 +1,6 @@
 node_modules
 public
-
-background.js
-index.html
-main.js
+src
 
 *.config.js
 *.json
