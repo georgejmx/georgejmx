@@ -1,7 +1,13 @@
-import WindiCSS from 'vite-plugin-windicss'
+import WindiCSS from "vite-plugin-windicss";
 
 export default {
-  plugins: [
-    WindiCSS(),
-  ],
-}
+  plugins: [WindiCSS()],
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: "index.ashes.js",
+        assetFileNames: "index.ashes.css",
+      },
+    },
+  },
+};

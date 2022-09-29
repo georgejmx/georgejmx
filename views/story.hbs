@@ -3,16 +3,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="fractal.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/assets/index.2e706442.js"></script>
-    <link rel="stylesheet" href="/assets/index.7c5bac43.css" />
+    <script type="module" src="/index.ashes.js"></script>
+    <link rel="stylesheet" href="/index.ashes.css" />
     <title>George - Story</title>
   </head>
   <body>
     <canvas id="bg" style="position: fixed; top: 0; left: 0"></canvas>
-    <main class="relative w-2/3">
-      <div class="absolute left-0 top-20 p-6">
+    <main class="relative w-3/4">
+      <div class="absolute left-0 top-20 p-6 mx-4">
+        <h1
+          class="mb-6 text-yellow-200 hover:text-yellow-500 font-mono text-2xl"
+        >A story about <strong>{{story.keyword}}</strong></h1>
         <div
-          class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
+          class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mb-6"
         >
           <div
             class="flex border-1 border-black border-b-orange-600 justify-around"
@@ -28,6 +31,16 @@
             {{story.contents}}
           </p>
         </div>
+        <button
+          class="text-green-500 bg-black text-xs font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
+          onclick="window.location.href='/'"
+        >
+          <div class="flex w-40">
+            <img class="mr-2" src="/images/logos/right-arrow.png" />
+            <p class="text-green-500 font-mono font-light italic text-xs">Ground
+              control to major Tom..</p>
+          </div>
+        </button>
       </div>
     </main>
   </body>
