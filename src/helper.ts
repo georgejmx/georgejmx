@@ -25,8 +25,8 @@ function cropStory(s: t.Story): t.Story {
 }
 
 /* Cropping stories and ordering by timestamp for overall frontend view */
-export function formatStories(input: t.Story[]): t.Story[] {
-  const output: t.Story[] = input.map(cropStory);
+export function formatStories(input: t.Story[], isCropped: boolean): t.Story[] {
+  const output: t.Story[] = isCropped ? input.map(cropStory) : input;
   output.sort((a, b) => b.timestamp - a.timestamp);
   return output;
 }

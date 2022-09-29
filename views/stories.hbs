@@ -1,0 +1,23 @@
+{{#each stories}}
+  <div
+    class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
+  >
+    <div class="flex border-1 border-black border-b-orange-600 justify-around">
+      <div class="font-bold text-l mb-2 font-mono text-orange-600">
+        {{this.name}}
+      </div>
+      <p class="font-bold text-l mb-2 font-mono text-yellow-500">
+        6/6/22
+      </p>
+    </div>
+    <p class="font-mono text-white text-xs py-2">
+      {{this.contents}}
+    </p>
+    <button
+      class="text-green-500 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
+      onclick="window.location.href='/story/{{this.keyword}}'"
+    >
+      Read more
+    </button>
+  </div>
+{{/each}}

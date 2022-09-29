@@ -2,14 +2,20 @@ import "virtual:windi.css";
 
 /* Fetching top artists from server */
 const getArtists = async () => {
-  const artistsRes = await fetch("/artists", { method: "GET" });
+  const artistsRes = await fetch("/api/artists", { method: "GET" });
   return await artistsRes.json();
 };
 
 /* Fetching top fascinations from server */
 const getFascinations = async () => {
-  const fascRes = await fetch("/fascinations", { method: "GET" });
+  const fascRes = await fetch("/api/fascinations", { method: "GET" });
   return await fascRes.json();
+};
+
+/* Fetching stories HTML from server */
+const getStoriesHtml = async () => {
+  const storiesRes = await fetch("stories", { method: "GET" });
+  return await storiesRes.text();
 };
 
 /* Adding top artists to UI */
@@ -51,6 +57,17 @@ const fascinationHtml = (name, intensity, color) => {
   `;
 };
 
+// Grabs the HTML for stories from the backend and slaps it in the box
+getStoriesHtml()
+  .then((stories) => {
+    document.getElementById("story-box").innerHTML = stories;
+  })
+  .catch((err) => {
+    console.error(err);
+    document.getElementById("story-box").innerHTML = `
+      <p>Error getting stories from server.</p>`;
+  });
+
 /* Adding top fascinations to UI */
 getFascinations()
   .then((fasc) => {
@@ -58,7 +75,6 @@ getFascinations()
     for (let f of fasc) {
       htmlStr += fascinationHtml(f.name, f.intensity, f.color);
     }
-    console.log(htmlStr);
     document.getElementById("fascination-box").innerHTML = htmlStr;
   })
   .catch((err) => {

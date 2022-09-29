@@ -7,6 +7,7 @@ import * as h from "./helper.js";
 import fData from "./data/fascinations.json" assert { type: "json" };
 import aData from "./data/artists.json" assert { type: "json" };
 import sData from "./data/stories.json" assert { type: "json" };
+import tData from "./data/stories.json" assert { type: "json" };
 
 const app: Application = express();
 
@@ -17,34 +18,34 @@ app.use(
   express.static(path.join(path.dirname(__filename), "./../frontend/dist"))
 );
 
+// Renders an entire html page for a specific story
 app.get("/story/:key", (req: Request, res: Response) => {
   const keyword = req.params.key;
-  const stories: t.Story[] = sData.stories;
+  const stories: t.Story[] = tData.stories;
   const story: t.Story = stories.filter((story) => story.keyword == keyword)[0];
-
   res.render("story", { story: story });
 });
 
-// Getting fascinations
-app.get("/fascinations", (req: Request, res: Response) => {
+// Renders a chunk of html that shows a list of all story tiles
+app.get("/stories", (req: Request, res: Response) => {
+  const stories: t.Story[] = JSON.parse(JSON.stringify(sData.stories));
+  res.render("stories", { stories: h.formatStories(stories, true) });
+});
+
+// Getting fascinations JSON
+app.get("/api/fascinations", (req: Request, res: Response) => {
   const fsc: t.Fascination[] = fData.fascinations;
   res.send(h.formatFascinations(fsc));
 });
 
-// Getting top artists
-app.get("/artists", (req: Request, res: Response) => {
+// Getting top artists JSON
+app.get("/api/artists", (req: Request, res: Response) => {
   const artists: t.Artist[] = aData.artists;
   res.send(artists);
 });
 
-// Getting all stories
-app.get("/stories", (req: Request, res: Response) => {
-  const stories: t.Story[] = sData.stories;
-  res.send(h.formatStories(stories));
-});
-
-// Getting a specific story by keyword
-app.get("/stories/:key", (req: Request, res: Response) => {
+// Getting a specific story by keyword as JSON
+app.get("/api/stories/:key", (req: Request, res: Response) => {
   const keyword = req.params.key;
   const stories: t.Story[] = sData.stories;
   res.send(stories.filter((story) => story.keyword == keyword));
