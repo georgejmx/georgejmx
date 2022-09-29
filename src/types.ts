@@ -17,3 +17,11 @@ export type Story = {
   contents: string;
   theme: number;
 };
+
+export type Project = {
+  name: string;
+  imageName: string;
+  url: string;
+  urlName: string;
+  description: string;
+};

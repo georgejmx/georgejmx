@@ -18,6 +18,12 @@ const getStoriesHtml = async () => {
   return await storiesRes.text();
 };
 
+/* Fetching projects HTML from server */
+const getProjectsHtml = async () => {
+  const projectsRes = await fetch("projects", { method: "GET" });
+  return await projectsRes.text();
+};
+
 /* Adding top artists to UI */
 getArtists()
   .then((artists) => {
@@ -65,7 +71,18 @@ getStoriesHtml()
   .catch((err) => {
     console.error(err);
     document.getElementById("story-box").innerHTML = `
-      <p>Error getting stories from server.</p>`;
+      <p style="color: white;">Error getting stories from server.</p>`;
+  });
+
+// Grabs the HTML for projects from the backend and slaps it in the box
+getProjectsHtml()
+  .then((projects) => {
+    document.getElementById("projects-box").innerHTML = projects;
+  })
+  .catch((err) => {
+    console.error(err);
+    document.getElementById("projects-box").innerHTML = `
+    <p style="color: white;">Error getting projects from server.</p>`;
   });
 
 /* Adding top fascinations to UI */
@@ -80,7 +97,7 @@ getFascinations()
   .catch((err) => {
     console.error(err);
     document.getElementById("fascination-box").innerHTML = `
-      <p>Error getting fascinations from server.</p>`;
+      <p style="color: white;">Error getting fascinations from server.</p>`;
   });
 
 /* Adding event listeners to top level buttons */

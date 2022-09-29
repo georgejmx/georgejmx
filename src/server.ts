@@ -7,7 +7,7 @@ import * as h from "./helper.js";
 import fData from "./data/fascinations.json" assert { type: "json" };
 import aData from "./data/artists.json" assert { type: "json" };
 import sData from "./data/stories.json" assert { type: "json" };
-import tData from "./data/stories.json" assert { type: "json" };
+import pData from "./data/projects.json" assert { type: "json" };
 
 const app: Application = express();
 
@@ -21,7 +21,7 @@ app.use(
 // Renders an entire html page for a specific story
 app.get("/story/:key", (req: Request, res: Response) => {
   const keyword = req.params.key;
-  const stories: t.Story[] = tData.stories;
+  const stories: t.Story[] = sData.stories;
   const story: t.Story = stories.filter((story) => story.keyword == keyword)[0];
   res.render("story", { story: story });
 });
@@ -30,6 +30,12 @@ app.get("/story/:key", (req: Request, res: Response) => {
 app.get("/stories", (req: Request, res: Response) => {
   const stories: t.Story[] = JSON.parse(JSON.stringify(sData.stories));
   res.render("stories", { stories: h.formatStories(stories, true) });
+});
+
+// Renders a chunk of html that shows a list of all project tiles
+app.get("/projects", (req: Request, res: Response) => {
+  const projects: t.Project[] = pData.projects;
+  res.render("projects", { projects: projects });
 });
 
 // Getting fascinations JSON
