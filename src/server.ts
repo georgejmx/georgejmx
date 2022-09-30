@@ -50,10 +50,21 @@ app.get("/api/artists", (req: Request, res: Response) => {
   res.send(artists);
 });
 
-// Getting a specific story by keyword as JSON
+/* Getting a specific story by keyword as JSON. If the keyword is 'recents',
+ * then simply return the most recent 3 keywords */
 app.get("/api/stories/:key", (req: Request, res: Response) => {
-  const keyword = req.params.key;
+  const keyword: string = req.params.key;
   const stories: t.Story[] = sData.stories;
+
+  // Dealing with when only want the 3 most recent keywords
+  if (keyword === "recents") {
+    const recentStories: t.Story[] = h.formatStories(stories, false);
+    let recents: string[] = [];
+    for (let r of recentStories) recents.push(r.keyword);
+    res.send({ recents });
+    return;
+  }
+
   res.send(stories.filter((story) => story.keyword == keyword));
 });
 

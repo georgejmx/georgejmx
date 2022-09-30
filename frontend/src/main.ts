@@ -1,9 +1,20 @@
 import "virtual:windi.css";
 
+// Extracting URL parameters
+const params: URLSearchParams = new URLSearchParams(window.location.search);
+
 /* Fetching top artists from server */
 const getArtists = async () => {
   const artistsRes = await fetch("/api/artists", { method: "GET" });
   return await artistsRes.json();
+};
+
+/* Fetching most recent stories from server */
+const getRecentStories = async () => {
+  const recentStoriesRes = await fetch("api/stories/recents", {
+    method: "GET",
+  });
+  return await recentStoriesRes.json();
 };
 
 /* Fetching top fascinations from server */
@@ -35,6 +46,24 @@ getArtists()
     console.error(err);
     const artistsEl = document.getElementById("artists-text") as HTMLElement;
     artistsEl.textContent = "Error fetching artists";
+  });
+
+/* Adding most recent stories to UI */
+getRecentStories()
+  .then((resp) => {
+    const recents: string[] = resp.recents;
+    const recentsEl = document.getElementById(
+      "top-stories-text"
+    ) as HTMLElement;
+    recentsEl.textContent = `Most recent themes I have written about: 
+    ${recents[0]}, ${recents[1]}, ${recents[2]}`;
+  })
+  .catch((err) => {
+    console.error(err);
+    const recentsEl = document.getElementById(
+      "top-stories-text"
+    ) as HTMLElement;
+    recentsEl.textContent = "Error fetching recent stories";
   });
 
 // Generates the correct HTML for a fascination item
@@ -111,6 +140,8 @@ getFascinations()
       <p style="color: white;">Error getting fascinations from server.</p>`;
   });
 
+/* Adding most recent story keywords to UI */
+
 /* Adding event listeners to top level buttons */
 const homeBtn = document.getElementById("home-btn") as HTMLButtonElement;
 const projectBtn = document.getElementById("projects-btn") as HTMLButtonElement;
@@ -124,6 +155,9 @@ projectBtn.addEventListener("click", () => {
 storyBtn.addEventListener("click", () => {
   changeTabSelection(3);
 });
+
+/* Processing any url parameters */
+if (params.has("stories")) changeTabSelection(3);
 
 /* Updates scrolling content upon menu button selection */
 function changeTabSelection(val: number) {
