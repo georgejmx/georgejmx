@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from "express";
-import * as h from "./helper";
+import * as h from "./helper.js";
 import * as t from "./types";
 import fData from "./data/fascinations.json" assert { type: "json" };
 import aData from "./data/artists.json" assert { type: "json" };

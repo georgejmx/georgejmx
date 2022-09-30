@@ -3,8 +3,8 @@ import path from "path";
 import http, { Server } from "http";
 import { fileURLToPath } from "url";
 import * as t from "./types";
-import { router } from "./routes";
-import * as h from "./helper";
+import { router } from "./routes.js";
+import * as h from "./helper.js";
 import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 
