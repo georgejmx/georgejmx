@@ -10,4 +10,4 @@ copy . .
 
 expose 80
 
-cmd ["node", "dist/server.js"]
+cmd ["npm", "run start"]
