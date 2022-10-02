@@ -20,6 +20,13 @@
       "url": "https://github.com/georgejmx/FlowPass",
       "urlName": "fork me",
       "description": "Custom android password manager for personal use"
+    },
+    {
+      "name": "MedicineFinder",
+      "imageName": "mf.png",
+      "url": "https://github.com/georgejmx/MedicineFinder",
+      "urlName": "try me",
+      "description": "Console app for determining which drug is best for the given patient with lung cancer"
     }
   ]
 }

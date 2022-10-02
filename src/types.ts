@@ -16,6 +16,7 @@ export type Story = {
   timestamp: number;
   contents: string;
   theme: number;
+  datestring?: string;
 };
 
 export type Project = {
