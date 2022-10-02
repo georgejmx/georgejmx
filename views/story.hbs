@@ -27,9 +27,11 @@
               {{story.datestring}}
             </p>
           </div>
-          <p class="font-mono text-white text-xs py-2">
-            {{story.contents}}
-          </p>
+          {{#each story.paragraphs}}
+            <p class="font-mono text-white text-xs py-2">
+              {{this}}
+            </p>
+          {{/each}}
         </div>
         <button
           id="story-back"

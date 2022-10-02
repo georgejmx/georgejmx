@@ -14,9 +14,10 @@ export type Story = {
   name: string;
   keyword: string;
   timestamp: number;
-  contents: string;
+  paragraphs: string[];
   theme: number;
   datestring?: string;
+  headline?: string;
 };
 
 export type Project = {

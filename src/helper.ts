@@ -18,9 +18,8 @@ export function formatFascinations(input: t.Fascination[]): t.Fascination[] {
 }
 
 /* Function for cropping the stories for the main view */
-function cropStory(s: t.Story): t.Story {
-  s.contents = s.contents.substring(0, 151);
-  s.contents = s.contents + "...";
+function generateHeadline(s: t.Story): t.Story {
+  s.headline = s.paragraphs[0].substring(0, 151) + "...";
   return s;
 }
 
@@ -38,8 +37,8 @@ function addDatestring(s: t.Story): t.Story {
 }
 
 /* Cropping stories and ordering by timestamp for overall frontend view */
-export function formatStories(input: t.Story[], isCropped: boolean): t.Story[] {
-  let output: t.Story[] = isCropped ? input.map(cropStory) : input;
+export function formatStories(input: t.Story[], hasHead: boolean): t.Story[] {
+  let output = hasHead ? input.map(generateHeadline) : input;
   output = output.map(addDatestring);
   output.sort((a, b) => b.timestamp - a.timestamp);
   return output;
