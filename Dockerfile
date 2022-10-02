@@ -10,4 +10,8 @@ copy . .
 
 expose 80
 
+<<<<<<< HEAD
 cmd ["node", "server.js"]
+=======
+cmd ["npm", "run start"]
+>>>>>>> dev
