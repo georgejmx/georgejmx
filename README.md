@@ -39,8 +39,8 @@ sudo docker run -p 80:3000 -d georgejmx-img
 
 - ~v0.1: static site~
 - ~deploy to AWS using docker~
-- v0.2: mutating frontend data stored in json mapped to client using html
+- ~v0.2: mutating frontend data stored in json mapped to client using html
   templating, stories page expanded with an isolated view, miscellaneous
-  impovements, TS conversion
+  impovements, TS conversion~
 - v0.3: using mongo db to store json data, also containerised and integrated
   with backend
