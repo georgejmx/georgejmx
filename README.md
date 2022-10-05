@@ -35,21 +35,6 @@ sudo docker load -i images/v0.1.tar
 sudo docker run -p 80:3000 -d georgejmx-img
 ```
 
-#### Containerise locally
-
-```
-sudo docker build -t georgejmx-img .
-sudo docker save georgejmx-img:latest -o build/v0.1.tar
-```
-
-#### Deploy to server
-
-```
-scp -v .build/v0.1.tar home-vm:/home/ubuntu/images/v0.1.tar
-sudo docker load -i images/v0.1.tar
-sudo docker run -p 80:3000 -d georgejmx-img
-```
-
 ### Roadmap
 
 - ~v0.1: static site~

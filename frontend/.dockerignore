@@ -1,13 +1,2 @@
-node_modules
-public
-<<<<<<< HEAD
-
-background.js
-index.html
-main.js
-=======
-src
->>>>>>> dev
-
-*.config.js
-*.json
+node_modules/
+src/
