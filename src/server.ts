@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import path from "path";
-import http, { Server } from "http";
+import fs from "fs";
+import https, { Server } from "https";
 import { fileURLToPath } from "url";
 import * as t from "./types";
 import { router } from "./routes.js";
@@ -9,6 +10,10 @@ import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 
 const app: Application = express();
+const httpsOptions = {
+  cert: fs.readFileSync("./ssl/fullchain.pem"),
+  key: fs.readFileSync("./ssl/privkey.pem"),
+};
 
 // Serving frontent files and loading templating engine, routes
 const __filename: string = fileURLToPath(import.meta.url);
@@ -38,7 +43,7 @@ app.get("/projects", (req: Request, res: Response) => {
   res.render("projects", { projects });
 });
 
-const server: Server = new http.Server(app);
+const server: Server = new https.Server(httpsOptions, app);
 server.listen(3000, () => {
-  console.log("server is up on local port 3000");
+  console.log("secure server is up on port 3000");
 });

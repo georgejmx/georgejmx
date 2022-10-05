@@ -24,15 +24,15 @@ Enter the fractalverse
 
 ```
 sudo docker build -t georgejmx-img .
-sudo docker save georgejmx-img:latest -o build/v0.1.tar
+sudo docker save georgejmx-img:latest -o build/v0.2.1.tar
 ```
 
 #### Deploy to server
 
 ```
-scp -v .build/v0.1.tar home-vm:/home/ubuntu/images/v0.1.tar
-sudo docker load -i images/v0.1.tar
-sudo docker run -p 80:3000 -d georgejmx-img
+scp -v .build/v0.1.tar home-vm:/home/ubuntu/images/v0.2.1.tar
+sudo docker load -i images/v0.2.1.tar
+sudo docker run -p 80:3000 -p 443:3000 -d georgejmx-img -v /etc/letsencrypt/live/georgejmx.dev:/app/ssl
 ```
 
 ### Roadmap
@@ -42,5 +42,6 @@ sudo docker run -p 80:3000 -d georgejmx-img
 - ~v0.2: mutating frontend data stored in json mapped to client using html
   templating, stories page expanded with an isolated view, miscellaneous
   impovements, TS conversion~
+- ~v0.2.1: ssl working on hostinger~
 - v0.3: using mongo db to store json data, also containerised and integrated
   with backend
