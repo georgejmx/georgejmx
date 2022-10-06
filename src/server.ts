@@ -11,8 +11,8 @@ import pData from "./data/projects.json" assert { type: "json" };
 
 const app: Application = express();
 const httpsOptions = {
-  cert: fs.readFileSync("./ssl/fullchain.pem"),
-  key: fs.readFileSync("./ssl/privkey.pem"),
+  cert: fs.readFileSync("./cert/live/georgejmx.dev/fullchain.pem"),
+  key: fs.readFileSync("./cert/live/georgejmx.dev/privkey.pem"),
 };
 
 // Serving frontent files and loading templating engine, routes

@@ -9,5 +9,6 @@ run npm install
 copy . .
 
 expose 80
+expose 443
 
 cmd ["npm", "start"]
