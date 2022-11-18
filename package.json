@@ -1,6 +1,6 @@
 {
   "name": "georgejmx",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "hi i'm george",
   "main": "dist/server.ts",
   "type": "module",
