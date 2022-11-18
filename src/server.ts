@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import path from "path";
 import fs from "fs";
-import https, { Server } from "https";
+import https, { Server as httpsServer } from "https";
+import http, { Server as httpServer } from "http";
 import { fileURLToPath } from "url";
 import * as t from "./types";
 import { router } from "./routes.js";
@@ -10,10 +11,6 @@ import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 
 const app: Application = express();
-const httpsOptions = {
-  cert: fs.readFileSync("./cert/live/georgejmx.dev/fullchain.pem"),
-  key: fs.readFileSync("./cert/live/georgejmx.dev/privkey.pem"),
-};
 
 // Serving frontent files and loading templating engine, routes
 const __filename: string = fileURLToPath(import.meta.url);
@@ -43,7 +40,25 @@ app.get("/projects", (req: Request, res: Response) => {
   res.render("projects", { projects });
 });
 
-const server: Server = new https.Server(httpsOptions, app);
-server.listen(3000, () => {
-  console.log("secure server is up on port 3000");
-});
+// Launching the desired web service from node runtime
+const serverType: string = process.argv[2];
+if (serverType === "http") {
+  const server: httpServer = new http.Server(app);
+  server.listen(3000, () => {
+    console.log("http server is up on port 3000");
+  });
+} else if (serverType === "https") {
+  const server: httpServer = new https.Server(
+    {
+      cert: fs.readFileSync("./cert/live/georgejmx.dev/fullchain.pem"),
+      key: fs.readFileSync("./cert/live/georgejmx.dev/privkey.pem"),
+    },
+    app
+  );
+  server.listen(3000, () => {
+    console.log("https server is up on port 3000");
+  });
+} else {
+  console.log("Invalid command line argument passed to runtime");
+  process.abort();
+}

@@ -35,6 +35,12 @@
       "intensity": 6,
       "color": 2,
       "timestamp": 1659963241000
+    },
+    {
+      "name": "hiking",
+      "intensity": 7,
+      "color": 1,
+      "timestamp": 1668804789000
     }
   ]
 }

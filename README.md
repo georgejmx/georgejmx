@@ -24,7 +24,7 @@ Enter the fractalverse
 
 ```
 sudo docker build -t georgejmx-img:0.2.1 .
-sudo docker save georgejmx-img:0.2.1-o build/v0.2.1.tar
+sudo docker save georgejmx-img:0.2.1 -o build/v0.2.1.tar
 ```
 
 #### Deploy to server
