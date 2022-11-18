@@ -8,10 +8,10 @@
       "description": "My take on what social media should be like"
     },
     {
-      "name": "WhisperBlog",
-      "imageName": "whisperblog.png",
-      "url": "https://windowcleannortheast.co.uk/",
-      "urlName": "windowcleannortheast.co.uk",
+      "name": "WindowCleanNorthEast",
+      "imageName": "wcne.png",
+      "url": "https://github.com/georgejmx/windowcleanne",
+      "urlName": "my codebase",
       "description": "Client website made during lockdown"
     },
     {

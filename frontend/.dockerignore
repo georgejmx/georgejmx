@@ -1,6 +1,2 @@
-node_modules
-public
-src
-
-*.config.js
-*.json
+node_modules/
+src/
