@@ -1,5 +1,5 @@
 utils
-src
 node_modules
 build
+docs
 *.md

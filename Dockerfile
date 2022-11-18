@@ -1,14 +1,14 @@
-from node:16
+FROM node:16
 
-workdir /app
+WORKDIR /app
 
-copy package.json .
+COPY package.json .
 
-run npm install
+RUN npm install
 
-copy . .
+COPY . .
 
-expose 80
-expose 443
+ENV NODE_ENV=production
+RUN npm run build
 
-cmd ["npm", "start"]
+CMD ["npm", "start"]
