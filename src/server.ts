@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import * as t from "./types";
 import { router } from "./routes.js";
 import * as h from "./helper.js";
+import { readFileSync } from "fs";
 import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 
@@ -18,6 +19,7 @@ app.set("view engine", "hbs");
 app.use(
   express.static(path.join(path.dirname(__filename), "./../frontend/dist"))
 );
+
 app.use("/api", router);
 
 /* Renders an entire html page for a specific story */
@@ -25,7 +27,10 @@ app.get("/story/:key", (req: Request, res: Response) => {
   const keyword = req.params.key;
   const stories: t.Story[] = sData.stories;
   const story: t.Story = stories.filter((story) => story.keyword == keyword)[0];
-  res.render("story", { story });
+  res.render("story", {
+    story,
+    jsText: readFileSync("./utils/story.js", "utf-8").toString(),
+  });
 });
 
 /* Renders a chunk of html that shows a list of all story tiles */
@@ -59,6 +64,6 @@ if (serverType === "http") {
     console.log("https server is up on port 3000");
   });
 } else {
-  console.log("Invalid command line argument passed to runtime");
+  console.log("invalid command line argument passed to runtime");
   process.abort();
 }

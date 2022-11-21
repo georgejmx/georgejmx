@@ -56,7 +56,7 @@ getRecentStories()
       "top-stories-text"
     ) as HTMLElement;
     recentsEl.textContent = `Most recent themes I have written about: 
-    ${recents[0]}, ${recents[1]}`;
+      ${recents[0]}, ${recents[1]}, ${recents[2]}`;
   })
   .catch((err) => {
     console.error(err);

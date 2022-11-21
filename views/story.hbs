@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="fractal.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/index.ashes.js"></script>
+    <script type="module" src="/index.ashes.js" defer></script>
     <link rel="stylesheet" href="/index.ashes.css" />
     <title>George - Story</title>
   </head>
@@ -34,17 +34,90 @@
           {{/each}}
         </div>
         <button
+          id="show-modal"
+          class="text-yellow-500 bg-black text-xs font-bold font-mono py-2 px-4 mb-1 mr-2 border rounded border-b-4 border-yellow-500 hover:bg-[#360202]"
+        >
+          <div class="flex">
+            <img class="mr-2" src="/images/logos/notepad.png" />
+            <p class="text-yellow-500 font-mono font-light text-xs">Leave a
+              comment</p>
+          </div>
+        </button>
+        <button
           id="story-back"
           onclick="window.location.href = '/?stories=true'"
           class="text-green-500 bg-black text-xs font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
         >
-          <div class="flex w-40">
+          <div class="flex">
             <img class="mr-2" src="/images/logos/right-arrow.png" />
-            <p class="text-green-500 font-mono font-light italic text-xs">Ground
-              control to major Tom..</p>
+            <p class="text-green-500 font-mono font-light text-xs">Go back</p>
           </div>
         </button>
+        <br />
+        <p class="mt-4 text-green-500 font-mono italic text-xs">Ground control
+          to major Tom..</p>
       </div>
     </main>
+
+    <!-- describe modal -->
+    <div
+      class="z-50 fixed inset-2 top-12 overflow-y-auto"
+      role="dialog"
+      style="display:none;"
+      aria-modal="true"
+      id="describe-modal"
+    >
+      <div
+        class="flex items-end justify-center text-center md:items-center sm:block"
+      >
+        <div
+          class="inline-block max-w-prose overflow-hidden text-left transition-all transform bg-black font-mono 2xl:max-w-2xl xl:w-3/5"
+        >
+          <div
+            class="relative py-3 md:px-10 border border-b-4 border-yellow-500 px-2"
+          >
+            <h1
+              class="text-yellow-500 font-xl font-bold mb-1 underline-offset-1"
+            >Add Description</h1>
+            <br />
+
+            <p class="text-white text-sm">Select a word to submit your preferred
+              descriptor</p>
+
+            <p
+              class="text-white text-xs mb-2 leading-tight pt-3 tracking-normal underline font-bold"
+            >
+              Your options</p>
+            <div class="pb-5" id="react-deck">
+              <button
+                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-yellow-500 focus:outline focus:bg-[#360202] border rounded border-yellow-500"
+              >word</button>
+              <button
+                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-yellow-500 focus:outline focus:bg-[#360202] border rounded border-yellow-500"
+              >word2</button>
+            </div>
+
+            <p
+              class="text-slate-900 text-sm leading-tight pt-3 tracking-normal font-bold"
+              id="react-response"
+            ></p>
+
+            <div class="flex items-center justify-evenly w-full p-2">
+              <button
+                class="text-green-500 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
+                id="fire-modal"
+              >Submit</button>
+              <button
+                class="text-orange-600 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-orange-600 hover:bg-[#360202]"
+                id="hide-modal"
+              >Go back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- server rendered javascript, injected raw by hbs-->
+    <script>{{{jsText}}}</script>
   </body>
 </html>

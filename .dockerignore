@@ -1,4 +1,4 @@
-utils
+utils/fractal.js
 node_modules
 build
 docs
