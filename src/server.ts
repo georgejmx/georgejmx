@@ -4,6 +4,7 @@ import fs from "fs";
 import https, { Server as httpsServer } from "https";
 import http, { Server as httpServer } from "http";
 import { fileURLToPath } from "url";
+import bodyParser from "body-parser";
 import * as t from "./types";
 import { router } from "./routes.js";
 import * as h from "./helper.js";
@@ -16,6 +17,7 @@ const app: Application = express();
 // Serving frontent files and loading templating engine, routes
 const __filename: string = fileURLToPath(import.meta.url);
 app.set("view engine", "hbs");
+app.use(bodyParser.json());
 app.use(
   express.static(path.join(path.dirname(__filename), "./../frontend/dist"))
 );

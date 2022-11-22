@@ -13,7 +13,7 @@
       <div class="absolute left-0 top-20 p-6 mx-4">
         <h1
           class="mb-6 text-yellow-200 hover:text-yellow-500 font-mono text-2xl"
-        >A story about <strong>{{story.keyword}}</strong></h1>
+        >A story about <strong id="keyword">{{story.keyword}}</strong></h1>
         <div
           class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mb-6"
         >
@@ -90,25 +90,19 @@
               Your options</p>
             <div class="pb-5" id="react-deck">
               <button
-                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-yellow-500 focus:outline focus:bg-[#360202] border rounded border-yellow-500"
+                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-orange-600 focus:outline focus:bg-[#360202] border rounded border-orange-600"
               >word</button>
-              <button
-                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-yellow-500 focus:outline focus:bg-[#360202] border rounded border-yellow-500"
-              >word2</button>
             </div>
 
-            <p
-              class="text-slate-900 text-sm leading-tight pt-3 tracking-normal font-bold"
-              id="react-response"
-            ></p>
+            <p class="text-yellow-500 text-sm pt-3" id="modal-response"></p>
 
             <div class="flex items-center justify-evenly w-full p-2">
               <button
-                class="text-green-500 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
+                class="text-yellow-500 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-yellow-500 hover:bg-[#360202]"
                 id="fire-modal"
               >Submit</button>
               <button
-                class="text-orange-600 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-orange-600 hover:bg-[#360202]"
+                class="text-green-500 bg-black text-sm font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
                 id="hide-modal"
               >Go back</button>
             </div>

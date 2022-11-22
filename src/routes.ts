@@ -7,6 +7,26 @@ import sData from "./data/stories.json" assert { type: "json" };
 
 export const router: Router = express.Router();
 
+// Posting descriptor JSON
+router.post("/descriptor", (req: Request, res: Response) => {
+  let storyKeyword: string, descriptor: string;
+  try {
+    storyKeyword = req.body.key;
+    descriptor = req.body.descriptor;
+  } catch (err) {
+    console.error(err);
+    res.status(400).send();
+    return;
+  }
+
+  // TODO: Actually call the database
+  console.log(
+    `Frontend wants to post; Key: ${storyKeyword}, Descriptor: ${descriptor}`
+  );
+
+  res.status(201).send();
+});
+
 // Getting fascinations JSON
 router.get("/fascinations", (req: Request, res: Response) => {
   const fsc: t.Fascination[] = fData.fascinations;

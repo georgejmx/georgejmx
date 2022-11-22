@@ -21,9 +21,29 @@ selectModals.forEach((btn) => {
 const fireModal = document.getElementById("fire-modal");
 fireModal.addEventListener("click", () => {
   if (!selectedDescriptor) {
-    console.log("We actually need to display an error message");
+    document.getElementById("modal-response").textContent =
+      "no descriptor has been selected";
     return;
   }
-  console.log("We actually need to send this to backend: ", selectedDescriptor);
-  modal.style.display = "none";
+
+  fetch("/api/descriptor", {
+    method: "POST",
+    headers: { "Content-Type": "application/json;charset=utf-8" },
+    body: JSON.stringify({
+      key: document.getElementById("keyword").textContent,
+      descriptor: selectedDescriptor,
+    }),
+  })
+    .then((response) => {
+      if (response.status === 201) {
+        modal.style.display = "none";
+      } else {
+        throw "failure HTTP response";
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      document.getElementById("modal-response").textContent =
+        "unable to post descriptor due to server error :(";
+    });
 });
