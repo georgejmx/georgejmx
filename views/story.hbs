@@ -89,9 +89,11 @@
             >
               Your options</p>
             <div class="pb-5" id="react-deck">
-              <button
-                class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-orange-600 focus:outline focus:bg-[#360202] border rounded border-orange-600"
-              >word</button>
+              {{#each descriptors}}
+                <button
+                  class="select-modal text-xs bg-black hover:bg-[#360202] p-1 mr-2 mb-2 text-orange-600 focus:outline focus:bg-[#360202] border rounded border-orange-600"
+                >{{this}}</button>
+              {{/each}}
             </div>
 
             <p class="text-yellow-500 text-sm pt-3" id="modal-response"></p>
@@ -112,6 +114,6 @@
     </div>
 
     <!-- server rendered javascript, injected raw by hbs-->
-    <script>{{{jsText}}}</script>
+    <script>{{{script}}}</script>
   </body>
 </html>

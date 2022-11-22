@@ -12,6 +12,7 @@ import { readFileSync } from "fs";
 import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 
+const NUMBER_DESCRIPTORS: number = 10;
 const app: Application = express();
 
 // Serving frontent files and loading templating engine, routes
@@ -31,7 +32,8 @@ app.get("/story/:key", (req: Request, res: Response) => {
   const story: t.Story = stories.filter((story) => story.keyword == keyword)[0];
   res.render("story", {
     story,
-    jsText: readFileSync("./utils/story.js", "utf-8").toString(),
+    descriptors: h.generateDescriptors(NUMBER_DESCRIPTORS),
+    script: readFileSync("./libs/story.js", "utf-8").toString(),
   });
 });
 

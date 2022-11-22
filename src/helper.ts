@@ -1,4 +1,5 @@
 import * as t from "./types";
+import fs from "fs";
 
 /* Function for calculating the rating multiplier for a fascination */
 function findRating(f: t.Fascination): t.Fascination {
@@ -42,4 +43,22 @@ export function formatStories(input: t.Story[], hasHead: boolean): t.Story[] {
   output = output.map(addDatestring);
   output.sort((a, b) => b.timestamp - a.timestamp);
   return output;
+}
+
+/* Generate random descriptors to pass to UI modal */
+export function generateDescriptors(numberDescriptors: number): string[] {
+  const wordsBlob: string = fs.readFileSync("./libs/adjectives.txt", "utf-8");
+  const allWords: string[] = wordsBlob.toString().split("\n");
+  const totalWords: number = allWords.length;
+  const maxI: number = Math.min(numberDescriptors, totalWords);
+  let i = 0;
+  let randomWords = [];
+
+  // Adding descriptors to array
+  while (i < maxI) {
+    let wordPosition = Math.floor(Math.random() * totalWords + 1);
+    randomWords.push(allWords[wordPosition]);
+    i++;
+  }
+  return randomWords;
 }
