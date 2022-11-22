@@ -25,13 +25,13 @@ const getFascinations = async () => {
 
 /* Fetching stories HTML from server */
 const getStoriesHtml = async () => {
-  const storiesRes = await fetch("stories", { method: "GET" });
+  const storiesRes = await fetch("/html/stories", { method: "GET" });
   return await storiesRes.text();
 };
 
 /* Fetching projects HTML from server */
 const getProjectsHtml = async () => {
-  const projectsRes = await fetch("projects", { method: "GET" });
+  const projectsRes = await fetch("/html/projects", { method: "GET" });
   return await projectsRes.text();
 };
 

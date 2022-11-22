@@ -27,3 +27,8 @@ export type Project = {
   urlName: string;
   description: string;
 };
+
+export type Descriptor = {
+  keyword: string;
+  word: string;
+};
