@@ -3,7 +3,7 @@ import fs from "fs";
 
 /* Function for calculating the rating multiplier for a fascination */
 function findRating(f: t.Fascination): t.Fascination {
-  const recency = 5 * Math.floor((Date.now() - f.timestamp) / 1000000);
+  const recency = 5 * Math.floor((Date.now() - f.timestamp * 1000) / 1000000);
   f.rating = 100000 * f.intensity - recency;
   return f;
 }
@@ -26,7 +26,7 @@ function generateHeadline(s: t.Story): t.Story {
 
 /* Function for adding datestring to stories */
 function addDatestring(s: t.Story): t.Story {
-  const dateObj = new Date(s.timestamp);
+  const dateObj = new Date(s.timestamp * 1000);
   s.datestring = dateObj
     .toLocaleTimeString("en-UK", {
       day: "numeric",
