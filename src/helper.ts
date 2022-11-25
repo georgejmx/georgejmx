@@ -41,7 +41,6 @@ function addDatestring(s: t.Story): t.Story {
 export function formatStories(input: t.Story[], hasHead: boolean): t.Story[] {
   let output = hasHead ? input.map(generateHeadline) : input;
   output = output.map(addDatestring);
-  output.sort((a, b) => b.tstamp - a.tstamp);
   return output;
 }
 

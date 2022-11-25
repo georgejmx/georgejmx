@@ -58,18 +58,15 @@ apiRouter.get("/stories/:key", async (req: Request, res: Response) => {
   const keyword: string = req.params.key;
 
   // Dealing with when only want the 3 most recent keywords
-  // TODO: Write a proper query for this to eliminate all that silly helper
-  // logic
   if (keyword === "recents") {
     try {
-      const stories = await db.selectStories();
-      const recentStories: t.Story[] = h.formatStories(stories, false);
-      let recents: string[] = [];
-      for (let r of recentStories) recents.push(r.keyword);
+      const recentsList = await db.selectStories(true);
+      if (!(recentsList instanceof Array)) throw "Db type error";
+      const recents = recentsList.map((obj) => obj.keyword);
       res.status(200).send({ recents });
     } catch (e) {
       console.error(e);
-      res.status(400).send("Database failure");
+      res.status(400).send("Database failure getting recents");
     }
     return;
   }
