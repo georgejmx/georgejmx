@@ -1,11 +1,21 @@
-import sData from "./data/stories.json" assert { type: "json" };
 import pData from "./data/projects.json" assert { type: "json" };
 import fData from "./data/fascinations.json" assert { type: "json" };
-import aData from "./data/artists.json" assert { type: "json" };
+
+import { PrismaClient, artist } from "@prisma/client";
 import * as t from "./types";
 
-export function selectStories(): t.Story[] {
-  return sData.stories;
+const prisma = new PrismaClient();
+
+export async function selectStory(keyword: string) {
+  const story = await prisma.story.findUnique({
+    where: { keyword: keyword },
+  });
+  return story;
+}
+
+export async function selectStories() {
+  const allStories = await prisma.story.findMany();
+  return allStories;
 }
 
 export function selectProjects(): t.Project[] {
@@ -16,8 +26,9 @@ export function selectFascinations(): t.Fascination[] {
   return fData.fascinations;
 }
 
-export function selectArtists(): t.Artist[] {
-  return aData.artists;
+export async function selectArtists() {
+  const artists = await prisma.artist.findMany();
+  return artists;
 }
 
 export function insertDescriptor(descriptor: t.Descriptor): boolean {

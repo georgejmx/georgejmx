@@ -7,17 +7,19 @@ export type Fascination = {
 };
 
 export type Artist = {
+  id: number;
   name: string;
 };
 
 export type Story = {
+  id: number;
   name: string;
   keyword: string;
-  timestamp: number;
+  tstamp: number;
   paragraphs: string[];
-  theme: number;
-  datestring?: string;
+  theme: number | null;
   headline?: string;
+  datestring?: string;
 };
 
 export type Project = {

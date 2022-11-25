@@ -34,24 +34,43 @@ apiRouter.get("/fascinations", (req: Request, res: Response) => {
 });
 
 // Getting top artists JSON
-apiRouter.get("/artists", (req: Request, res: Response) => {
-  res.send(db.selectArtists());
+apiRouter.get("/artists", async (req: Request, res: Response) => {
+  try {
+    const artists = await db.selectArtists();
+    res.status(200).send(artists);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send("Database failure");
+  }
 });
 
 /* Getting a specific story by keyword as JSON. If the keyword is 'recents',
  * then simply return the most recent 3 keywords */
-apiRouter.get("/stories/:key", (req: Request, res: Response) => {
+apiRouter.get("/stories/:key", async (req: Request, res: Response) => {
   const keyword: string = req.params.key;
-  const stories: t.Story[] = db.selectStories();
 
   // Dealing with when only want the 3 most recent keywords
+  // TODO: Write a proper query for this to eliminate all that silly helper
+  // logic
   if (keyword === "recents") {
-    const recentStories: t.Story[] = h.formatStories(stories, false);
-    let recents: string[] = [];
-    for (let r of recentStories) recents.push(r.keyword);
-    res.send({ recents });
+    try {
+      const stories = await db.selectStories();
+      const recentStories: t.Story[] = h.formatStories(stories, false);
+      let recents: string[] = [];
+      for (let r of recentStories) recents.push(r.keyword);
+      res.send({ recents });
+    } catch (e) {
+      console.error(e);
+      res.status(400).send("Database failure");
+    }
     return;
   }
 
-  res.send(stories.filter((story) => story.keyword == keyword));
+  try {
+    const story = await db.selectStory(keyword);
+    res.status(200).send(story);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send("Database failure");
+  }
 });

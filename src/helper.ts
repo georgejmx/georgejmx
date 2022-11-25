@@ -26,7 +26,7 @@ function generateHeadline(s: t.Story): t.Story {
 
 /* Function for adding datestring to stories */
 function addDatestring(s: t.Story): t.Story {
-  const dateObj = new Date(s.timestamp * 1000);
+  const dateObj = new Date(s.tstamp * 1000);
   s.datestring = dateObj
     .toLocaleTimeString("en-UK", {
       day: "numeric",
@@ -41,7 +41,7 @@ function addDatestring(s: t.Story): t.Story {
 export function formatStories(input: t.Story[], hasHead: boolean): t.Story[] {
   let output = hasHead ? input.map(generateHeadline) : input;
   output = output.map(addDatestring);
-  output.sort((a, b) => b.timestamp - a.timestamp);
+  output.sort((a, b) => b.tstamp - a.tstamp);
   return output;
 }
 
