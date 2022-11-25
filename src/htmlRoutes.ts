@@ -37,7 +37,16 @@ htmlRouter.get("/stories", async (req: Request, res: Response) => {
 });
 
 // Renders a chunk of html that shows a list of all project tiles
-htmlRouter.get("/projects", (req: Request, res: Response) => {
-  const projects: t.Project[] = db.selectProjects();
-  res.render("projects", { projects });
+htmlRouter.get("/projects", async (req: Request, res: Response) => {
+  try {
+    const projects = await db.selectProjects();
+    projects.forEach((project) => {
+      (project.imagename = project.imagename.trim()),
+        (project.url = project.url.trim());
+    });
+    res.render("projects", { projects });
+  } catch (e) {
+    console.error(e);
+    res.status(400).send("Database failure");
+  }
 });

@@ -2,6 +2,7 @@ import express, { Request, Response, Router } from "express";
 import * as h from "./helper.js";
 import * as t from "./types";
 import * as db from "./dbConnector";
+import { fascination } from "@prisma/client";
 
 export const apiRouter: Router = express.Router();
 
@@ -29,8 +30,15 @@ apiRouter.post("/descriptor", (req: Request, res: Response) => {
 });
 
 // Getting fascinations JSON
-apiRouter.get("/fascinations", (req: Request, res: Response) => {
-  res.send(h.formatFascinations(db.selectFascinations()));
+apiRouter.get("/fascinations", async (req: Request, res: Response) => {
+  try {
+    const hmus = await db.selectFascinations();
+    const preppedHmus: fascination[] = h.formatFascinations(hmus);
+    res.status(200).send(preppedHmus);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send("Database failure");
+  }
 });
 
 // Getting top artists JSON
@@ -58,7 +66,7 @@ apiRouter.get("/stories/:key", async (req: Request, res: Response) => {
       const recentStories: t.Story[] = h.formatStories(stories, false);
       let recents: string[] = [];
       for (let r of recentStories) recents.push(r.keyword);
-      res.send({ recents });
+      res.status(200).send({ recents });
     } catch (e) {
       console.error(e);
       res.status(400).send("Database failure");

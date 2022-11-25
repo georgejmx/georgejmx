@@ -1,29 +1,26 @@
-import pData from "./data/projects.json" assert { type: "json" };
-import fData from "./data/fascinations.json" assert { type: "json" };
-
-import { PrismaClient, artist } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import * as t from "./types";
 
 const prisma = new PrismaClient();
 
 export async function selectStory(keyword: string) {
-  const story = await prisma.story.findUnique({
-    where: { keyword: keyword },
-  });
+  const story = await prisma.story.findUnique({ where: { keyword: keyword } });
   return story;
 }
 
 export async function selectStories() {
-  const allStories = await prisma.story.findMany();
-  return allStories;
+  const stories = await prisma.story.findMany();
+  return stories;
 }
 
-export function selectProjects(): t.Project[] {
-  return pData.projects;
+export async function selectProjects() {
+  const projects = await prisma.project.findMany({ orderBy: [{ id: "asc" }] });
+  return projects;
 }
 
-export function selectFascinations(): t.Fascination[] {
-  return fData.fascinations;
+export async function selectFascinations() {
+  const hmus = await prisma.fascination.findMany();
+  return hmus;
 }
 
 export async function selectArtists() {

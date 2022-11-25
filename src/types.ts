@@ -1,11 +1,3 @@
-export type Fascination = {
-  name: string;
-  intensity: number;
-  color: number;
-  timestamp: number;
-  rating?: number;
-};
-
 export type Artist = {
   id: number;
   name: string;
@@ -22,12 +14,22 @@ export type Story = {
   datestring?: string;
 };
 
+export type Fascination = {
+  id: number;
+  name: string;
+  intensity: number;
+  color: number;
+  tstamp: number;
+  rating?: number;
+};
+
 export type Project = {
+  id: number;
   name: string;
   imageName: string;
   url: string;
   urlName: string;
-  description: string;
+  description: string | null;
 };
 
 export type Descriptor = {

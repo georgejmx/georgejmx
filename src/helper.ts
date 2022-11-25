@@ -3,7 +3,7 @@ import fs from "fs";
 
 /* Function for calculating the rating multiplier for a fascination */
 function findRating(f: t.Fascination): t.Fascination {
-  const recency = 5 * Math.floor((Date.now() - f.timestamp * 1000) / 1000000);
+  const recency = 5 * Math.floor((Date.now() - f.tstamp * 1000) / 1000000);
   f.rating = 100000 * f.intensity - recency;
   return f;
 }
