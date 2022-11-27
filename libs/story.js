@@ -39,11 +39,12 @@ fireModal.addEventListener("click", () => {
       if (response.status === 201) {
         modal.style.display = "none";
       } else {
-        throw "failure HTTP response";
+        throw `A comment was recently made on this story; please try again
+        later to a post another`;
       }
     })
     .catch((err) => {
       console.error(err);
-      document.getElementById("modal-response").textContent = `${err} :(`;
+      document.getElementById("modal-response").textContent = `${err} :/`;
     });
 });
