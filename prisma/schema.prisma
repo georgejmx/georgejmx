@@ -36,4 +36,13 @@ model story {
   tstamp     Int
   paragraphs String[]
   theme      Int?
+  descriptor descriptor[]
+}
+
+model descriptor {
+  id Int @default(autoincrement()) @unique
+  word String @db.Char(20)
+  timestamp DateTime @default(now())
+  storyId Int
+  story story? @relation(fields: [storyId], references: [id])
 }

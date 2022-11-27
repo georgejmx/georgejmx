@@ -30,6 +30,7 @@ fireModal.addEventListener("click", () => {
     method: "POST",
     headers: { "Content-Type": "application/json;charset=utf-8" },
     body: JSON.stringify({
+      id: parseInt(document.getElementsByTagName("meta")[0].content),
       key: document.getElementById("keyword").textContent,
       descriptor: selectedDescriptor,
     }),
@@ -43,7 +44,6 @@ fireModal.addEventListener("click", () => {
     })
     .catch((err) => {
       console.error(err);
-      document.getElementById("modal-response").textContent =
-        "unable to post descriptor due to server error :(";
+      document.getElementById("modal-response").textContent = `${err} :(`;
     });
 });

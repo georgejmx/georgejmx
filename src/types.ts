@@ -12,6 +12,16 @@ export type Story = {
   theme: number | null;
   headline?: string;
   datestring?: string;
+  descriptor?: Descriptor[];
+  reactions?: string[];
+};
+
+export type Descriptor = {
+  id?: number;
+  storyId: number;
+  keyword?: string;
+  word: string;
+  timestamp?: Date;
 };
 
 export type Fascination = {
@@ -30,9 +40,4 @@ export type Project = {
   url: string;
   urlName: string;
   description: string | null;
-};
-
-export type Descriptor = {
-  keyword: string;
-  word: string;
 };

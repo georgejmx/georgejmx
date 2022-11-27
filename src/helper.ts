@@ -18,9 +18,20 @@ export function formatFascinations(input: t.Fascination[]): t.Fascination[] {
   return output.slice(0, 4);
 }
 
-/* Function for cropping the stories for the main view */
+/* Function for cropping the stories for the main view. Also clears out the
+  unneeded paragraphs of the story to save space on the client */
 function generateHeadline(s: t.Story): t.Story {
   s.headline = s.paragraphs[0].substring(0, 151) + "...";
+  s.paragraphs = [];
+  return s;
+}
+
+/* Gets the 4 most recent words used to describe the story and attaches */
+function generateReactions(s: t.Story): t.Story {
+  s.reactions = s.descriptor
+    ?.map((descriptor) => descriptor.word.trim())
+    .slice(0, 4);
+  delete s.descriptor;
   return s;
 }
 
@@ -41,6 +52,7 @@ function addDatestring(s: t.Story): t.Story {
 export function formatStories(input: t.Story[], hasHead: boolean): t.Story[] {
   let output = hasHead ? input.map(generateHeadline) : input;
   output = output.map(addDatestring);
+  output = output.map(generateReactions);
   return output;
 }
 
@@ -60,4 +72,14 @@ export function generateDescriptors(numberDescriptors: number): string[] {
     i++;
   }
   return randomWords;
+}
+
+/* Checks if a day has elapsed since previous comment */
+export function hasDayElapsed(latest: Date): boolean {
+  if (Date.now() - latest.getTime() < 86400000) {
+    return false;
+  }
+
+  // So enough seconds have elapsed to hit 1 day gap
+  return true;
 }

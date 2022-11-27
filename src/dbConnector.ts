@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { hasDayElapsed } from "./helper";
 import * as t from "./types";
 
 const prisma = new PrismaClient();
@@ -13,13 +14,24 @@ export async function selectStory(keyword: string) {
  *isRecents*, getting the 3 most recent keywords for main page */
 export async function selectStories(isRecents: boolean = false) {
   if (isRecents) {
-    const recents =
-      await prisma.$queryRaw`select keyword from Story order by id desc limit 3`;
+    const recents = await prisma.story.findMany({
+      select: { keyword: true },
+      orderBy: [{ id: "desc" }],
+      take: 3,
+    });
     return recents;
   }
 
   // Simply getting everything; for HTML page
-  const stories = await prisma.story.findMany({ orderBy: [{ id: "desc" }] });
+  const stories = await prisma.story.findMany({
+    orderBy: [{ id: "desc" }],
+    include: {
+      descriptor: {
+        select: { word: true, storyId: true },
+        orderBy: [{ id: "desc" }],
+      },
+    },
+  });
   return stories;
 }
 
@@ -41,9 +53,29 @@ export async function selectArtists() {
   return artists;
 }
 
-export function insertDescriptor(descriptor: t.Descriptor): boolean {
-  console.log(
-    `Frontend wants to post; Key: ${descriptor.keyword}, Descriptor: ${descriptor.word}`
-  );
-  return true;
+/* Adding a new descriptor to a story */
+export async function insertDescriptor(descriptor: t.Descriptor) {
+  // Getting post time of latest story descriptor
+  const latestTimestamp = await prisma.descriptor.findMany({
+    select: { timestamp: true },
+    orderBy: [{ id: "desc" }],
+    where: { storyId: descriptor.storyId },
+    take: 1,
+  });
+
+  // Checking if latest post was within 1 day
+  if (
+    latestTimestamp.length > 0 &&
+    !hasDayElapsed(latestTimestamp[0].timestamp)
+  ) {
+    throw "Too soon to add a descriptor to that post";
+  }
+
+  // Adding descriptor
+  await prisma.descriptor.create({
+    data: {
+      word: descriptor.word,
+      storyId: descriptor.storyId,
+    },
+  });
 }

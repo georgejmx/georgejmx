@@ -2,38 +2,30 @@ import express, { Request, Response, Router } from "express";
 import * as h from "./helper.js";
 import * as t from "./types";
 import * as db from "./dbConnector";
-import { fascination } from "@prisma/client";
 
 export const apiRouter: Router = express.Router();
 
 // Posting descriptor JSON
-apiRouter.post("/descriptor", (req: Request, res: Response) => {
+apiRouter.post("/descriptor", async (req: Request, res: Response) => {
   let newDescriptor: t.Descriptor;
   try {
     newDescriptor = {
-      keyword: req.body.key,
+      storyId: req.body.id,
       word: req.body.descriptor,
     };
+    await db.insertDescriptor(newDescriptor);
+    res.status(201).send();
   } catch (err) {
     console.error(err);
-    res.status(400).send();
-    return;
+    res.status(400).send(err);
   }
-
-  let result = !db.insertDescriptor(newDescriptor);
-  if (!result) {
-    res.status(400).send();
-    return;
-  }
-
-  res.status(201).send();
 });
 
 // Getting fascinations JSON
 apiRouter.get("/fascinations", async (req: Request, res: Response) => {
   try {
     const hmus = await db.selectFascinations();
-    const preppedHmus: fascination[] = h.formatFascinations(hmus);
+    const preppedHmus: t.Fascination[] = h.formatFascinations(hmus);
     res.status(200).send(preppedHmus);
   } catch (e) {
     console.error(e);
