@@ -1,3 +1,4 @@
+.env
 utils/fractal.js
 node_modules
 build

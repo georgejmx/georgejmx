@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import * as h from "./helper.js";
-import * as t from "./types";
-import * as db from "./dbConnector";
+import * as t from "./types.js";
+import * as db from "./dbConnector.js";
 
 export const apiRouter: Router = express.Router();
 

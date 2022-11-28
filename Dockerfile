@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npx prisma generate
+
 ENV NODE_ENV=production
 RUN npm run build
 

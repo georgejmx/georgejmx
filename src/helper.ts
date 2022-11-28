@@ -1,4 +1,4 @@
-import * as t from "./types";
+import * as t from "./types.js";
 import fs from "fs";
 
 /* Function for calculating the rating multiplier for a fascination */

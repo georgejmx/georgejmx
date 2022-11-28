@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { hasDayElapsed } from "./helper";
-import * as t from "./types";
+import { hasDayElapsed } from "./helper.js";
+import * as t from "./types.js";
 
 const prisma = new PrismaClient();
 

@@ -36,8 +36,8 @@ export type Fascination = {
 export type Project = {
   id: number;
   name: string;
-  imageName: string;
+  imagename: string;
   url: string;
-  urlName: string;
+  urlname: string;
   description: string | null;
 };

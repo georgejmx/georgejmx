@@ -1,8 +1,8 @@
 import express, { Request, Response, Router } from "express";
 import { readFileSync } from "fs";
 import * as h from "./helper.js";
-import * as t from "./types";
-import * as db from "./dbConnector";
+import * as t from "./types.js";
+import * as db from "./dbConnector.js";
 
 const NUMBER_DESCRIPTORS: number = 10;
 export const htmlRouter: Router = express.Router();
@@ -40,7 +40,7 @@ htmlRouter.get("/stories", async (req: Request, res: Response) => {
 htmlRouter.get("/projects", async (req: Request, res: Response) => {
   try {
     const projects = await db.selectProjects();
-    projects.forEach((project) => {
+    projects.forEach((project: t.Project) => {
       (project.imagename = project.imagename.trim()),
         (project.url = project.url.trim());
     });

@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  thepostgres:
+    image: postgres
+    restart: on-failure
+    container_name: thepostgres
+    environment:
+      POSTGRES_PASSWORD: pleasework
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    environment:
+      PROTOCOL: http
+      DATABASE_URL: postgresql://postgres:pleasework@thepostgres:5432/postgres?schema=public
+    ports:
+      - "80:3000"
+      - "443:3000"
+    restart: on-failure

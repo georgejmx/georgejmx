@@ -1,2 +1,5 @@
 node_modules/
 src/
+tailwind.config.js
+tsconfig.json
+vite.config.ts
