@@ -1,5 +1,15 @@
-utils
+libs/fractal.js
 node_modules
 build
 docs
+*.env
 *.md
+
+prisma/backups
+prisma/migrations
+
+frontend/node_modules
+frontend/src
+frontend/*.json
+frontend/vite.config.ts
+frontend/tailwind.config.js

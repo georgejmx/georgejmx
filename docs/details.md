@@ -1,18 +1,14 @@
 # Details
 
-Currently a nodejs backend which serves a frontend. The frontend is built using _Vite_ and includes the _threejs_ package
+Currently a nodejs backend which serves a frontend
 
-## Roadmap
+- The frontend is built using _Vite_ and includes the _threejs_ package
+- Backend uses _prisma_ to transfer data from a postgres container to the frontend, with validation logic
 
-- ~v0.1: static site~
-- ~deploy to AWS using docker~
-- ~v0.2: mutating frontend data stored in json mapped to client using html
-  templating, stories page expanded with an isolated view, miscellaneous
-  impovements, TS conversion~
-- ~v0.2.1:
-  - ssl working on hostinger
-  - bugfixes
-    - https flag, to be used in `npm start` but not `npm dev` so have both working
-    - image fixed for wcne, black background for stories page, new story~
-- v0.3: using mongo db to store json data, also containerised and integrated
-  with backend
+## Backlog
+
+- DEVOPS - Create a github pipeline that automatically builds the public docker image whenever someone pushes to main
+- TESTING - Unit testing of backend with a focus on descriptors and prisma
+- FEATURE - Change so existing descriptors are loaded from database first, then say 7 more are randomly generated rather than pulling 10 new ones each time
+- FEATURE - An admin panel that allows adding new data from a secure section of the client
+- FEATURE - Cleanup the look of a blank database so someone can recreate from scratch
