@@ -7,7 +7,7 @@ _Requires node and npm installed_
 - Setup a database
   - Create dev postgres continaer; `sudo docker run --name jmxgres -d -e POSTGRES_PASSWORD=pleasework -p 5432:5432 postgres`
   - Load in correct data to it; `cat prisma/backups/1.sql | sudo docker exec -iu postgres thepostgres psql`
-  - The current _.env_ file properly configures a local backend to the above container
+  - The current _.env_ file properly configures a local server to the above container
 - Build frontend
   - `cd frontend`. Run `npm install`, followed by `npm run build`. This uses
     _Vite_ to build a bundle that can be served by the backend
@@ -22,4 +22,5 @@ _Requires node and npm installed_
 
 _Requires docker installed_
 
+- `cd deploy`
 - Running `docker compose up` will spin everything up, with only the _docker.env_ file needed. _$PROTOCOL_ determines if https certificates are needed on your machine, clearly _$POSTGRES_PASSWORD_ should be changed also
