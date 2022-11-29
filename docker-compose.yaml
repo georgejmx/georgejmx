@@ -4,15 +4,17 @@ services:
     image: postgres
     restart: on-failure
     container_name: thepostgres
-    environment:
-      POSTGRES_PASSWORD: pleasework
+    volumes:
+      - /etc/letsencrypt/live/georgejmx.dev:/app/cert/live/georgejmx.dev:ro
+      - /etc/letsencrypt/archive/georgejmx.dev:/app/cert/archive/georgejmx.dev:ro
+    env_file:
+      - docker.env
     ports:
       - "5432:5432"
   app:
     build: .
-    environment:
-      PROTOCOL: http
-      DATABASE_URL: postgresql://postgres:pleasework@thepostgres:5432/postgres?schema=public
+    env_file:
+      - docker.env
     ports:
       - "80:3000"
       - "443:3000"
