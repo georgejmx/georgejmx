@@ -8,26 +8,47 @@
     <title>George | Admin</title>
   </head>
   <body class="bg-black font-mono text-white">
-    <div class="flex flex-col flex-wrap justify-center items-center py-20">
+    <div class="flex flex-col flex-wrap items-center justify-center py-20">
       <h1 class="text-2xl underline">Admin</h1>
-      <div class="py-10">
-        <button class="border rounded border-white px-2" id="artist-btn">
+      <div class="py-8">
+        <button
+          class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500"
+          id="artist-btn"
+        >
           New Artist
         </button>
-        <button class="border rounded border-white px-2" id="hmu-btn">
+        <button
+          class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500"
+          id="hmu-btn"
+        >
           New HMU
         </button>
-        <button class="border rounded border-white px-2" id="project-btn">
+        <button
+          class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500"
+          id="project-btn"
+        >
           New Project
         </button>
-        <button class="border rounded border-white px-2" id="story-btn">
+        <button
+          class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500"
+          id="story-btn"
+        >
           New Story
         </button>
       </div>
-      <div id="inputs-box"></div>
+      <div id="inputs-box" class="py-4">
+        Click a button above to initiate an admin action :)
+      </div>
+      <p id="err-field" class="py-1 text-orange-400"></p>
       <div>
-        <input class="border border-purple-500" placeholder="passcode" />
-        <button class="border rounded border-purple-500">Post</button>
+        <input
+          id="passcode-field"
+          class="rounded border-2 border-purple-500 bg-black px-2"
+          placeholder="passcode"
+        />
+        <button id="submit-btn" class="rounded border-2 border-purple-500 px-2">
+          Submit
+        </button>
       </div>
     </div>
   </body>
