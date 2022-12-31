@@ -1,4 +1,5 @@
 import "virtual:windi.css";
+import { SHA256 } from "crypto-js";
 import { AdminRequestBody } from "./types";
 
 let selectedActionBtn: string;
@@ -145,11 +146,10 @@ submitBtn.addEventListener("click", () => {
   const passcodeField = document.getElementById(
     "passcode-field"
   ) as HTMLInputElement;
-  console.log(passcodeField.value);
 
-  // Performing desired request
+  // Initialising correct request body
   let requestBody: AdminRequestBody = {
-    hash: passcodeField.value,
+    hash: SHA256(passcodeField.value).toString(),
     name: (document.getElementById("admin-input-1") as HTMLInputElement).value,
   };
   switch (selectedActionBtn) {
@@ -207,7 +207,18 @@ submitBtn.addEventListener("click", () => {
       return;
     }
   }
+
+  // TODO: send http request to backend, parsing response code
   console.log(requestBody);
+  const testResponseCode: number = 204;
+
+  if (testResponseCode === 204) {
+    window.location.href = "/";
+  } else {
+    showError(
+      "**this is where the server error message goes. it could be this long :O**"
+    );
+  }
 });
 
 export {};
