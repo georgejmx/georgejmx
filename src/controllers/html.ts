@@ -1,14 +1,16 @@
-import express, { Request, Response, Router } from "express";
+import { Request, Response } from "express";
 import { readFileSync } from "fs";
-import * as h from "./helper.js";
-import * as t from "./types.js";
-import * as db from "./dbConnector.js";
+import * as h from "../helper.js";
+import * as t from "../types.js";
+import * as db from "../dbConnector.js";
 
 const NUMBER_DESCRIPTORS: number = 10;
-export const htmlRouter: Router = express.Router();
 
 /* Renders an entire html page for a specific story */
-htmlRouter.get("/story/:key", async (req: Request, res: Response) => {
+export const getStoryHtmlByKeyController = async (
+  req: Request,
+  res: Response
+) => {
   const keyword = req.params.key;
 
   try {
@@ -22,10 +24,10 @@ htmlRouter.get("/story/:key", async (req: Request, res: Response) => {
     console.error(e);
     res.status(400).send("Database failure");
   }
-});
+};
 
 /* Renders a chunk of html that shows a list of all story tiles */
-htmlRouter.get("/stories", async (req: Request, res: Response) => {
+export const getStoriesHtmlController = async (req: Request, res: Response) => {
   try {
     const rawStories = await db.selectStories();
     const stories: t.Story[] = JSON.parse(JSON.stringify(rawStories));
@@ -34,10 +36,13 @@ htmlRouter.get("/stories", async (req: Request, res: Response) => {
     console.error(e);
     res.status(400).send("Database failure");
   }
-});
+};
 
 // Renders a chunk of html that shows a list of all project tiles
-htmlRouter.get("/projects", async (req: Request, res: Response) => {
+export const getProjectsHtmlController = async (
+  req: Request,
+  res: Response
+) => {
   try {
     const projects = await db.selectProjects();
     projects.forEach((project: t.Project) => {
@@ -49,4 +54,4 @@ htmlRouter.get("/projects", async (req: Request, res: Response) => {
     console.error(e);
     res.status(400).send("Database failure");
   }
-});
+};

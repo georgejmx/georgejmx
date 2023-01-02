@@ -6,8 +6,7 @@ import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import https, { Server as httpsServer } from "https";
 import http, { Server as httpServer } from "http";
-import { apiRouter } from "./apiRoutes.js";
-import { htmlRouter } from "./htmlRoutes.js";
+import { htmlRouter, apiRouter } from "./router.js";
 
 const app: Application = express();
 
