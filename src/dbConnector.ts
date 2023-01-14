@@ -68,7 +68,7 @@ export async function insertDescriptor(descriptor: t.Descriptor) {
     latestTimestamp.length > 0 &&
     !hasDayElapsed(latestTimestamp[0].timestamp)
   ) {
-    throw "Too soon to add a descriptor to that post";
+    throw Error("Too soon to add a descriptor to that post");
   }
 
   // Adding descriptor
@@ -76,6 +76,49 @@ export async function insertDescriptor(descriptor: t.Descriptor) {
     data: {
       word: descriptor.word,
       storyId: descriptor.storyId,
+    },
+  });
+}
+
+export async function insertArtist(artist: t.Artist) {
+  await prisma.artist.create({
+    data: {
+      name: artist.name,
+    },
+  });
+}
+
+export async function insertFascination(fascination: t.Fascination) {
+  await prisma.fascination.create({
+    data: {
+      name: fascination.name,
+      intensity: fascination.intensity,
+      color: fascination.color,
+      tstamp: fascination.tstamp,
+    },
+  });
+}
+
+export async function insertProject(project: t.Project) {
+  await prisma.project.create({
+    data: {
+      name: project.name,
+      imagename: project.imagename,
+      url: project.url,
+      urlname: project.urlname,
+      description: project.description,
+    },
+  });
+}
+
+export async function insertStory(story: t.Story) {
+  await prisma.story.create({
+    data: {
+      name: story.name,
+      keyword: story.keyword,
+      paragraphs: story.paragraphs,
+      theme: story.theme,
+      tstamp: story.tstamp,
     },
   });
 }

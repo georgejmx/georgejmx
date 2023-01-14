@@ -140,6 +140,23 @@ function checkEnum(a: number) {
   return true;
 }
 
+// Post data then return API response
+async function postData(
+  body: AdminRequestBody,
+  model: string
+): Promise<number> {
+  try {
+    const response = await fetch(`/priviliged?model=${model}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+      body: JSON.stringify(body),
+    });
+    return response.status;
+  } catch (error) {
+    return 400;
+  }
+}
+
 /* Submit admin data to backend in correct format with error handling */
 submitBtn.addEventListener("click", () => {
   // Parsing passcode field
@@ -152,11 +169,14 @@ submitBtn.addEventListener("click", () => {
     hash: SHA256(passcodeField.value).toString(),
     name: (document.getElementById("admin-input-1") as HTMLInputElement).value,
   };
+  let model: string;
   switch (selectedActionBtn) {
     case "artist-btn": {
+      model = "ARTIST";
       break;
     }
     case "hmu-btn": {
+      model = "HMU";
       requestBody.intensity = parseInt(
         (document.getElementById("admin-input-2") as HTMLInputElement).value
       );
@@ -171,6 +191,7 @@ submitBtn.addEventListener("click", () => {
       break;
     }
     case "project-btn": {
+      model = "PROJECT";
       requestBody.url = (
         document.getElementById("admin-input-2") as HTMLInputElement
       ).value;
@@ -183,6 +204,7 @@ submitBtn.addEventListener("click", () => {
       break;
     }
     case "story-btn": {
+      model = "STORY";
       requestBody.keyword = (
         document.getElementById("admin-input-2") as HTMLInputElement
       ).value;
@@ -208,17 +230,21 @@ submitBtn.addEventListener("click", () => {
     }
   }
 
-  // TODO: send http request to backend, parsing response code
-  console.log(requestBody);
-  const testResponseCode: number = 204;
-
-  if (testResponseCode === 204) {
-    window.location.href = "/";
-  } else {
-    showError(
-      "**this is where the server error message goes. it could be this long :O**"
-    );
-  }
+  // Fulfilling admin request
+  postData(requestBody, model)
+    .then((code) => {
+      if (code === 204) {
+        window.location.href = "/";
+      } else {
+        showError(
+          `uh ooh: response ${code} means either server or client error`
+        );
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      showError("uh ooh: error connecting to api");
+    });
 });
 
 export {};

@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import https, { Server as httpsServer } from "https";
 import http, { Server as httpServer } from "http";
-import { htmlRouter, apiRouter } from "./router.js";
+import { htmlRouter, apiRouter, adminRouter } from "./router.js";
 
 const app: Application = express();
 
@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 // Connecting our routes
 app.use("/api", apiRouter);
 app.use("/html", htmlRouter);
+app.use("/priviliged", adminRouter);
 
 // Launching the desired web service from node runtime
 const serverType: string = process.env.PROTOCOL || "https";
