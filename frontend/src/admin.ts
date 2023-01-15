@@ -1,6 +1,7 @@
 import "virtual:windi.css";
 import { SHA256 } from "crypto-js";
 import { AdminRequestBody } from "./types";
+import { response } from "express";
 
 let selectedActionBtn: string;
 
@@ -132,10 +133,16 @@ function showError(msg: string) {
   errField.textContent = msg;
 }
 
-// Check valid number; TODO: generalise to work for intensity
-function checkEnum(a: number) {
-  if (a !== 0 && a !== 1 && a !== 2) {
-    return false;
+// Check valid number input
+function checkEnum(num: number, isIntensity: boolean = false): boolean {
+  if (isIntensity) {
+    if (num < 1 || num > 9) {
+      return false;
+    }
+  } else {
+    if (num !== 0 && num !== 1 && num !== 2) {
+      return false;
+    }
   }
   return true;
 }
@@ -144,17 +151,12 @@ function checkEnum(a: number) {
 async function postData(
   body: AdminRequestBody,
   model: string
-): Promise<number> {
-  try {
-    const response = await fetch(`/priviliged?model=${model}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json;charset=utf-8" },
-      body: JSON.stringify(body),
-    });
-    return response.status;
-  } catch (error) {
-    return 400;
-  }
+): Promise<Response> {
+  return await fetch(`/priviliged?model=${model}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json;charset=utf-8" },
+    body: JSON.stringify(body),
+  });
 }
 
 /* Submit admin data to backend in correct format with error handling */
@@ -184,8 +186,11 @@ submitBtn.addEventListener("click", () => {
         (document.getElementById("admin-input-3") as HTMLInputElement).value
       );
 
-      if (!requestBody.intensity || !checkEnum(requestBody.colour)) {
-        showError("uh ooh: intensity must be a number, colour in {0, 1, 2} :/");
+      if (!checkEnum(requestBody.colour)) {
+        showError("uh ooh: colour must be in {0, 1, 2} :/");
+        return;
+      } else if (!checkEnum(requestBody.intensity)) {
+        showError("uh ooh: intensity must be in {1, 2, ..., 9} :/");
         return;
       }
       break;
@@ -232,18 +237,22 @@ submitBtn.addEventListener("click", () => {
 
   // Fulfilling admin request
   postData(requestBody, model)
-    .then((code) => {
-      if (code === 204) {
+    .then((response) => {
+      if (response.status === 204) {
         window.location.href = "/";
-      } else {
-        showError(
-          `uh ooh: response ${code} means either server or client error`
-        );
       }
+      return response;
     })
-    .catch((error) => {
+    .then((response) => response.text())
+    .then((bodyContents) => {
+      if (!bodyContents) {
+        throw Error("No error response from server");
+      }
+      showError(`uh ooh: ${bodyContents}`);
+    })
+    .catch((error: unknown) => {
       console.error(error);
-      showError("uh ooh: error connecting to api");
+      showError(`uh ooh: error connecting to api ${String(error)}`);
     });
 });
 

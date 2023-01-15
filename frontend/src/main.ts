@@ -142,14 +142,13 @@ if (!window.location.href.includes("/story/")) {
         <p style="color: white;">Error getting fascinations from server.</p>`;
     });
 
-  /* Adding most recent story keywords to UI */
-
   /* Adding event listeners to top level buttons */
   const homeBtn = document.getElementById("home-btn") as HTMLButtonElement;
   const projectBtn = document.getElementById(
     "projects-btn"
   ) as HTMLButtonElement;
   const storyBtn = document.getElementById("story-btn") as HTMLButtonElement;
+  const adminButton = document.getElementById("admin-btn") as HTMLButtonElement;
   homeBtn.addEventListener("click", () => {
     changeTabSelection(1);
   });
@@ -158,6 +157,9 @@ if (!window.location.href.includes("/story/")) {
   });
   storyBtn.addEventListener("click", () => {
     changeTabSelection(3);
+  });
+  adminButton.addEventListener("click", () => {
+    window.location.href = "/admin.html";
   });
 
   /* Processing any url parameters */

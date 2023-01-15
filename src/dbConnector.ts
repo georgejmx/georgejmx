@@ -4,7 +4,6 @@ import * as t from "./types.js";
 
 const prisma = new PrismaClient();
 
-/* Selecting a story with the given keyword from database table */
 export async function selectStory(keyword: string) {
   const story = await prisma.story.findUnique({ where: { keyword: keyword } });
   return story;
@@ -35,25 +34,21 @@ export async function selectStories(isRecents: boolean = false) {
   return stories;
 }
 
-/* Selecting all projects from database table */
 export async function selectProjects() {
   const projects = await prisma.project.findMany({ orderBy: [{ id: "asc" }] });
   return projects;
 }
 
-/* Selecting all fascinations from database table */
 export async function selectFascinations() {
   const hmus = await prisma.fascination.findMany();
   return hmus;
 }
 
-/* Selecting all artists from database table */
 export async function selectArtists() {
-  const artists = await prisma.artist.findMany();
+  const artists = await prisma.artist.findMany({ orderBy: [{ id: "desc" }] });
   return artists;
 }
 
-/* Adding a new descriptor to a story */
 export async function insertDescriptor(descriptor: t.Descriptor) {
   // Getting post time of latest story descriptor
   const latestTimestamp = await prisma.descriptor.findMany({

@@ -54,8 +54,8 @@ export const postDataController = async (req: Request, res: Response) => {
       }
     }
     res.status(204).send();
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
+  } catch (error: unknown) {
+    console.log(String(error));
+    res.status(500).send(String(error));
   }
 };
