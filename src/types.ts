@@ -1,10 +1,10 @@
 export type Artist = {
-  id: number;
+  id?: number;
   name: string;
 };
 
 export type Story = {
-  id: number;
+  id?: number;
   name: string;
   keyword: string;
   tstamp: number;
@@ -25,7 +25,7 @@ export type Descriptor = {
 };
 
 export type Fascination = {
-  id: number;
+  id?: number;
   name: string;
   intensity: number;
   color: number;
@@ -34,10 +34,23 @@ export type Fascination = {
 };
 
 export type Project = {
-  id: number;
+  id?: number;
   name: string;
   imagename: string;
   url: string;
   urlname: string;
   description: string | null;
+};
+
+export type AdminRequestBody = {
+  hash: string;
+  name: string;
+  intensity?: number;
+  colour?: number;
+  url?: string;
+  urlname?: string;
+  desc?: string;
+  keyword?: string;
+  paragraphs?: string[];
+  theme?: number;
 };
