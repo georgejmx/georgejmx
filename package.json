@@ -2,7 +2,7 @@
   "name": "georgejmx",
   "version": "0.2.1",
   "description": "hi i'm george",
-  "main": "dist/server.ts",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "dev": "node --experimental-specifier-resolution=node --loader ts-node/esm src/server.ts http",

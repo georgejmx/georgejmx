@@ -9,8 +9,7 @@ services:
     ports:
       - "5432:5432"
   app:
-    image: georgejmx/georgejmx:0.3
-    restart: on-failure
+    image: georgejmx/georgejmx:latest
     env_file:
       - docker.env
     volumes:
@@ -23,3 +22,4 @@ services:
     ports:
       - "80:3000"
       - "443:3000"
+    restart: on-failure

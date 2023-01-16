@@ -3,14 +3,15 @@ FROM node:18
 WORKDIR /app
 
 COPY package.json .
+COPY package-lock.json .
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
-RUN npx prisma generate
-
 ENV NODE_ENV=production
 RUN npm run build
+
+RUN npx prisma generate
 
 CMD ["npm", "start"]

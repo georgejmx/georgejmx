@@ -7,8 +7,6 @@ Currently a nodejs backend which serves a frontend
 
 ## Backlog
 
-- DEVOPS - Create a github pipeline that automatically builds the public docker image whenever someone pushes to main
 - TESTING - Unit testing of backend with a focus on descriptors and prisma
 - FEATURE - Change so existing descriptors are loaded from database first, then say 7 more are randomly generated rather than pulling 10 new ones each time
-- FEATURE - An admin panel that allows adding new data from a secure section of the client
 - FEATURE - Cleanup the look of a blank database so someone can recreate from scratch
