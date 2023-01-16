@@ -54,7 +54,7 @@ export const getStoryByKeyController = async (req: Request, res: Response) => {
   if (keyword === "recents") {
     try {
       const recentsList = await db.selectStories(true);
-      if (!(recentsList instanceof Array)) throw "Db type error";
+      if (!(recentsList instanceof Array)) throw Error("Database type error");
       const recents = recentsList.map((obj) => obj.keyword);
       res.status(200).send({ recents });
     } catch (e) {
