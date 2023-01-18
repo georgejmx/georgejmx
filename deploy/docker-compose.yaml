@@ -12,13 +12,13 @@ services:
     image: georgejmx/georgejmx:latest
     env_file:
       - docker.env
-    # volumes:
-    #   - type: bind
-    #     source: /etc/letsencrypt/live/georgejmx.dev
-    #     target: /app/cert/live/georgejmx.dev
-    #   - type: bind
-    #     source: /etc/letsencrypt/archive/georgejmx.dev
-    #     target: /app/cert/archive/georgejmx.dev
+    volumes:
+      - type: bind
+        source: /etc/letsencrypt/live/georgejmx.dev
+        target: /app/cert/live/georgejmx.dev
+      - type: bind
+        source: /etc/letsencrypt/archive/georgejmx.dev
+        target: /app/cert/archive/georgejmx.dev
     ports:
       - "80:3000"
       - "443:3000"

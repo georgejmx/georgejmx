@@ -34,15 +34,15 @@ if (serverType === "http") {
 } else if (serverType === "https") {
   const server: httpServer = new https.Server(
     {
-      cert: fs.readFileSync("./cert/live/georgejmx.dev/fullchain.pem"),
-      key: fs.readFileSync("./cert/live/georgejmx.dev/privkey.pem"),
+      cert: fs.readFileSync(process.env.SSL_PUBLIC_PATH || ""),
+      key: fs.readFileSync(process.env.SSL_PRIVATE_PATH || ""),
     },
     app
   );
   server.listen(3000, () => {
-    console.log("https server is up on port 3000");
+    console.log("https server is up on internal port 3000");
   });
 } else {
-  console.log("invalid command line argument passed to runtime");
+  console.error("invalid command line argument passed to runtime");
   process.abort();
 }
