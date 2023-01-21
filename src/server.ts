@@ -1,6 +1,5 @@
 import express, { Application } from "express";
 import path from "path";
-import { fileURLToPath } from "url";
 import fs from "fs";
 import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
@@ -11,11 +10,8 @@ import { htmlRouter, apiRouter, adminRouter } from "./router.js";
 const app: Application = express();
 
 // Serving frontent files and loading templating engine, body parser
-const __filename: string = fileURLToPath(import.meta.url);
 dotenv.config({ path: path.dirname(".") + "/.env" });
-app.use(
-  express.static(path.join(path.dirname(__filename), "./../frontend/dist"))
-);
+app.use(express.static("frontend/dist"));
 app.set("view engine", "hbs");
 app.use(bodyParser.json());
 
