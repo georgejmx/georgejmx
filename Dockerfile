@@ -1,18 +1,17 @@
 FROM node:18
 
-# building and copying api
+# installing api and copying files
 WORKDIR /app
-COPY package.json .
-COPY package-lock.json .
+COPY package*.json .
 RUN npm ci
-COPY . .
+COPY . ./
 
 # building frontend
 WORKDIR /app/frontend
-ENV NODE_ENV=production
+RUN npm in
 RUN npm run build
 
-# building api
+# # building api
 WORKDIR /app
 ENV NODE_ENV=production
 RUN npm run build
