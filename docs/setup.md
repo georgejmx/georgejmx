@@ -44,9 +44,13 @@ PASSWORD=d232dfb7203bfba2b34252186dfa953fbfa0e58487254f53b4fcffc7295a4daf
 ```
 
 - `cd deploy; docker compose up -d`
+
+#### Steps that may need to be taken
+
+- Rebuild from latest app image `docker compose pull app; docker compose down; docker compose up --build --force-recreate -d`
 - Ensure the database has correct data inside from the previous docker volume
   - `docker exec -itu postgres thepostgres psql`
   - `select * from artist`
   - If not load correct data into it from outside; `cat prisma/backups/1.sql | docker exec -iu postgres thepostgres psql`
-  - Then reflect in app after execing in `npx prisma db pull`
-- Rebuild from latest app image `docker compose pull app; docker compose down; docker compose up --build --force-recreate -d`
+    - Now update the app with this new db schema by execing in then execute `npx prisma db pull`
+    - Now stop and start the app again in Docker

@@ -1,15 +1,20 @@
 # Details
 
-Currently a nodejs backend which serves a frontend
+Personal web page
+
+Currently a Typescript backend which serves a frontend and connects to a postgres container for state management
 
 - The frontend is built using _Vite_ and includes the _threejs_ package
-- Backend uses _prisma_ to transfer data from a postgres container to the frontend, with validation logic. Built in `nodejs` with Typescript
 
-## Backlog
+  - 3D background :fireworks:
+  - Retro styles :vhs:
+  - Reading latest personal _(sfw)_ data
+  - Allows public comments on **Stories**
+  - Creating new personal data through a password protected admin panel
 
-- FIX - cleanup the story view to make clear they are comments not tags
-- TESTING - Unit testing of backend with a focus on descriptors and prisma
-- FEATURE - Change so existing descriptors are loaded from database first, then say 7 more are randomly generated rather than pulling 10 new ones each time
-- FEATURE - Cleanup the look of a blank database so someone can recreate from scratch
+- Backend uses _prisma_ to transfer data from a postgres container to the frontend, with validation logic
 
-Do a new `git tag` after such changes then stop active development
+  - HTML rendering to avoid the need of a bloated ui framework
+  - Automatic UI updates of latest personal and public data
+  - UI formatting depending on data
+  - Low code :relieved:
