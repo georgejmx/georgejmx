@@ -11,7 +11,7 @@ WORKDIR /app/frontend
 RUN npm in
 RUN npm run build
 
-# # building api
+# building api
 WORKDIR /app
 ENV NODE_ENV=production
 RUN npm run build

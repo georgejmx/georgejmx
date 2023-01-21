@@ -13,6 +13,8 @@ services:
       - docker.env
   app:
     image: georgejmx/georgejmx:latest
+    depends_on:
+      - thepostgres
     restart: on-failure
     env_file:
       - docker.env
@@ -25,6 +27,5 @@ services:
         source: /etc/letsencrypt/archive/georgejmx.dev
         target: /app/cert/archive/georgejmx.dev
     ports:
-      - "80:3000"
       - "443:3000"
     restart: on-failure
