@@ -28,4 +28,3 @@ services:
         target: /app/cert/archive/georgejmx.dev
     ports:
       - "443:3000"
-    restart: on-failure
