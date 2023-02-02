@@ -11,6 +11,8 @@ services:
     container_name: thepostgres
     env_file:
       - docker.env
+    volumes:  
+      - georgejmx_data:/var/lib/postgresql/data
   app:
     image: georgejmx/georgejmx:latest
     depends_on:
@@ -19,7 +21,6 @@ services:
     env_file:
       - docker.env
     volumes:
-      - georgejmx_data:/var/lib/postgresql/data
       - type: bind
         source: /etc/letsencrypt/live/georgejmx.dev
         target: /app/cert/live/georgejmx.dev
