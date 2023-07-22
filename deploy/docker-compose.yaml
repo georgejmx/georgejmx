@@ -1,31 +1,31 @@
 version: "3.8"
 
 volumes:
-  georgejmx_data:
-    name: georgejmx_data
+    georgejmx_data:
+        name: georgejmx_data
 
 services:
-  thepostgres:
-    image: postgres
-    restart: on-failure
-    container_name: thepostgres
-    env_file:
-      - docker.env
-  app:
-    image: georgejmx/georgejmx:latest
-    depends_on:
-      - thepostgres
-    restart: on-failure
-    env_file:
-      - docker.env
-    volumes:
-      - georgejmx_data:/var/lib/postgresql/data
-      - type: bind
-        source: /etc/letsencrypt/live/georgejmx.dev
-        target: /app/cert/live/georgejmx.dev
-      - type: bind
-        source: /etc/letsencrypt/archive/georgejmx.dev
-        target: /app/cert/archive/georgejmx.dev
-    ports:
-      - "443:3000"
-    restart: on-failure
+    thepostgres:
+        image: postgres
+        restart: on-failure
+        container_name: thepostgres
+        env_file:
+            - docker.env
+        volumes:
+            - georgejmx_data:/var/lib/postgresql/data
+    app:
+        image: georgejmx/georgejmx:latest
+        depends_on:
+            - thepostgres
+        restart: on-failure
+        env_file:
+            - docker.env
+        volumes:
+            - type: bind
+              source: /etc/letsencrypt/live/georgejmx.dev
+              target: /app/cert/live/georgejmx.dev
+            - type: bind
+              source: /etc/letsencrypt/archive/georgejmx.dev
+              target: /app/cert/archive/georgejmx.dev
+        ports:
+            - "443:3000"
