@@ -41,7 +41,12 @@ if (!window.location.href.includes("/story/")) {
     getArtists()
         .then((artists) => {
             const artistsEl = document.getElementById("artists-text") as HTMLElement;
-            artistsEl.textContent = `Latest top artists: ${artists[0].name}, ${artists[1].name}, ${artists[2].name}`;
+            if (artists.length < 3) {
+                artistsEl.textContent =
+                    "Atleast 3 artists are needed to display top artists";
+            } else {
+                artistsEl.textContent = `Latest top artists: ${artists[0].name}, ${artists[1].name}, ${artists[2].name}`;
+            }
         })
         .catch((err) => {
             console.error(err);

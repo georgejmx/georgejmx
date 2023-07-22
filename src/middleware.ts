@@ -1,6 +1,6 @@
 import { NextFunction } from "express";
-import { validateAdminToken } from "./tokens";
-import { ExpressRequest, ExpressResponse } from "./types";
+import { validateAdminToken } from "./tokens.js";
+import { ExpressRequest, ExpressResponse } from "./types.js";
 
 const validateTokenMiddleware = (
     req: ExpressRequest,

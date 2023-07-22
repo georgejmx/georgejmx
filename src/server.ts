@@ -6,17 +6,15 @@ import * as dotenv from "dotenv";
 import https, { Server as httpsServer } from "https";
 import http, { Server as httpServer } from "http";
 import { htmlRouter, apiRouter, priviligedRouter, authRouter } from "./router.js";
-import { notFoundMiddleware, validateTokenMiddleware } from "./middleware.js";
+import { notFoundMiddleware } from "./middleware.js";
 
 export const app: Application = express();
 
-// Serving frontent files and loading templating engine, body parser
 dotenv.config({ path: path.dirname(".") + "/.env" });
 app.use(express.static("frontend/dist"));
 app.set("view engine", "hbs");
 app.use(bodyParser.json());
 
-// Connecting our routes
 app.get("/health", (_, res) => {
     res.status(200).send("Healthy");
 });

@@ -1,6 +1,6 @@
-import { TokenMap } from "./types";
+import { TokenMap } from "./types.js";
 import { v4 as uuid4 } from "uuid";
-import { generateTokenExpiry } from "./utils";
+import { generateTokenExpiry } from "./utils.js";
 
 const TOKEN_MAP: TokenMap = {};
 
