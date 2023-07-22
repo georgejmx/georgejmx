@@ -10,7 +10,7 @@ services:
     restart: on-failure
     container_name: thepostgres
     env_file:
-      - docker.dev.env
+      - docker.env.dev
   app:
     build:
       context: ../.
@@ -18,7 +18,7 @@ services:
       - thepostgres
     restart: on-failure
     env_file:
-      - docker.dev.env
+      - docker.env.dev
     volumes:
       - georgejmx_data:/var/lib/postgresql/data
     ports:

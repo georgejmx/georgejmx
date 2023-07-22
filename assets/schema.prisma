@@ -36,7 +36,7 @@ model story {
   tstamp     Int
   paragraphs String[]
   theme      Int?
-  descriptor descriptor[]
+  descriptors descriptor[]
 }
 
 model descriptor {
@@ -46,3 +46,9 @@ model descriptor {
   storyId Int
   story story? @relation(fields: [storyId], references: [id])
 }
+
+// model banner {
+//   id Int @default(autoincrement()) @unique
+//   title String @db.Char(20)
+//   link String
+// }

@@ -1,7 +1,7 @@
 {
   "name": "georgejmx-demo",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -18,5 +18,11 @@
     "@types/crypto-js": "^4.1.1",
     "crypto-js": "^4.1.1",
     "three": "^0.141.0"
+  },
+  "prettier": {
+    "printWidth": 92,
+    "parser": "typescript",
+    "tabWidth": 4,
+    "trailingComma": "es5"
   }
 }
