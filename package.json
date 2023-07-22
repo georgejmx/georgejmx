@@ -10,7 +10,7 @@
         "lint": "npx prettier --write src views test frontend/src",
         "start": "node dist/src/server.js",
         "lint:ci": "npx prettier --check src views test frontend/src",
-        "test:ci": "jest --collectCoverage"
+        "test:ci": "cp .github/.env.ci .env jest --collectCoverage"
     },
     "keywords": [
         "personal",
