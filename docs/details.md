@@ -15,6 +15,6 @@ Currently a Typescript backend which serves a frontend and connects to a postgre
 -   Backend uses _prisma_ to transfer data from a postgres container to the frontend, with validation logic
 
     -   HTML rendering to avoid the need of a bloated ui framework
-    -   Automatic UI updates of latest personal and public data
+    -   Automatic UI updates of latest private and public data
     -   UI formatting depending on data
     -   Low code :relieved:

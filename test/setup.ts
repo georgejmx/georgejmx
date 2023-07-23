@@ -1,9 +1,7 @@
 import { fascination, story } from "@prisma/client";
 import { Descriptor, Fascination, Story } from "../src/types";
 
-(process.env.NODE_ENV = "test"),
-    (process.env.ADMIN_HASH =
-        "TESTdfb7203bfba2b34252186dfa953fbfa0e58487254f53b4fcffc7295a4daf");
+(process.env.NODE_ENV = "test"), (process.env.ADMIN_PASSWORD = "test-password-24");
 
 jest.mock("../src/dbConnector", () => ({
     selectStory: async (keyword: string): Promise<story> => {

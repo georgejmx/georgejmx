@@ -1,3 +1,4 @@
+const exitButton = document.getElementById("story-back") as HTMLButtonElement;
 const modal = document.getElementById("describe-modal") as HTMLElement;
 const showModal = document.getElementById("show-modal") as HTMLElement;
 const hideModal = document.getElementById("hide-modal") as HTMLElement;
@@ -6,10 +7,8 @@ const failureTypography = document.getElementById("modal-response") as HTMLEleme
 const keywordTypography = document.getElementById("keyword") as HTMLElement;
 const selectModals = document.querySelectorAll(".select-modal") as NodeListOf<HTMLElement>;
 
-showModal.addEventListener("click", () => {
-    modal.style.display = "initial";
-});
-
+exitButton.addEventListener("click", () => (window.location.href = "/"));
+showModal.addEventListener("click", () => (modal.style.display = "initial"));
 hideModal.addEventListener("click", () => (modal.style.display = "none"));
 
 let selectedDescriptor: string;

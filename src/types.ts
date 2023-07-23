@@ -15,6 +15,14 @@ export type CoreExpressResponse = {
 export type ExpressRequest = Record<string, any>;
 export type ExpressResponse = Record<string, any>;
 
+export type IndexPayload = {
+    projects: Project[];
+    stories: Story[];
+    fascinations: Fascination[];
+    artistsText: string;
+    storiesText: string;
+};
+
 export type story_with_descriptor = story & {
     descriptors: {
         word: string;
@@ -47,7 +55,7 @@ export interface Story extends ThemedEntity {
 export interface Fascination extends ThemedEntity {
     intensity: number;
     rating?: number;
-    color: 420; // DEPRECATED; color will be removed from database in v0.4
+    color?: string | number; // DEPRECATED; color will be removed from database in v0.4
 }
 
 export interface Artist {

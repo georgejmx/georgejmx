@@ -5,21 +5,26 @@ import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
 import https, { Server as httpsServer } from "https";
 import http, { Server as httpServer } from "http";
-import { htmlRouter, apiRouter, priviligedRouter, authRouter } from "./router.js";
-import { notFoundMiddleware } from "./middleware.js";
+import { apiRouter, priviligedRouter, authRouter } from "./router.js";
+import { limiter, notFoundMiddleware } from "./middleware.js";
+import helmet from "helmet";
+import { adminRenderer, healthController, homeRenderer, storyRenderer } from "./root.js";
 
 export const app: Application = express();
 
 dotenv.config({ path: path.dirname(".") + "/.env" });
-app.use(express.static("frontend/dist"));
+app.use(express.static("assets"));
 app.set("view engine", "hbs");
+app.use(helmet());
 app.use(bodyParser.json());
 
-app.get("/health", (_, res) => {
-    res.status(200).send("Healthy");
-});
+app.get("/", homeRenderer);
+app.get("/health", healthController);
+app.get("/admin", adminRenderer);
+app.get("/story/:key", storyRenderer);
+
+app.use(limiter);
 app.use("/api", apiRouter);
-app.use("/html", htmlRouter);
 app.use("/auth", authRouter);
 app.use("/priviliged", priviligedRouter);
 

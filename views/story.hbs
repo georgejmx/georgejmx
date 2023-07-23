@@ -4,8 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="fractal.ico" />
-        <link rel="stylesheet" href="/index.ashes.css" />
-        <script type="module" src="/index.ashes.js" defer></script>
+        <link rel="stylesheet" href="/output.css" />
+        <script type="module" src="/bundles/common.js" defer></script>
+        <script type="module" src="/bundles/story.js" defer></script>
         <title>George - Story</title>
     </head>
     <body style="background-color: black">
@@ -16,10 +17,10 @@
                     story about
                     <strong id="keyword">{{story.keyword}}</strong></h1>
                 <div
-                    class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 bg-black p-2 mb-6"
+                    class="flex flex-col max-w-sm border-1 overflow-hidden border-orange-600 border-2 bg-black p-2 mb-6"
                 >
                     <div
-                        class="flex border-1 border-black border-b-orange-600 justify-around"
+                        class="flex border-1 border-black border-b-orange-600 border-2 justify-around"
                     >
                         <div class="font-bold text-l mb-2 font-mono text-orange-600">
                             {{story.name}}
@@ -46,7 +47,6 @@
                 </button>
                 <button
                     id="story-back"
-                    onclick="window.location.href = '/?stories=true'"
                     class="text-green-500 bg-black text-xs font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
                 >
                     <div class="flex">
@@ -111,8 +111,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- server rendered javascript, injected raw by hbs-->
-        <script>{{{script}}}</script>
     </body>
 </html>

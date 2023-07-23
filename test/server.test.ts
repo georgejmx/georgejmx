@@ -8,8 +8,8 @@ beforeAll(() => {
 });
 
 const EXPECTED_HTML_SUBSTRINGS = [
-    '<h4 class="text-yellow-500 text-xl">There has been a problem finding Stories</h4>',
-    '<h4 class="text-yellow-500 text-xl">There has been a problem finding Projects</h4>',
+    "DIY developer with a passion for technology and creativity.",
+    "Click a button above to initiate an admin action :)",
 ];
 
 describe("georgejmx spins up correctly", () => {
@@ -24,9 +24,9 @@ describe("georgejmx spins up correctly", () => {
             .catch((error) => done(error));
     });
 
-    test("Stories html is returned when necessary", (done: jest.DoneCallback) => {
+    test("Index html renders correctly", (done: jest.DoneCallback) => {
         testServer
-            .get("/html/stories")
+            .get("/")
             .then((response) => {
                 expect(response.status).toEqual(200);
                 expect(response.text).toContain(EXPECTED_HTML_SUBSTRINGS[0]);
@@ -35,9 +35,9 @@ describe("georgejmx spins up correctly", () => {
             .catch((error) => done(error));
     });
 
-    test("Projects html is returned when necessary", (done: jest.DoneCallback) => {
+    test("Admin html renders correctly", (done: jest.DoneCallback) => {
         testServer
-            .get("/html/projects")
+            .get("/admin")
             .then((response) => {
                 expect(response.status).toEqual(200);
                 expect(response.text).toContain(EXPECTED_HTML_SUBSTRINGS[1]);

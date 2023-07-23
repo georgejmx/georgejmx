@@ -1,10 +1,14 @@
-import "virtual:windi.css";
-import { SHA256 } from "crypto-js";
-import { AdminRequestBody } from "./types";
-import { adminInputHtml } from "./utils";
-import { postData } from "./handlers";
+import bcrypt from "bcryptjs";
+import { AdminRequestBody } from "../types";
+import { postData, adminInputHtml } from "./shared.js";
 
 let selectedActionBtn: string;
+
+// Returns an array of [hash, salt] that secures password
+export function hashPassword(plaintext: string): string {
+    const hash = bcrypt.hashSync(plaintext, 10);
+    return hash;
+}
 
 /* Declaring HTML elements needed for manipulation of action content */
 const actionBtns: Array<HTMLButtonElement> = [
@@ -90,7 +94,7 @@ submitBtn.addEventListener("click", () => {
     }
 
     // Fulfilling admin request
-    postData(SHA256(passcodeField.value).toString(), requestBody)
+    postData(hashPassword(passcodeField.value), requestBody)
         .then((response) => {
             if (response.status === 201) {
                 window.location.href = "/";
@@ -110,5 +114,3 @@ submitBtn.addEventListener("click", () => {
             showError("uh ooh: error connecting to api");
         });
 });
-
-export {};

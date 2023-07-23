@@ -1,6 +1,13 @@
 import { fascination, PrismaClient, story } from "@prisma/client";
 import { hasDayElapsed } from "./utils.js";
-import * as t from "./types.js";
+import {
+    Artist,
+    Project,
+    story_with_descriptor,
+    Descriptor,
+    FascinationRequestBody,
+    Story,
+} from "./types.js";
 
 const prisma = new PrismaClient();
 
@@ -12,16 +19,7 @@ export async function selectStory(keyword: string): Promise<story> {
     return story;
 }
 
-export async function selectRecentStories() {
-    const recents = await prisma.story.findMany({
-        select: { keyword: true },
-        orderBy: [{ id: "desc" }],
-        take: 3,
-    });
-    return recents;
-}
-
-export async function selectStories(): Promise<t.story_with_descriptor[]> {
+export async function selectStories(): Promise<story_with_descriptor[]> {
     const stories = await prisma.story.findMany({
         orderBy: [{ id: "desc" }],
         include: {
@@ -34,7 +32,7 @@ export async function selectStories(): Promise<t.story_with_descriptor[]> {
     return stories;
 }
 
-export async function selectProjects() {
+export async function selectProjects(): Promise<Project[]> {
     const projects = await prisma.project.findMany({ orderBy: [{ id: "asc" }] });
     return projects;
 }
@@ -44,12 +42,12 @@ export async function selectFascinations(): Promise<fascination[]> {
     return hmus;
 }
 
-export async function selectArtists() {
+export async function selectArtists(): Promise<Artist[]> {
     const artists = await prisma.artist.findMany({ orderBy: [{ id: "desc" }] });
     return artists;
 }
 
-export async function insertDescriptor(descriptor: t.Descriptor): Promise<number> {
+export async function insertDescriptor(descriptor: Descriptor): Promise<number> {
     // Getting post time of latest story descriptor
     const latestTimestamp = await prisma.descriptor.findMany({
         select: { timestamp: true },
@@ -74,7 +72,7 @@ export async function insertDescriptor(descriptor: t.Descriptor): Promise<number
     return result.id;
 }
 
-export async function insertArtist(artist: t.Artist): Promise<number> {
+export async function insertArtist(artist: Artist): Promise<number> {
     const result = await prisma.artist.create({
         data: {
             name: artist.name,
@@ -85,7 +83,7 @@ export async function insertArtist(artist: t.Artist): Promise<number> {
 }
 
 export async function insertFascination(
-    fascination: t.FascinationRequestBody
+    fascination: FascinationRequestBody
 ): Promise<number> {
     const result = await prisma.fascination.create({
         data: {
@@ -99,7 +97,7 @@ export async function insertFascination(
     return result.id;
 }
 
-export async function insertProject(project: t.Project): Promise<number> {
+export async function insertProject(project: Project): Promise<number> {
     const result = await prisma.project.create({
         data: {
             name: project.name,
@@ -113,7 +111,7 @@ export async function insertProject(project: t.Project): Promise<number> {
     return result.id;
 }
 
-export async function insertStory(story: t.Story): Promise<number> {
+export async function insertStory(story: Story): Promise<number> {
     const result = await prisma.story.create({
         data: {
             name: story.name,

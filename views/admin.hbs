@@ -1,0 +1,64 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="fractal.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/output.css" />
+        <script type="module" src="/bundles/admin.js"></script>
+        <title>George | Admin</title>
+    </head>
+    <body class="bg-black font-mono text-white">
+        <div class="flex flex-col flex-wrap items-center justify-center py-20">
+            <h1 class="text-2xl underline">Admin</h1>
+            <div class="py-8 px-2">
+                <button
+                    class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500 mb-1"
+                    id="artist-btn"
+                >
+                    New Artist
+                </button>
+                <button
+                    class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500 mb-1"
+                    id="hmu-btn"
+                >
+                    New HMU
+                </button>
+                <button
+                    class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500 mb-1"
+                    id="project-btn"
+                >
+                    New Project
+                </button>
+                <button
+                    class="rounded border border-white px-2 focus:border-purple-500 focus:text-purple-500 mb-1"
+                    id="story-btn"
+                >
+                    New Story
+                </button>
+            </div>
+            <div id="inputs-box" class="py-4 px-2">
+                Click a button above to initiate an admin action :)
+            </div>
+            <p>
+                See
+                <a
+                    id="schema-link"
+                    class="py-1 italic underline text-blue-400"
+                    href="/schema.prisma"
+                >schema</a>
+                for input instructions
+            </p>
+            <p id="err-field" class="py-1 text-orange-400 px-2"></p>
+            <div>
+                <input
+                    id="passcode-field"
+                    class="rounded border-2 border-purple-500 bg-black px-2"
+                    placeholder="passcode"
+                />
+                <button id="submit-btn" class="rounded border-2 border-purple-500 px-2">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

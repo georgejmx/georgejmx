@@ -1,6 +1,15 @@
 import { NextFunction } from "express";
 import { validateAdminToken } from "./tokens.js";
 import { ExpressRequest, ExpressResponse } from "./types.js";
+import rateLimit from "express-rate-limit";
+import { REFRESH_TIME } from "./utils.js";
+
+const limiter = rateLimit({
+    windowMs: REFRESH_TIME,
+    max: 25,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
 
 const validateTokenMiddleware = (
     req: ExpressRequest,
@@ -27,4 +36,4 @@ const notFoundMiddleware = (_: unknown, res: ExpressResponse, next: NextFunction
     next();
 };
 
-export { validateTokenMiddleware, notFoundMiddleware };
+export { limiter, validateTokenMiddleware, notFoundMiddleware };

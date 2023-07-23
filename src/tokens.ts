@@ -1,6 +1,7 @@
 import { TokenMap } from "./types.js";
 import { v4 as uuid4 } from "uuid";
 import { generateTokenExpiry } from "./utils.js";
+import bcrypt from "bcryptjs";
 
 const TOKEN_MAP: TokenMap = {};
 
@@ -11,7 +12,7 @@ const hashToToken = (hash: string): string => {
         token = uuid4();
     }
 
-    const admin = hash === process.env.ADMIN_HASH ? true : false;
+    const admin = bcrypt.compareSync(process.env.ADMIN_PASSWORD as string, hash);
     TOKEN_MAP[token] = {
         expiry: generateTokenExpiry(),
         admin,

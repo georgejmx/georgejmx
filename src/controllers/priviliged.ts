@@ -14,7 +14,7 @@ export const postDataController = async (req: ExpressRequest, res: ExpressRespon
     try {
         if (
             (model === "HMU" || model === "STORY") &&
-            (!adminBody.theme || !(adminBody.theme in THEME))
+            (adminBody.theme === undefined || !(adminBody.theme in THEME))
         ) {
             res.status(400).json({
                 message: "Theme property must be either 0, 1 or 2 to match UI",
@@ -85,6 +85,6 @@ export const postDataController = async (req: ExpressRequest, res: ExpressRespon
         });
     } catch (error: unknown) {
         console.error(error);
-        res.status(500).json({ message: String(error) });
+        res.status(500).json({ message: "Error inserting entity into database" });
     }
 };

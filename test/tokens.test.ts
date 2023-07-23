@@ -1,12 +1,17 @@
 import { hashToToken, validateAdminToken } from "../src/tokens";
+import bcrypt from "bcryptjs";
+
+function hashPassword(plaintext: string): string {
+    return bcrypt.hashSync(plaintext, 10);
+}
 
 describe("georgejmx successfully manages tokens", () => {
-    test("Adding and validating a token from the admin hash", () => {
-        if (!process.env.ADMIN_HASH) {
+    test("Adding and validating a token from the admin password", () => {
+        if (!process.env.ADMIN_PASSWORD) {
             throw Error("Unable to retrieve testing environment variable");
         }
-
-        const accessToken = hashToToken(process.env.ADMIN_HASH);
+        const hashedPassword = hashPassword(process.env.ADMIN_PASSWORD);
+        const accessToken = hashToToken(hashedPassword);
         const isValid = validateAdminToken(accessToken);
         expect(isValid).toEqual(true);
     });

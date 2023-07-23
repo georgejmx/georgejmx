@@ -1,32 +1,57 @@
-// Generates the correct HTML for a fascination item
-export const fascinationHtml = (name: string, intensity: number, theme: number) => {
-    const width = intensity + 18;
-    let twColor = null;
-    switch (theme) {
-        case 0:
-            twColor = "orange-600";
-            break;
+import { AdminRequestBody } from "../types";
+
+// Updates scrolling content upon menu button selection
+function changeTabSelection(val: number) {
+    const home = document.getElementById("home-box") as HTMLDivElement;
+    const projects = document.getElementById("projects-box") as HTMLDivElement;
+    const stories = document.getElementById("story-box") as HTMLDivElement;
+    switch (val) {
         case 1:
-            twColor = "yellow-500";
+            home.style.display = "initial";
+            projects.style.display = "none";
+            stories.style.display = "none";
             break;
         case 2:
-            twColor = "orange-400";
+            home.style.display = "none";
+            projects.style.display = "initial";
+            stories.style.display = "none";
             break;
-        default:
-            twColor = "orange-600";
+        case 3:
+            home.style.display = "none";
+            projects.style.display = "none";
+            stories.style.display = "initial";
+            break;
     }
-    return `
-      <div class="flex">
-        <svg class="w-${width} h-4">
-          <rect width="150" height="60" class="fill-${twColor}" />
-        </svg>
-        <p class="ml-2 text-${twColor} font-mono bg-black">${name}</p>
-      </div>
-    `;
-};
+}
+
+// Obtain an access token with supplied user password
+async function obtainToken(hash: string): Promise<string> {
+    const response = await fetch("/auth/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json;charset=utf-8" },
+        body: JSON.stringify({ hash }),
+    });
+    if (response.status !== 201) {
+        throw Error("Unable to establish access token");
+    }
+    return (await response.json()).accessToken;
+}
+
+// Post data then return API response
+async function postData(hash: string, body: AdminRequestBody): Promise<Response> {
+    const accessToken = await obtainToken(hash);
+    return await fetch("/priviliged", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            authorisation: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(body),
+    });
+}
 
 // Generate HTML for admin inputs
-export const adminInputHtml = (actionButtonId: string): string => {
+const adminInputHtml = (actionButtonId: string): string => {
     switch (actionButtonId) {
         case "artist-btn": {
             return `
@@ -131,3 +156,5 @@ export const adminInputHtml = (actionButtonId: string): string => {
             return `<p class="leading-tight underline">No input options for this type</p>`;
     }
 };
+
+export { changeTabSelection, postData, adminInputHtml };

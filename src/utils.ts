@@ -1,25 +1,36 @@
-import * as t from "./types.js";
 import fs from "fs";
 import { fascination } from "@prisma/client";
+import {
+    Artist,
+    Fascination,
+    Project,
+    Story,
+    story_with_descriptor,
+    THEME,
+} from "./types.js";
 
+export const REFRESH_TIME = 10 * 60000;
+export const THEME_MAP: Record<number, string> = {
+    0: "orange-600",
+    1: "yellow-500",
+    2: "orange-400",
+};
 const ADJECTIVES_FILEPATH = "./assets/adjectives.txt";
 
-const validateStoryTheme = (s: t.story_with_descriptor): t.Story => {
-    if (!s.theme || !(s.theme in t.THEME)) {
-        s.theme = t.THEME.BURNT_ORANGE;
+const validateStoryTheme = (s: story_with_descriptor): Story => {
+    if (!s.theme || !(s.theme in THEME)) {
+        s.theme = THEME.BURNT_ORANGE;
     }
-    return s as t.Story;
+    return s as Story;
 };
 
 // DEPRECATED; the colour property will be pruned from database before v0.4
 const validateFascinationTheme = (i: fascination & { theme?: number }) => {
     if (!i.theme) {
-        i.color && i.color in t.THEME
-            ? (i.theme = i.color)
-            : (i.theme = t.THEME.BURNT_ORANGE);
+        i.color && i.color in THEME ? (i.theme = i.color) : (i.theme = THEME.BURNT_ORANGE);
     }
     i.color = 420;
-    return i as t.Fascination;
+    return i as Fascination;
 };
 
 export const truncateTime = (ts: number): number => Math.floor(ts / 10000) * 10000;
@@ -29,7 +40,7 @@ export const truncateTime = (ts: number): number => Math.floor(ts / 10000) * 100
  fascinations on the UI. This ratings multiplier which is a combination of
  recency and intensity orders fascinations
  */
-function findRating(f: t.Fascination): t.Fascination {
+function findRating(f: Fascination): Fascination {
     f.name = f.name.trim();
     f.tstamp = truncateTime(f.tstamp);
     const lag = Math.floor((Date.now() / 1000 - f.tstamp) / 1000000);
@@ -39,8 +50,8 @@ function findRating(f: t.Fascination): t.Fascination {
 
 /* Choosing top 4 fascinations from the raw data, by calculating and sorting
  by a ratings multiplier */
-export function formatFascinations(input: fascination[]): t.Fascination[] {
-    let hmus: t.Fascination[] = input.map(validateFascinationTheme);
+export function formatFascinations(input: fascination[]): Fascination[] {
+    let hmus: Fascination[] = input.map(validateFascinationTheme);
     hmus = hmus.map(findRating);
     hmus.sort((a, b) => {
         return (b.rating || 0) - (a.rating || 0);
@@ -50,14 +61,14 @@ export function formatFascinations(input: fascination[]): t.Fascination[] {
 
 /* Function for cropping the stories for the main view. Also clears out the
   unneeded paragraphs of the story to save space on the client */
-function generateHeadline(s: t.Story): t.Story {
+function generateHeadline(s: Story): Story {
     s.headline = s.paragraphs[0].substring(0, 151) + "...";
     s.paragraphs = [];
     return s;
 }
 
 // Function for adding datestring to stories and trimming story name
-function addDatestringAndTrim(s: t.Story): t.Story {
+function addDatestringAndTrim(s: Story): Story {
     const dateObj = new Date(s.tstamp * 1000);
     s.datestring = dateObj
         .toLocaleTimeString("en-UK", {
@@ -71,16 +82,13 @@ function addDatestringAndTrim(s: t.Story): t.Story {
 }
 
 // Gets the 4 most recent words used to describe the story and attaches
-function generateReactions(s: t.Story): t.Story {
+function generateReactions(s: Story): Story {
     s.reactions = s.descriptors.map((descriptor) => descriptor.word.trim()).slice(0, 4);
     return s;
 }
 
 // Cropping stories and ordering by timestamp for overall frontend view
-export function formatStories(
-    input: t.story_with_descriptor[],
-    hasHead: boolean
-): t.Story[] {
+export function formatStories(input: story_with_descriptor[], hasHead: boolean): Story[] {
     let stories = input.map(validateStoryTheme);
     stories = hasHead ? stories.map(generateHeadline) : stories;
     stories = stories.map(addDatestringAndTrim);
@@ -106,6 +114,35 @@ export function generateDescriptors(numberDescriptors: number): string[] {
     return randomWords;
 }
 
+// Trims projects
+export function formatProjects(projects: Project[]): Project[] {
+    projects.forEach((project: Project) => {
+        (project.imagename = project.imagename.trim()), (project.url = project.url.trim());
+    });
+    return projects;
+}
+
+export function generateArtistsText(artists: Artist[]): string {
+    if (artists.length < 3) {
+        return "Atleast 3 artists are needed to display top artists";
+    }
+    return `Latest top artists: ${artists[0].name}, ${artists[1].name}, ${artists[2].name}`;
+}
+
+export function generateStoriesText(stories: Story[]): string {
+    if (!stories.length) {
+        return "Click Upend to create a new story";
+    }
+    let text = "Most recent themes I have written about: ";
+    let i = 0;
+    while (i < 3 && i < stories.length) {
+        text += stories[i].keyword;
+        text += ", ";
+        i++;
+    }
+    return text.substring(0, text.length - 2);
+}
+
 // Checks if a day has elapsed since previous comment using the number of seconds elapsed
 export function hasDayElapsed(latest: Date): boolean {
     return Date.now() - latest.getTime() < 86400000 ? true : false;
@@ -114,6 +151,5 @@ export function hasDayElapsed(latest: Date): boolean {
 // Sets a token expiry 10 minutes in the future
 export function generateTokenExpiry(): number {
     const now = new Date();
-    const minutesInFuture = 10;
-    return now.getTime() + minutesInFuture * 60000;
+    return now.getTime() + REFRESH_TIME * 60000;
 }

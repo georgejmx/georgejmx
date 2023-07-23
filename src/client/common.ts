@@ -1,5 +1,3 @@
-/* File that renders the 3d background */
-
 import {
     Scene,
     PerspectiveCamera,
