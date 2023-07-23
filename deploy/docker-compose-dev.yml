@@ -1,0 +1,28 @@
+version: "3.8"
+
+volumes:
+    georgejmx_data:
+        name: georgejmx_data
+
+services:
+    thepostgres:
+        image: postgres
+        restart: on-failure
+        container_name: thepostgres
+        env_file:
+            - docker.env.dev
+        volumes:
+            - georgejmx_data:/var/lib/postgresql/data
+    app:
+        build:
+            context: ../.
+        depends_on:
+            - thepostgres
+        restart: on-failure
+        container_name: georgejmx
+        env_file:
+            - docker.env.dev
+        volumes:
+            - georgejmx_data:/var/lib/postgresql/data
+        ports:
+            - "80:3000"

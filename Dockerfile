@@ -1,20 +1,20 @@
-FROM node:18
+FROM node:20
 
-# installing api and copying files
 WORKDIR /app
-COPY package*.json .
-RUN npm ci
-COPY . ./
+COPY package*.json /app
+COPY tsconfig.json /app/tsconfig.json
+COPY *.config.ts /app
 
-# building frontend
-WORKDIR /app/frontend
-RUN npm in
-RUN npm run build
+ENV NODE_ENV=development
+RUN npm install
 
-# building api
-WORKDIR /app
-ENV NODE_ENV=production
-RUN npm run build
+COPY assets/ /app/assets
+COPY src/ /app/src
+COPY views/ /app/views
+
 RUN npx prisma generate
+RUN npm run compile
 
+ENV NODE_ENV=production
+RUN npm prune --omit=dev
 CMD ["npm", "start"]
