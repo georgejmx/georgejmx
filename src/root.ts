@@ -26,17 +26,11 @@ export const healthController = async (_: unknown, res: ExpressResponse) => {
 // Route to render the index html page
 export const homeRenderer = async (_: unknown, res: ExpressResponse) => {
     try {
-        const responses = await Promise.all([
-            selectProjects(),
-            selectStories(),
-            selectFascinations(),
-            selectArtists(),
-        ]);
         const state = {
-            projects: responses[0],
-            stories: responses[1],
-            fascinations: responses[2],
-            artists: responses[3],
+            projects: await selectProjects(),
+            stories: await selectStories(),
+            fascinations: await selectFascinations(),
+            artists: await selectArtists(),
         };
         const formattedStories = formatStories(state.stories, true);
         const indexPayload: IndexPayload = {

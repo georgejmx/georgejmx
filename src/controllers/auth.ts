@@ -12,8 +12,6 @@ export const postAuthenticationController = async (
             res.status(400).json({ message: "Missing hash to authenticate" });
             return;
         }
-        console.log(req.body.salt); // TODO: add salt to TOKEN_MAP
-
         const token = hashToToken(hash);
         res.status(201).json({ accessToken: token });
     } catch (error: unknown) {

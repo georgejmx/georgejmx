@@ -17,4 +17,3 @@ jobs:
             - run: npm run lint:ci
             - run: npm run compile
             - run: npm run test:ci
-            - run: cd frontend; npm ci; npm run build
