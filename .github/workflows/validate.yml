@@ -8,12 +8,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-            - name: Check Node.js v20 Environment
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
-            - run: npm ci
-            - run: npm audit
-            - run: npm run lint:ci
-            - run: npm run compile
-            - run: npm run test:ci
+            - name: Check Bun Environment
+              uses: oven-sh/setup-bun@v1
+            - run: bun install
+            - run: bun lint:ci
+            - run: bun compile
+            - run: bun jest-test:ci

@@ -2,11 +2,11 @@
 
 ## Testing
 
-Execute `npm install; npm test`
+Execute `bun install; bun jest-test`
 
 ## Linting
 
-Execute `npm run lint`
+Execute `bun lint`
 
 ## Build from source
 
@@ -20,9 +20,9 @@ _Requires node and npm installed at versions listed in the package.json_
 -   Launch dev server
 
     ```bash
-    npm install
-    npm run bundle
-    npm run dev
+    bun install
+    bun bundle
+    bun dev
     ```
 
     -   See [Dockerfile](../Dockerfile) for prod setup
@@ -39,7 +39,7 @@ _Requires docker installed_
 ```bash
 cd deploy
 docker compose -f docker-compose-dev.yml up
-docker exec georgejmx npx prisma db push
+docker exec georgejmx bun prisma db push
 ```
 
 -   \[OPTIONAL\] Load in custom data to it ontop of the existing schema;

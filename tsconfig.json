@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
-        "target": "es2022",
+        "lib": ["ESNext"],
+        "target": "ESNext",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "module": "es2022",
+        "module": "ESNext",
         "rootDir": ".",
-        "moduleResolution": "node",
-        "types": ["node", "jest"],
+        "moduleResolution": "NodeNext",
+        "types": ["bun-types", "jest"],
         "resolveJsonModule": true,
         "outDir": "./dist",
         "esModuleInterop": true,
