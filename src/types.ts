@@ -27,6 +27,7 @@ export type story_with_descriptor = story & {
     descriptors: {
         word: string;
         storyId: number;
+        timestamp: Date;
     }[];
 };
 
@@ -43,13 +44,17 @@ export interface ThemedEntity {
     tstamp: number;
 }
 
+export interface Reaction {
+    word: string;
+    datestring: string;
+}
+
 export interface Story extends ThemedEntity {
     keyword: string;
     paragraphs: string[];
-    descriptors: Descriptor[];
     headline?: string;
     datestring?: string;
-    reactions?: string[];
+    reactions?: Reaction[];
 }
 
 export interface Fascination extends ThemedEntity {
@@ -72,7 +77,7 @@ export interface Project {
     description: string | null;
 }
 
-export interface Descriptor {
+export interface DescriptorRequestBody {
     id?: number;
     storyId: number;
     keyword?: string;

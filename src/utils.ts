@@ -17,11 +17,33 @@ export const THEME_MAP: Record<number, string> = {
 };
 const ADJECTIVES_FILEPATH = "./assets/adjectives.txt";
 
-const validateStoryTheme = (s: story_with_descriptor): Story => {
+function dateToString(date: Date): string {
+    return date
+        .toLocaleTimeString("en-UK", {
+            day: "numeric",
+            month: "numeric",
+            year: "numeric",
+        })
+        .substring(0, 10);
+}
+
+// Ensure a valid theme and format most recent reactions
+const validateStoryFormat = (s: story_with_descriptor): Story => {
     if (!s.theme || !(s.theme in THEME)) {
         s.theme = THEME.BURNT_ORANGE;
     }
-    return s as Story;
+    return {
+        ...s,
+        theme: s.theme as THEME,
+        reactions: s.descriptors
+            .map((descriptor) => {
+                return {
+                    word: descriptor.word,
+                    datestring: dateToString(descriptor.timestamp),
+                };
+            })
+            .slice(0, 4),
+    };
 };
 
 // DEPRECATED; the colour property will be pruned from database before v0.4
@@ -69,30 +91,16 @@ function generateHeadline(s: Story): Story {
 
 // Function for adding datestring to stories and trimming story name
 function addDatestringAndTrim(s: Story): Story {
-    const dateObj = new Date(s.tstamp * 1000);
-    s.datestring = dateObj
-        .toLocaleTimeString("en-UK", {
-            day: "numeric",
-            month: "numeric",
-            year: "numeric",
-        })
-        .substring(0, 10);
+    s.datestring = dateToString(new Date(s.tstamp * 1000));
     s.name = s.name.trim();
-    return s;
-}
-
-// Gets the 4 most recent words used to describe the story and attaches
-function generateReactions(s: Story): Story {
-    s.reactions = s.descriptors.map((descriptor) => descriptor.word.trim()).slice(0, 4);
     return s;
 }
 
 // Cropping stories and ordering by timestamp for overall frontend view
 export function formatStories(input: story_with_descriptor[], hasHead: boolean): Story[] {
-    let stories = input.map(validateStoryTheme);
+    let stories = input.map(validateStoryFormat);
     stories = hasHead ? stories.map(generateHeadline) : stories;
     stories = stories.map(addDatestringAndTrim);
-    stories = stories.map(generateReactions);
     return stories;
 }
 

@@ -6,7 +6,7 @@ COPY tsconfig.json /app/tsconfig.json
 COPY *.config.ts /app
 
 ENV NODE_ENV=development
-RUN npm install
+RUN npm ci
 
 COPY assets/ /app/assets
 COPY src/ /app/src

@@ -163,12 +163,12 @@
                         <p class="text-orange-600 font-mono bg-black md:text-sm">
                             Living a life of changing perspectives and continual discovery
                         </p>
-                        <button
+                        <a
                             class="ml-6 text-orange-600 bg-black font-bold font-mono px-4 mb-1 border rounded border-orange-600"
-                            id="admin-btn"
+                            href="/admin"
                         >
                             Upend
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Projects Box -->
@@ -220,22 +220,30 @@
                             <p class="text-white text-xs py-2">
                                 {{this.headline}}
                             </p>
-                            <button
-                                class="read-story-btn text-green-500 bg-black font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
-                                id="{{this.keyword}}-btn"
+                            <a
+                                class="text-green-500 bg-black font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
+                                href="/story/{{this.keyword}}"
                             >
                                 Read more
-                            </button>
-                            <p
-                                id="recent-comments"
-                                class="text-orange-400 text-sm pt-2 leading-8"
-                            ><i>Comments;</i>
-                                {{#each this.reactions}}
-                                    <span
-                                        class="border rounded-full p-1 border-orange-400"
-                                    >{{this}}</span>
-                                {{/each}}
-                            </p>
+                            </a>
+                            {{#each this.reactions}}
+                                <div class="relative grid grid-cols-1 gap-4 px-4 my-2">
+                                    <div class="relative flex gap-4">
+                                        <img
+                                            src="images/comment-icon.png"
+                                            class="relative h-10 w-10"
+                                        />
+                                        <div class="flex flex-col">
+                                            <p
+                                                class="text-orange-400 relative whitespace-nowrap overflow-hidden"
+                                            >{{this.word}}</p>
+                                            <p
+                                                class="text-yellow-500 text-sm"
+                                            >{{this.datestring}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
                         </div>
                     {{/each}}
                 </div>

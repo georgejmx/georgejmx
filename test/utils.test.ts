@@ -1,12 +1,19 @@
-import { formatFascinations, formatStories, generateDescriptors } from "../src/utils";
-import { expectedStoriesArray, fascinationsFixture } from "./fixtures";
+import {
+    formatFascinations,
+    formatStories,
+    generateArtistsText,
+    generateDescriptors,
+} from "../src/utils";
+import { artistsFixture, expectedStoriesArray, fascinationsFixture } from "./fixtures";
 
 describe("georgejmx successfully formats data", () => {
     test("Formatting story data", () => {
         const testFormattedStories = formatStories(expectedStoriesArray, false);
         expect(testFormattedStories[0].name).toEqual("test story");
         expect(testFormattedStories[0].datestring?.startsWith("19/07/2023, "));
-        expect(testFormattedStories[0].reactions).toContain("spicy");
+        expect(testFormattedStories[0].reactions).toEqual([
+            { datestring: "01/01/2024", word: "spicy" },
+        ]);
 
         const testFormattedStoriesWithHead = formatStories(expectedStoriesArray, true);
         expect(testFormattedStoriesWithHead[1].name).toEqual("test story 2");
@@ -28,5 +35,10 @@ describe("georgejmx successfully formats data", () => {
         const testDescriptors = generateDescriptors(10);
         expect(testDescriptors).toHaveLength(10);
         expect(typeof testDescriptors[0]).toEqual("string");
+    });
+
+    test("Generating a top artists string", () => {
+        const testArtistsString = generateArtistsText(artistsFixture);
+        expect(testArtistsString).toEqual("Latest top artists: blackbear, mgk, morrissey");
     });
 });

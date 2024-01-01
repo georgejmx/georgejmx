@@ -1,5 +1,4 @@
 import { postDataController } from "../src/controllers/priviliged";
-import { insertStory } from "../src/dbConnector";
 import { insertFascinationRequestFixture, insertStoryRequestFixture } from "./fixtures";
 import { mockRes } from "./mocks";
 

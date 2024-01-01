@@ -1,4 +1,4 @@
-# User Guide
+# Admin User Guide
 
 1. The **Upend** button will lead to an admin panel. This allows inputting data. Click _New Story_ and then fill out the input fields, with the correct password _(equal to 'example' for dev setup)_
 2. Press **Submit** to add data to the website, then get automatically redirected to the Home Page

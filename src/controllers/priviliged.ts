@@ -68,7 +68,6 @@ export const postDataController = async (req: ExpressRequest, res: ExpressRespon
                     tstamp: Math.floor(Date.now() / 1000),
                     paragraphs: adminBody.paragraphs as string[],
                     theme: adminBody.theme as number,
-                    descriptors: [],
                 });
                 break;
             }
