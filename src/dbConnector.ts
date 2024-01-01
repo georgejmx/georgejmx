@@ -4,7 +4,7 @@ import {
     Artist,
     Project,
     story_with_descriptor,
-    Descriptor,
+    DescriptorRequestBody,
     FascinationRequestBody,
     Story,
 } from "./types.js";
@@ -24,7 +24,7 @@ export async function selectStories(): Promise<story_with_descriptor[]> {
         orderBy: [{ id: "desc" }],
         include: {
             descriptors: {
-                select: { word: true, storyId: true },
+                select: { word: true, storyId: true, timestamp: true },
                 orderBy: [{ id: "desc" }],
             },
         },
@@ -47,7 +47,7 @@ export async function selectArtists(): Promise<Artist[]> {
     return artists;
 }
 
-export async function insertDescriptor(descriptor: Descriptor): Promise<number> {
+export async function insertDescriptor(descriptor: DescriptorRequestBody): Promise<number> {
     // Getting post time of latest story descriptor
     const latestTimestamp = await prisma.descriptor.findMany({
         select: { timestamp: true },

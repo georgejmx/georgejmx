@@ -1,4 +1,9 @@
-import { Descriptor, ExpressRequest, ExpressResponse, Fascination } from "../types.js";
+import {
+    DescriptorRequestBody,
+    ExpressRequest,
+    ExpressResponse,
+    Fascination,
+} from "../types.js";
 import { formatFascinations } from "../utils.js";
 import { selectFascinations, selectStory, insertDescriptor } from "../dbConnector.js";
 
@@ -7,7 +12,7 @@ export const postDescriptorController = async (
     req: ExpressRequest,
     res: ExpressResponse
 ) => {
-    let newDescriptor: Descriptor;
+    let newDescriptor: DescriptorRequestBody;
     try {
         newDescriptor = {
             storyId: req.body.id,
@@ -29,7 +34,7 @@ export const getFascinationsController = async (_: unknown, res: ExpressResponse
         res.status(200).json(preppedHmus);
     } catch (err: unknown) {
         console.error(err);
-        res.status(500).json({ message: String(err) });
+        res.status(500).json({ message: "Database error getting fascinations" });
     }
 };
 

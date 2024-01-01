@@ -16,7 +16,9 @@ export const expectedStoriesArray: story_with_descriptor[] = [
         keyword: "testing",
         tstamp: 1689793736,
         paragraphs: ["first test paragraph", "second test paragraph"],
-        descriptors: [{ word: "spicy", storyId: 42 }],
+        descriptors: [
+            { word: "spicy", storyId: 42, timestamp: new Date(2024, 0, 1, 2, 0, 0) },
+        ],
         theme: 1,
     },
     {
@@ -25,7 +27,9 @@ export const expectedStoriesArray: story_with_descriptor[] = [
         keyword: "mocking",
         tstamp: 1689863736,
         paragraphs: ["first test paragraph", "second test paragraph"],
-        descriptors: [{ word: "juicy", storyId: 43 }],
+        descriptors: [
+            { word: "juicy", storyId: 43, timestamp: new Date(2024, 0, 1, 3, 0, 0) },
+        ],
         theme: 2,
     },
 ];

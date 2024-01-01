@@ -6,7 +6,9 @@ describe("georgejmx successfully formats data", () => {
         const testFormattedStories = formatStories(expectedStoriesArray, false);
         expect(testFormattedStories[0].name).toEqual("test story");
         expect(testFormattedStories[0].datestring?.startsWith("19/07/2023, "));
-        expect(testFormattedStories[0].reactions).toContain("spicy");
+        expect(testFormattedStories[0].reactions).toEqual([
+            { datestring: "01/01/2024", word: "spicy" },
+        ]);
 
         const testFormattedStoriesWithHead = formatStories(expectedStoriesArray, true);
         expect(testFormattedStoriesWithHead[1].name).toEqual("test story 2");
