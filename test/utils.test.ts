@@ -1,5 +1,10 @@
-import { formatFascinations, formatStories, generateDescriptors } from "../src/utils";
-import { expectedStoriesArray, fascinationsFixture } from "./fixtures";
+import {
+    formatFascinations,
+    formatStories,
+    generateArtistsText,
+    generateDescriptors,
+} from "../src/utils";
+import { artistsFixture, expectedStoriesArray, fascinationsFixture } from "./fixtures";
 
 describe("georgejmx successfully formats data", () => {
     test("Formatting story data", () => {
@@ -30,5 +35,10 @@ describe("georgejmx successfully formats data", () => {
         const testDescriptors = generateDescriptors(10);
         expect(testDescriptors).toHaveLength(10);
         expect(typeof testDescriptors[0]).toEqual("string");
+    });
+
+    test("Generating a top artists string", () => {
+        const testArtistsString = generateArtistsText(artistsFixture);
+        expect(testArtistsString).toEqual("Latest top artists: blackbear, mgk, morrissey");
     });
 });

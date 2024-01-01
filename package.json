@@ -8,9 +8,9 @@
         "bundle": "rollup -c rollup.config.ts --configPlugin typescript; tailwindcss -i ./src/client/input.css -o ./assets/output.css",
         "compile": "npm run bundle; tsc -p .",
         "test": "npm run compile; jest",
-        "lint": "npx prettier --write src views test docs *.ts *.json",
+        "lint": "npx prettier --write src views test docs *.ts *.json README.md",
         "start": "node dist/src/server.js",
-        "lint:ci": "npx prettier --check src views test docs *.ts *.json",
+        "lint:ci": "npx prettier --check src views test docs *.ts *.json README.md",
         "test:ci": "cp .github/.env.ci .env; jest --collectCoverage"
     },
     "keywords": [

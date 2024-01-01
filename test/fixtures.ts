@@ -1,5 +1,5 @@
 import { fascination } from "@prisma/client";
-import { Story, Fascination, story_with_descriptor } from "../src/types";
+import { Story, Fascination, story_with_descriptor, Artist } from "../src/types";
 
 export function storyRequestFixture(): object {
     return {
@@ -84,3 +84,9 @@ export function descriptorRequestFixture(): object {
         },
     };
 }
+
+export const artistsFixture: Artist[] = [
+    { id: 1, name: "blackbear" },
+    { id: 2, name: "mgk" },
+    { id: 3, name: "morrissey" },
+];
