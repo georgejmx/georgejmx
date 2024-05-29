@@ -1,4 +1,4 @@
-import { ExpressRequest, ExpressResponse } from "../types.js";
+import type { Request, Response } from "express";
 import {
     insertArtist,
     insertStory,
@@ -8,7 +8,7 @@ import {
 import { AdminRequestBody, THEME } from "../types.js";
 
 // Posting a new data
-export const postDataController = async (req: ExpressRequest, res: ExpressResponse) => {
+export const postDataController = async (req: Request, res: Response) => {
     const adminBody: AdminRequestBody = req.body;
     const model = adminBody.model.toUpperCase();
     try {

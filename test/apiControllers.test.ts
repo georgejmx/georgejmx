@@ -1,4 +1,5 @@
 import { story } from "@prisma/client";
+import type { Response } from "express";
 import {
     getFascinationsController,
     getStoryByKeyController,
@@ -25,7 +26,7 @@ describe("georgejmx successfully retrieves JSON data", () => {
             },
         ];
 
-        await getFascinationsController(null, res);
+        await getFascinationsController(null, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.status).toHaveBeenCalledTimes(1);
@@ -39,7 +40,7 @@ describe("georgejmx successfully retrieves JSON data", () => {
         const res = mockRes();
         const expectedPostDescriptorResponse = { message: "Success writing descriptor" };
 
-        await postDescriptorController(req, res);
+        await postDescriptorController(req, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(201);
         expect(res.status).toHaveBeenCalledTimes(1);
@@ -60,7 +61,7 @@ describe("georgejmx successfully retrieves JSON data", () => {
             theme: 0,
         };
 
-        await getStoryByKeyController(req, res);
+        await getStoryByKeyController(req, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.status).toHaveBeenCalledTimes(1);

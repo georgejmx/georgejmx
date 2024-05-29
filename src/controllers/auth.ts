@@ -1,10 +1,10 @@
+import type { Request, Response } from "express";
 import { hashToToken } from "../tokens.js";
-import { ExpressRequest, ExpressResponse } from "../types.js";
 
 // Obtaining access cookie
 export const postAuthenticationController = async (
-    req: ExpressRequest,
-    res: ExpressResponse
+    req: Request,
+    res: Response
 ): Promise<void> => {
     try {
         const hash = req.body.hash;

@@ -1,12 +1,13 @@
 import { fascination } from "@prisma/client";
-import { Story, Fascination, story_with_descriptor, Artist } from "../src/types";
+import type { Request } from "express";
+import { story_with_descriptor, Artist } from "../src/types";
 
-export function storyRequestFixture(): object {
+export function storyRequestFixture() {
     return {
         params: {
             key: "bananas",
         },
-    };
+    } as unknown as Request;
 }
 
 export const expectedStoriesArray: story_with_descriptor[] = [
@@ -34,7 +35,7 @@ export const expectedStoriesArray: story_with_descriptor[] = [
     },
 ];
 
-export function insertStoryRequestFixture(): object {
+export function insertStoryRequestFixture() {
     return {
         body: {
             model: "STORY",
@@ -43,10 +44,10 @@ export function insertStoryRequestFixture(): object {
             paragraphs: expectedStoriesArray[0].paragraphs,
             theme: 1,
         },
-    };
+    } as unknown as Request;
 }
 
-export function insertFascinationRequestFixture(valid: boolean = true): object {
+export function insertFascinationRequestFixture(valid: boolean = true) {
     if (valid) {
         return {
             body: {
@@ -55,7 +56,7 @@ export function insertFascinationRequestFixture(valid: boolean = true): object {
                 intensity: 8,
                 theme: 1,
             },
-        };
+        } as unknown as Request;
     } else {
         return {
             body: {
@@ -64,7 +65,7 @@ export function insertFascinationRequestFixture(valid: boolean = true): object {
                 intensity: 11,
                 theme: 4,
             },
-        };
+        } as unknown as Request;
     }
 }
 
@@ -76,13 +77,13 @@ export function fascinationsFixture(): (fascination & { theme?: number })[] {
     ];
 }
 
-export function descriptorRequestFixture(): object {
+export function descriptorRequestFixture() {
     return {
         body: {
             key: "testKey",
             descriptor: "tranquil",
         },
-    };
+    } as unknown as Request;
 }
 
 export const artistsFixture: Artist[] = [

@@ -1,3 +1,4 @@
+import type { Response } from "express";
 import { postDataController } from "../src/controllers/priviliged";
 import { insertFascinationRequestFixture, insertStoryRequestFixture } from "./fixtures";
 import { mockRes } from "./mocks";
@@ -12,7 +13,7 @@ describe("georgejmx allows admin creation of data", () => {
             id: 8,
         };
 
-        await postDataController(req, res);
+        await postDataController(req, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(201);
         expect(res.status).toHaveBeenCalledTimes(1);
@@ -30,7 +31,7 @@ describe("georgejmx allows admin creation of data", () => {
             theme: 4,
         };
 
-        await postDataController(req, res);
+        await postDataController(req, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(400);
         expect(res.status).toHaveBeenCalledTimes(1);
@@ -48,7 +49,7 @@ describe("georgejmx allows admin creation of data", () => {
             id: 7,
         };
 
-        await postDataController(req, res);
+        await postDataController(req, res as unknown as Response);
 
         expect(res.status).toHaveBeenCalledWith(201);
         expect(res.status).toHaveBeenCalledTimes(1);

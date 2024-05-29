@@ -1,3 +1,4 @@
+import type { Request, Response } from "express";
 import {
     selectArtists,
     selectFascinations,
@@ -5,7 +6,7 @@ import {
     selectStories,
     selectStory,
 } from "./dbConnector.js";
-import { ExpressRequest, ExpressResponse, IndexPayload } from "./types.js";
+import { IndexPayload } from "./types.js";
 import {
     formatFascinations,
     formatProjects,
@@ -19,12 +20,12 @@ import {
 const NUMBER_DESCRIPTORS = 10;
 const INTENSITY_UI_OFFSET = 4;
 
-export const healthController = async (_: unknown, res: ExpressResponse) => {
+export const healthController = async (_: unknown, res: Response) => {
     res.status(200).send("Healthy");
 };
 
 // Route to render the index html page
-export const homeRenderer = async (_: unknown, res: ExpressResponse) => {
+export const homeRenderer = async (_: unknown, res: Response) => {
     try {
         const state = {
             projects: await selectProjects(),
@@ -53,14 +54,14 @@ export const homeRenderer = async (_: unknown, res: ExpressResponse) => {
 };
 
 // Route to render the admin html page
-export const adminRenderer = async (_: unknown, res: ExpressResponse) => {
+export const adminRenderer = async (_: unknown, res: Response) => {
     res.render("admin", {});
 };
 
 // Route to render the story html view
-export const storyRenderer = async (req: ExpressRequest, res: ExpressResponse) => {
+export const storyRenderer = async (req: Request, res: Response) => {
     const keyword = req.params.key.trim();
-    if (typeof keyword !== "string" || keyword.length === 0) {
+    if (keyword.length === 0) {
         res.redirect("/");
     }
     try {

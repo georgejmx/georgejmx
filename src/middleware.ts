@@ -1,6 +1,5 @@
-import { NextFunction } from "express";
+import { NextFunction, type Request, type Response } from "express";
 import { validateAdminToken } from "./tokens.js";
-import { ExpressRequest, ExpressResponse } from "./types.js";
 import rateLimit from "express-rate-limit";
 import { REFRESH_TIME } from "./utils.js";
 
@@ -11,11 +10,7 @@ const limiter = rateLimit({
     legacyHeaders: false,
 });
 
-const validateTokenMiddleware = (
-    req: ExpressRequest,
-    res: ExpressResponse,
-    next: NextFunction
-): void => {
+const validateTokenMiddleware = (req: Request, res: Response, next: NextFunction): void => {
     const tokenField = req.headers.authorisation as string;
     try {
         if (!tokenField) {
@@ -31,7 +26,7 @@ const validateTokenMiddleware = (
     }
 };
 
-const notFoundMiddleware = (_: unknown, res: ExpressResponse, next: NextFunction): void => {
+const notFoundMiddleware = (_: unknown, res: Response, next: NextFunction): void => {
     res.status(404).json({ message: "Resource not found" });
     next();
 };

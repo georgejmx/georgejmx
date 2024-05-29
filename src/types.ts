@@ -7,14 +7,6 @@ type Token = {
 
 export type TokenMap = Record<string, Token>;
 
-export type CoreExpressResponse = {
-    status: (code: number) => ExpressResponse;
-    json: (data: object) => ExpressResponse;
-};
-
-export type ExpressRequest = Record<string, any>;
-export type ExpressResponse = Record<string, any>;
-
 export type IndexPayload = {
     projects: Project[];
     stories: Story[];

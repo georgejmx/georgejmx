@@ -1,12 +1,10 @@
-import { ExpressRequest, ExpressResponse, Fascination } from "../types.js";
+import type { Request, Response } from "express";
+import { Fascination } from "../types.js";
 import { formatFascinations } from "../utils.js";
 import { selectFascinations, selectStory, insertDescriptor } from "../dbConnector.js";
 
 // Posting descriptor JSON
-export const postDescriptorController = async (
-    req: ExpressRequest,
-    res: ExpressResponse
-) => {
+export const postDescriptorController = async (req: Request, res: Response) => {
     const newDescriptor = {
         key: req.body.key as string,
         content: req.body.descriptor as string,
@@ -21,7 +19,7 @@ export const postDescriptorController = async (
 };
 
 // Getting fascinations JSON
-export const getFascinationsController = async (_: unknown, res: ExpressResponse) => {
+export const getFascinationsController = async (_: unknown, res: Response) => {
     try {
         const hmus = await selectFascinations();
         const preppedHmus: Fascination[] = formatFascinations(hmus);
@@ -34,10 +32,7 @@ export const getFascinationsController = async (_: unknown, res: ExpressResponse
 
 /* Getting a specific story by keyword as JSON. If the keyword is 'recents',
  * then simply return the most recent 3 keywords */
-export const getStoryByKeyController = async (
-    req: ExpressRequest,
-    res: ExpressResponse
-) => {
+export const getStoryByKeyController = async (req: Request, res: Response) => {
     const keyword: string = req.params.key;
     try {
         const story = await selectStory(keyword);

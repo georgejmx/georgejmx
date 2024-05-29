@@ -3,8 +3,8 @@ import path from "path";
 import fs from "fs";
 import bodyParser from "body-parser";
 import * as dotenv from "dotenv";
-import https, { Server as httpsServer } from "https";
-import http, { Server as httpServer } from "http";
+import https from "https";
+import http from "http";
 import { apiRouter, priviligedRouter, authRouter } from "./router.js";
 import { limiter, notFoundMiddleware } from "./middleware.js";
 import helmet from "helmet";
@@ -31,16 +31,16 @@ app.use("/priviliged", priviligedRouter);
 app.use(notFoundMiddleware);
 
 // Launching the desired web service from node runtime
-const serverType: string = process.env.PROTOCOL || "https";
+const serverType = process.env.PROTOCOL || "https";
 if (serverType === "http") {
     if (process.env.NODE_ENV !== "test") {
-        const server: httpServer = new http.Server(app);
+        const server = new http.Server(app);
         server.listen(3000, () => {
             console.log("http server is up on port 3000");
         });
     }
 } else if (serverType === "https") {
-    const server: httpServer = new https.Server(
+    const server = new https.Server(
         {
             cert: fs.readFileSync(process.env.SSL_PUBLIC_PATH || ""),
             key: fs.readFileSync(process.env.SSL_PRIVATE_PATH || ""),
