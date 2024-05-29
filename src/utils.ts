@@ -151,11 +151,6 @@ export function generateStoriesText(stories: Story[]): string {
     return text.substring(0, text.length - 2);
 }
 
-// Checks if a day has elapsed since previous comment using the number of seconds elapsed
-export function hasDayElapsed(latest: Date): boolean {
-    return Date.now() - latest.getTime() < 86400000 ? true : false;
-}
-
 // Sets a token expiry 10 minutes in the future
 export function generateTokenExpiry(): number {
     const now = new Date();

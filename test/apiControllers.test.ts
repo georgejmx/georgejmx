@@ -37,7 +37,7 @@ describe("georgejmx successfully retrieves JSON data", () => {
     test("Posting a new descriptor succeeds when expected", async () => {
         const req = descriptorRequestFixture();
         const res = mockRes();
-        const expectedPostDescriptorResponse = { id: 9 };
+        const expectedPostDescriptorResponse = { message: "Success writing descriptor" };
 
         await postDescriptorController(req, res);
 

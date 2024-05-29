@@ -79,7 +79,7 @@ export function fascinationsFixture(): (fascination & { theme?: number })[] {
 export function descriptorRequestFixture(): object {
     return {
         body: {
-            id: 4,
+            key: "testKey",
             descriptor: "tranquil",
         },
     };
