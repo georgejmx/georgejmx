@@ -1,9 +1,4 @@
-import {
-    DescriptorRequestBody,
-    ExpressRequest,
-    ExpressResponse,
-    Fascination,
-} from "../types.js";
+import { ExpressRequest, ExpressResponse, Fascination } from "../types.js";
 import { formatFascinations } from "../utils.js";
 import { selectFascinations, selectStory, insertDescriptor } from "../dbConnector.js";
 
@@ -12,14 +7,13 @@ export const postDescriptorController = async (
     req: ExpressRequest,
     res: ExpressResponse
 ) => {
-    let newDescriptor: DescriptorRequestBody;
+    const newDescriptor = {
+        key: req.body.key as string,
+        content: req.body.descriptor as string,
+    };
     try {
-        newDescriptor = {
-            storyId: req.body.id,
-            word: req.body.descriptor,
-        };
-        const descriptorId = await insertDescriptor(newDescriptor);
-        res.status(201).json({ id: descriptorId });
+        await insertDescriptor(newDescriptor);
+        res.status(201).json({ message: "Success writing descriptor" });
     } catch (err: unknown) {
         console.error(err);
         res.status(500).json({ message: "Error writing descriptor" });

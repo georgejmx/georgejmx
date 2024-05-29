@@ -1,10 +1,8 @@
 import { fascination, PrismaClient, story } from "@prisma/client";
-import { hasDayElapsed } from "./utils.js";
 import {
     Artist,
     Project,
     story_with_descriptor,
-    DescriptorRequestBody,
     FascinationRequestBody,
     Story,
 } from "./types.js";
@@ -12,11 +10,7 @@ import {
 const prisma = new PrismaClient();
 
 export async function selectStory(keyword: string): Promise<story> {
-    const story = await prisma.story.findUnique({ where: { keyword: keyword } });
-    if (!story) {
-        throw Error("Story not found by specified keyword");
-    }
-    return story;
+    return await prisma.story.findFirstOrThrow({ where: { keyword: keyword } });
 }
 
 export async function selectStories(): Promise<story_with_descriptor[]> {
@@ -47,25 +41,24 @@ export async function selectArtists(): Promise<Artist[]> {
     return artists;
 }
 
-export async function insertDescriptor(descriptor: DescriptorRequestBody): Promise<number> {
-    // Getting post time of latest story descriptor
-    const latestTimestamp = await prisma.descriptor.findMany({
-        select: { timestamp: true },
-        orderBy: [{ id: "desc" }],
-        where: { storyId: descriptor.storyId },
-        take: 1,
+export async function insertDescriptor(descriptor: {
+    key: string;
+    content: string;
+}): Promise<number> {
+    const storyResult = await prisma.story.findFirstOrThrow({
+        where: {
+            keyword: {
+                equals: descriptor.key,
+            },
+        },
+        select: {
+            id: true,
+        },
     });
-
-    // Checking if latest post was within 1 day
-    if (latestTimestamp.length > 0 && !hasDayElapsed(latestTimestamp[0].timestamp)) {
-        throw Error("Too soon to add a descriptor to that post");
-    }
-
-    // Adding descriptor
     const result = await prisma.descriptor.create({
         data: {
-            word: descriptor.word,
-            storyId: descriptor.storyId,
+            word: descriptor.content,
+            storyId: storyResult.id,
         },
         select: { id: true },
     });

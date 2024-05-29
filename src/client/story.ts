@@ -30,7 +30,6 @@ fireModal.addEventListener("click", () => {
         method: "POST",
         headers: { "Content-Type": "application/json;charset=utf-8" },
         body: JSON.stringify({
-            id: parseInt(document.getElementsByTagName("meta")[0].content),
             key: keywordTypography.textContent,
             descriptor: selectedDescriptor,
         }),
@@ -39,8 +38,7 @@ fireModal.addEventListener("click", () => {
             if (response.status === 201) {
                 modal.style.display = "none";
             } else if (response.status === 500) {
-                failureTypography.textContent =
-                    "Either too soon to react to story or API error";
+                failureTypography.textContent = "Server error";
             } else {
                 failureTypography.textContent = "Network error";
             }

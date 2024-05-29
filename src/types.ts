@@ -77,14 +77,6 @@ export interface Project {
     description: string | null;
 }
 
-export interface DescriptorRequestBody {
-    id?: number;
-    storyId: number;
-    keyword?: string;
-    word: string;
-    timestamp?: Date;
-}
-
 export type AdminRequestBody = {
     model: string;
     name: string;

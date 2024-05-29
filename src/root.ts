@@ -60,6 +60,9 @@ export const adminRenderer = async (_: unknown, res: ExpressResponse) => {
 // Route to render the story html view
 export const storyRenderer = async (req: ExpressRequest, res: ExpressResponse) => {
     const keyword = req.params.key.trim();
+    if (typeof keyword !== "string" || keyword.length === 0) {
+        res.redirect("/");
+    }
     try {
         const story = await selectStory(keyword);
         res.render("story", {
@@ -67,7 +70,6 @@ export const storyRenderer = async (req: ExpressRequest, res: ExpressResponse) =
             descriptors: generateDescriptors(NUMBER_DESCRIPTORS),
         });
     } catch (error: unknown) {
-        console.error(error);
-        res.render("static", {});
+        res.redirect("/");
     }
 };

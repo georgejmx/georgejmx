@@ -1,5 +1,5 @@
 import { fascination, story } from "@prisma/client";
-import { DescriptorRequestBody, Fascination, Story } from "../src/types";
+import { Fascination, Story } from "../src/types";
 
 (process.env.NODE_ENV = "test"), (process.env.ADMIN_PASSWORD = "test-password-24");
 
@@ -40,11 +40,13 @@ jest.mock("../src/dbConnector", () => ({
         }
         return Promise.resolve(8);
     },
-    insertDescriptor: async (descriptor: DescriptorRequestBody): Promise<number> => {
-        if (descriptor.storyId === 4 && descriptor.word === "tranquil") {
+    insertDescriptor: async (descriptor: {
+        key: string;
+        content: string;
+    }): Promise<number> => {
+        if (descriptor.content === "tranquil") {
             return Promise.resolve(9);
-        } else {
-            return Promise.reject(new Error("Invalid story id access attempted"));
         }
+        return Promise.reject(new Error("Invalid story id access attempted"));
     },
 }));
