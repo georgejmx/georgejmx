@@ -1,5 +1,5 @@
 export default {
-    content: ["./views/**/*.hbs"],
+    content: ["./src/index.hbs"],
     theme: {
         extend: {},
     },

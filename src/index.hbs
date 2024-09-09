@@ -3,14 +3,14 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="fractal.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script type="module" src="/bundles/common.js"></script>
-        <script type="module" src="/bundles/index.js"></script>
+        <link rel="stylesheet" href="output.css" />
+        <script type="module" src="/bundles/common.js" defer></script>
+        <script type="module" src="/bundles/index.js" defer></script>
         <title>George | Home</title>
     </head>
     <body style="background-color: black">
-        <canvas id="bg" style="position: fixed; top: 0; left: 0"></canvas>
-        <main class="relative w-2/3">
+        <canvas id="bg" style="position: fixed; top: 0; left: 0" class="z-10"></canvas>
+        <main class="relative w-2/3 z-20">
             <div class="absolute left-0 top-20 p-6">
                 <div class="py-4">
                     <button
@@ -157,12 +157,6 @@
                         <p class="text-orange-600 font-mono bg-black md:text-sm">
                             Living a life of changing perspectives and continual discovery
                         </p>
-                        <a
-                            class="ml-6 text-orange-600 bg-black font-bold font-mono px-4 mb-1 border rounded border-orange-600"
-                            href="/admin"
-                        >
-                            Upend
-                        </a>
                     </div>
                 </div>
                 <!-- Projects Box -->

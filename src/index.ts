@@ -18,7 +18,7 @@ function buildStaticHtml() {
             console.error(err);
             process.exit(1);
         } else {
-            console.log('\nSuccessfully built HTML ✅');
+            console.log("\nSuccessfully built HTML ✅");
         }
     });
 }
