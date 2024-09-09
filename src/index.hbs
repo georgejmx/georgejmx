@@ -3,7 +3,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="fractal.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/output.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <script type="module" src="/bundles/common.js"></script>
         <script type="module" src="/bundles/index.js"></script>
         <title>George | Home</title>
@@ -25,12 +25,6 @@
                     >
                         Projects
                     </button>
-                    <button
-                        class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-orange-600 hover:bg-[#360202]"
-                        id="story-btn"
-                    >
-                        Stories
-                    </button>
                 </div>
                 <!-- Home Box -->
                 <div id="home-box" style="display: initial">
@@ -51,7 +45,7 @@
                             id="artists-text"
                             class="inline text-orange-400 text-sm font-mono font-bold"
                         >
-                            {{artistsText}}
+                            Latest top artists: 21 pilots, ski aggu, prince
                         </p>
                     </div>
                     <div
@@ -200,52 +194,6 @@
                             class="font-mono text-yellow-200 hover:text-yellow-500"
                         >GitHub</a>
                     </p>
-                </div>
-                <!-- Blog Box -->
-                <div id="story-box" style="display: none">
-                    {{#each stories}}
-                        <div
-                            class="font-mono flex flex-col max-w-sm border-2 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
-                        >
-                            <div class="flex border-1 justify-around">
-                                <div
-                                    class="font-bold text-l mb-2 font-mono text-orange-600"
-                                >
-                                    {{this.name}}
-                                </div>
-                                <p class="font-bold text-l mb-2 text-yellow-500">
-                                    {{this.datestring}}
-                                </p>
-                            </div>
-                            <p class="text-white text-xs py-2">
-                                {{this.headline}}
-                            </p>
-                            <a
-                                class="text-green-500 bg-black font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
-                                href="/story/{{this.keyword}}"
-                            >
-                                Read more
-                            </a>
-                            {{#each this.reactions}}
-                                <div class="relative grid grid-cols-1 gap-4 px-4 my-2">
-                                    <div class="relative flex gap-4">
-                                        <img
-                                            src="images/comment-icon.png"
-                                            class="relative h-10 w-10"
-                                        />
-                                        <div class="flex flex-col">
-                                            <p
-                                                class="text-orange-400 relative whitespace-nowrap overflow-hidden"
-                                            >{{this.word}}</p>
-                                            <p
-                                                class="text-yellow-500 text-sm"
-                                            >{{this.datestring}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </div>
-                    {{/each}}
                 </div>
             </div>
         </main>

@@ -1,0 +1,22 @@
+[
+    {
+        "intensity": 6,
+        "color": "orange-600",
+        "name": "william blake"
+    },
+    {
+        "intensity": 5,
+        "color": "yellow-500",
+        "name": "bun"
+    },
+    {
+        "intensity": 3,
+        "color": "orange-400",
+        "name": "max liebermann"
+    },
+    {
+        "intensity": 7,
+        "color": "orange-400",
+        "name": "summer"
+    }
+]
