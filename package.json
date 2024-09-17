@@ -23,7 +23,7 @@
     "dependencies": {
         "@prisma/client": "4.16.2",
         "bcryptjs": "2.4.3",
-        "body-parser": "1.20.2",
+        "body-parser": "1.20.3",
         "dotenv": "16.3.1",
         "express": "4.19.2",
         "express-rate-limit": "6.8.0",
