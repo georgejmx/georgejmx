@@ -3,14 +3,14 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="fractal.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/output.css" />
-        <script type="module" src="/bundles/common.js"></script>
-        <script type="module" src="/bundles/index.js"></script>
+        <link rel="stylesheet" href="output.css" />
+        <script type="module" src="/bundles/common.js" defer></script>
+        <script type="module" src="/bundles/index.js" defer></script>
         <title>George | Home</title>
     </head>
     <body style="background-color: black">
-        <canvas id="bg" style="position: fixed; top: 0; left: 0"></canvas>
-        <main class="relative w-2/3">
+        <canvas id="bg" style="position: fixed; top: 0; left: 0" class="z-10"></canvas>
+        <main class="relative w-2/3 z-20">
             <div class="absolute left-0 top-20 p-6">
                 <div class="py-4">
                     <button
@@ -24,12 +24,6 @@
                         id="projects-btn"
                     >
                         Projects
-                    </button>
-                    <button
-                        class="text-orange-600 bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-orange-600 hover:bg-[#360202]"
-                        id="story-btn"
-                    >
-                        Stories
                     </button>
                 </div>
                 <!-- Home Box -->
@@ -51,18 +45,7 @@
                             id="artists-text"
                             class="inline text-orange-400 text-sm font-mono font-bold"
                         >
-                            {{artistsText}}
-                        </p>
-                    </div>
-                    <div
-                        class="py-2 max-w-sm w-full border-yellow-500 text-yellow-500 text-sm bg-black font-mono font-bold mt-4"
-                    >
-                        <img class="inline" src="images/logos/book-stack-16.png" />
-                        <p
-                            id="top-stories-text"
-                            class="inline text-yellow-500 text-sm font-mono font-bold"
-                        >
-                            {{storiesText}}
+                            Latest top artists: 21 pilots, ski aggu, prince
                         </p>
                     </div>
                     <div>
@@ -163,36 +146,37 @@
                         <p class="text-orange-600 font-mono bg-black md:text-sm">
                             Living a life of changing perspectives and continual discovery
                         </p>
-                        <a
-                            class="ml-6 text-orange-600 bg-black font-bold font-mono px-4 mb-1 border rounded border-orange-600"
-                            href="/admin"
-                        >
-                            Upend
-                        </a>
                     </div>
                 </div>
                 <!-- Projects Box -->
                 <div id="projects-box" style="display: none">
-                    {{#each projects}}
-                        <div
-                            class="flex flex-col max-w-sm border-2 overflow-hidden border-yellow-500 bg-black p-2 mb-6"
-                        >
-                            <img
-                                src="images/projects/{{this.imagename}}"
-                                class="max-h-70 p-2"
-                            />
-                            <div class="font-bold text-xl mb-2 font-mono text-yellow-500">
-                                {{this.name}}
+                    <div class="md:flex md:flex-row">
+                        {{#each projects}}
+                            <div
+                                class="flex flex-col max-w-sm md:max-w-md border-2 border-yellow-500 bg-black p-2 md:p-6 mb-6 md:mr-6"
+                            >
+                                <img
+                                    src="images/projects/{{this.imagename}}"
+                                    class="max-h-70 p-2"
+                                />
+                                <div
+                                    class="font-bold text-xl mb-2 font-mono text-yellow-500"
+                                >
+                                    {{this.name}}
+                                </div>
+                                <a href="{{this.url}}">
+                                    <img
+                                        src="images/logos/link.png"
+                                        class="pl-20 w-6"
+                                        alt="Image of link to the project url"
+                                    />
+                                </a>
+                                <p class="font-mono text-white text-sm py-2">
+                                    {{this.description}}
+                                </p>
                             </div>
-                            <a
-                                class="font-mono text-cyan-200 hover:text-cyan-300 mb-2 italic"
-                                href="{{this.url}}"
-                            >{{this.urlname}}</a>
-                            <p class="font-mono text-white text-sm py-2">
-                                {{this.description}}
-                            </p>
-                        </div>
-                    {{/each}}
+                        {{/each}}
+                    </div>
                     <p class="text-white font-mono mb-6">
                         Many more projects can be found on my
                         <a
@@ -201,59 +185,13 @@
                         >GitHub</a>
                     </p>
                 </div>
-                <!-- Blog Box -->
-                <div id="story-box" style="display: none">
-                    {{#each stories}}
-                        <div
-                            class="font-mono flex flex-col max-w-sm border-2 overflow-hidden border-orange-600 bg-black p-2 mx-4 mb-6"
-                        >
-                            <div class="flex border-1 justify-around">
-                                <div
-                                    class="font-bold text-l mb-2 font-mono text-orange-600"
-                                >
-                                    {{this.name}}
-                                </div>
-                                <p class="font-bold text-l mb-2 text-yellow-500">
-                                    {{this.datestring}}
-                                </p>
-                            </div>
-                            <p class="text-white text-xs py-2">
-                                {{this.headline}}
-                            </p>
-                            <a
-                                class="text-green-500 bg-black font-bold py-2 px-4 mb-1 border rounded border-b-4 border-green-500 hover:bg-[#360202]"
-                                href="/story/{{this.keyword}}"
-                            >
-                                Read more
-                            </a>
-                            {{#each this.reactions}}
-                                <div class="relative grid grid-cols-1 gap-4 px-4 my-2">
-                                    <div class="relative flex gap-4">
-                                        <img
-                                            src="images/comment-icon.png"
-                                            class="relative h-10 w-10"
-                                        />
-                                        <div class="flex flex-col">
-                                            <p
-                                                class="text-orange-400 relative whitespace-nowrap overflow-hidden"
-                                            >{{this.word}}</p>
-                                            <p
-                                                class="text-yellow-500 text-sm"
-                                            >{{this.datestring}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </div>
-                    {{/each}}
-                </div>
             </div>
         </main>
         <br />
     </body>
     <footer>
         <div
-            style="position: fixed; bottom: 0; left: 0; height: 30px; z-index: 10; width: 100%"
+            style="position: fixed; bottom: 0; left: 0; height: 30px; z-index: 30; width: 100%"
             class="bg-orange-600 w-full text-center"
         >
             <p class="my-1 font-mono text-xs">Solidarity with

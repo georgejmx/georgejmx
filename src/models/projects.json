@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Phantasos",
+        "imagename": "phantasos.png",
+        "url": "https://phantasos.vercel.app",
+        "description": "A private, minimalist dream logger app"
+    },
+    {
+        "name": "FlowPass",
+        "imagename": "flowpass.png",
+        "url": "https://github.com/georgejmx/FlowPass",
+        "description": "Custom Android password manager for personal use"
+    },
+    {
+        "name": "WhisperBlog",
+        "imagename": "whisperblog.png",
+        "url": "https://github.com/georgejmx/whisper-blog",
+        "description": "My take on what social media should be like"
+    },
+    {
+        "name": "MedicineFinder",
+        "imagename": "mf.png",
+        "url": "https://github.com/georgejmx/MedicineFinder",
+        "description": "Console app for determining which drug is best for patients with lung cancer"
+    }
+]

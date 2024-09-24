@@ -3,10 +3,10 @@
         "target": "es2022",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "module": "es2022",
+        "module": "ESNext",
         "rootDir": ".",
         "moduleResolution": "node",
-        "types": ["node", "jest"],
+        "types": ["node"],
         "resolveJsonModule": true,
         "outDir": "./dist",
         "esModuleInterop": true,
@@ -15,5 +15,5 @@
         "skipLibCheck": true,
         "noImplicitAny": true
     },
-    "include": ["./src/**/*.ts", "./test/**/*.ts"]
+    "include": ["./src/**/*.ts"]
 }

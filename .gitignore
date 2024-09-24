@@ -1,7 +1,4 @@
 node_modules
 dist
-prisma
-coverage
-.env
 *.DS_Store
 NOTES.md
