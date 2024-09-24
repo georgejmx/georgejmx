@@ -7,7 +7,6 @@ import projects from "./models/projects.json" assert { type: "json" };
 const TEMPLATE_PATH = "src/index.hbs";
 const OUTPUT_HTML_PATH = "assets/index.html";
 
-// Logic to build the index html page
 function buildStaticHtml() {
     const htmlString = readFileSync(TEMPLATE_PATH, "utf-8");
     const template = handlebars.compile(htmlString);
