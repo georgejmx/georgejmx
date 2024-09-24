@@ -30,7 +30,7 @@ camera.position.setZ(30);
 const tetra = new Mesh(
     new TetrahedronGeometry(10),
     new MeshStandardMaterial({
-        map: new TextureLoader().load("/images/textures/mandelbrot.jpeg"),
+        map: new TextureLoader().load("images/textures/mandelbrot.jpeg"),
     })
 );
 tetra.position.setX(-10);
@@ -41,7 +41,7 @@ scene.add(tetra);
 const george = new Mesh(
     new BoxGeometry(3, 3, 3),
     new MeshStandardMaterial({
-        map: new TextureLoader().load("/images/textures/profile.jpeg"),
+        map: new TextureLoader().load("images/textures/profile.jpeg"),
     })
 );
 george.position.setX(8);
@@ -71,21 +71,21 @@ const addFractal = (imageSrc: string, colour: ColorRepresentation) => {
 Array(15)
     .fill(0)
     .forEach(() => {
-        addFractal("/images/textures/fractal-1.png", 0xfa7603);
+        addFractal("images/textures/fractal-1.png", 0xfa7603);
     });
 Array(15)
     .fill(0)
     .forEach(() => {
-        addFractal("/images/textures/fractal-2.png", 0xfab903);
+        addFractal("images/textures/fractal-2.png", 0xfab903);
     });
 Array(15)
     .fill(0)
     .forEach(() => {
-        addFractal("/images/textures/fractal-3.png", 0xfc6501);
+        addFractal("images/textures/fractal-3.png", 0xfc6501);
     });
 
 // Adding background then animating
-scene.background = new TextureLoader().load("/images/gloop.png");
+scene.background = new TextureLoader().load("images/gloop.png");
 const animate = () => {
     requestAnimationFrame(animate);
 
