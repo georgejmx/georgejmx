@@ -6,7 +6,7 @@ export default function ProjectsPanel(): JSX.Element {
   const projects: Project[] = projectsData;
 
   return (
-    <div>
+    <>
       <div className="md:flex md:flex-row">
         {projects.map((item: Project) => (
           <ProjectCard {...item} />
@@ -21,6 +21,6 @@ export default function ProjectsPanel(): JSX.Element {
           GitHub
         </a>
       </p>
-    </div>
+    </>
   );
 }

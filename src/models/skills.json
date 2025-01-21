@@ -1,0 +1,92 @@
+[
+  {
+    "name": "API engineering",
+    "strength": 10,
+    "type": "hard"
+  },
+  {
+    "name": "Efficient algorithm design",
+    "strength": 9,
+    "type": "hard"
+  },
+  {
+    "name": "Data Engineering",
+    "strength": 7,
+    "type": "hard"
+  },
+  {
+    "name": "Software Integration",
+    "strength": 8,
+    "type": "hard"
+  },
+  {
+    "name": "Performant code",
+    "strength": 9,
+    "type": "engineering"
+  },
+  {
+    "name": "Attention to Detail",
+    "strength": 10,
+    "type": "soft"
+  },
+  {
+    "name": "Cross-Functional Leadership",
+    "strength": 9,
+    "type": "soft"
+  },
+  {
+    "name": "Stakeholder Engagement",
+    "strength": 8,
+    "type": "soft"
+  },
+  {
+    "name": "Empathy",
+    "strength": 7,
+    "type": "soft"
+  },
+  {
+    "name": "Project Management",
+    "strength": 6,
+    "type": "soft"
+  },
+  {
+    "name": "JavaScript",
+    "strength": 10,
+    "type": "tool"
+  },
+  {
+    "name": "Node.js",
+    "strength": 10,
+    "type": "tool"
+  },
+  {
+    "name": "React",
+    "strength": 9,
+    "type": "tool"
+  },
+  {
+    "name": "Python",
+    "strength": 7,
+    "type": "tool"
+  },
+  {
+    "name": "Golang",
+    "strength": 4,
+    "type": "tool"
+  },
+  {
+    "name": "Docker",
+    "strength": 7,
+    "type": "tool"
+  },
+  {
+    "name": "Terraform",
+    "strength": 6,
+    "type": "tool"
+  },
+  {
+    "name": "Kubernetes",
+    "strength": 4,
+    "type": "tool"
+  }
+]
