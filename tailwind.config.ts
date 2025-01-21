@@ -1,0 +1,27 @@
+export default {
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+  safelist: [
+    "w-5",
+    "w-6",
+    "w-7",
+    "w-8",
+    "w-9",
+    "w-10",
+    "w-11",
+    "w-12",
+    "w-14",
+    "fill-orange-600",
+    "fill-yellow-500",
+    "fill-orange-400",
+    "text-orange-600",
+    "text-yellow-500",
+    "text-orange-400",
+    "border-orange-600",
+    "border-yellow-500",
+    "border-orange-400",
+  ],
+};

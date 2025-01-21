@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+tsconfig.tsbuildinfo
+
+.vscode/*
+.zed/*
+.DS_Store
+NOTES.md
