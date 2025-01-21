@@ -12,7 +12,7 @@ export default function SkillsPanel(): JSX.Element {
   return (
     <>
       <h2 className="text-lg text-white font-mono py-2 mt-4 font-bold">
-        Lets work together on..
+        Strongest Competencies
       </h2>
       <div className="py-4">
         {sortedSkills.map((item: Skill) => (
