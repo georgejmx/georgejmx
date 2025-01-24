@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Kagi (codename)",
+    "headline": "Built a data pipeline visualization framework powered by in-house pre-trained machine learning models for use cases such as insider threat detection and organizational engagement.",
+    "bulk": "Collaborated with a data scientist to transform a prototype \"machine learning model vending machine\" into a distributed system, enabling users to select models, source datasets, and apply transformations to generate output datasets. Key contributions included productionizing the system, creating a controller microservice integrated with a user interface, and building a separate microservice to handle transformations and improve performance using Python threading for parallel model execution. After securing beta funding, joined the frontend team to develop an interactive user interface with custom D3.js visualizations, including multi-bar charts, radar charts, and heatmaps. This project won public sector funding and is actively used today."
+  },
+  {
+    "name": "Content Server",
+    "headline": "Spearheaded the design and development of a microservice that reduced CMS requests per minute by 30% and achieved a response time of 70ms under a load of 2,000 requests per minute.",
+    "bulk": "These enhancements significantly improved system scalability and resolved rate-limiting issues. The GraphQL microservice enabled parallel data fetching of CMS and package data, becoming the backbone for sourcing all CMS content across the site. I am now responsible for onboarding new team members, with this service recognized as the gold standard for our Content API. Currently, I am advancing the service by implementing filterable fields, server-side HTML templating, integrating additional data sources for personalized content delivery, and introducing server-side feature flags."
+  },
+  {
+    "name": "Group Bookings Bot",
+    "headline": "Developed and implemented customizable chatbots for key landing pages, enhancing user engagement and improving customer experience.",
+    "bulk": "Collaborated closely with the sales team to tailor chatbot functionality to specific business needs, then wrote a client-side script to integrate the solution seamlessly into the frontend stack, ensuring compatibility and smooth operation."
+  }
+]

@@ -1,6 +1,6 @@
-import type { Project } from "../types";
+import type { SideProject } from "../types";
 
-export default function ProjectCard(props: Project): JSX.Element {
+export default function SideProjectCard(props: SideProject): JSX.Element {
   return (
     <div className="flex flex-col max-w-sm md:max-w-md border-2 border-yellow-500 bg-black p-2 md:p-6 mb-6 md:mr-6">
       <img

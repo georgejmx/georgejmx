@@ -10,6 +10,11 @@
     "type": "hard"
   },
   {
+    "name": "Software architecture",
+    "strength": 9,
+    "type": "hard"
+  },
+  {
     "name": "Data Engineering",
     "strength": 7,
     "type": "hard"
@@ -25,8 +30,18 @@
     "type": "engineering"
   },
   {
-    "name": "Attention to Detail",
+    "name": "Precision",
     "strength": 10,
+    "type": "soft"
+  },
+  {
+    "name": "Knowledge sharing",
+    "strength": 9,
+    "type": "soft"
+  },
+  {
+    "name": "Leadership",
+    "strength": 9,
     "type": "soft"
   },
   {
@@ -66,12 +81,32 @@
   },
   {
     "name": "Python",
-    "strength": 7,
+    "strength": 8,
     "type": "tool"
   },
   {
     "name": "Golang",
+    "strength": 6,
+    "type": "tool"
+  },
+  {
+    "name": "Elixir",
     "strength": 4,
+    "type": "tool"
+  },
+  {
+    "name": "C sharp",
+    "strength": 6,
+    "type": "tool"
+  },
+  {
+    "name": "SQL",
+    "strength": 8,
+    "type": "tool"
+  },
+  {
+    "name": "MongoDB",
+    "strength": 7,
     "type": "tool"
   },
   {
@@ -86,7 +121,7 @@
   },
   {
     "name": "Kubernetes",
-    "strength": 4,
+    "strength": 5,
     "type": "tool"
   }
 ]

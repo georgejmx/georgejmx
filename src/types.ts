@@ -1,12 +1,18 @@
+export type Panel = "home" | "career" | "projects" | "skills";
+
+export type CareerProject = {
+  name: string;
+  headline: string;
+  bulk: string;
+};
+
 export type Fascination = {
   color: string;
   intensity: number;
   name: string;
 };
 
-export type Panel = "home" | "projects" | "skills";
-
-export type Project = {
+export type SideProject = {
   description: string;
   imageName: string;
   name: string;

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Panel } from "./types";
 import MenuButton from "./components/MenuButton";
 import HomePanel from "./components/HomePanel";
+import CareerPanel from "./components/CareerPanel";
 import ProjectsPanel from "./components/ProjectsPanel";
 import SkillsPanel from "./components/SkillsPanel";
 import loadBackground from "./helpers/loadBackground";
@@ -20,7 +21,7 @@ export default function App(): JSX.Element {
   return (
     <>
       <canvas ref={canvasRef} className="fixed top-0 left-0"></canvas>
-      <main className="relative w-2/3 font-mono">
+      <main className="relative w-3/4 font-mono">
         <div className="absolute left-0 top-20 p-6">
           <div className="py-4">
             <MenuButton
@@ -29,12 +30,17 @@ export default function App(): JSX.Element {
               onClick={() => setPanel("home")}
             />
             <MenuButton
+              colour="orange-600"
+              text="Career Highlights"
+              onClick={() => setPanel("career")}
+            />
+            <MenuButton
               colour="yellow-500"
-              text="Projects"
+              text="Side Projects"
               onClick={() => setPanel("projects")}
             />
             <MenuButton
-              colour="orange-600"
+              colour="orange-400"
               text="Skills"
               onClick={() => setPanel("skills")}
             />
@@ -48,6 +54,8 @@ export default function App(): JSX.Element {
           </h1>
 
           {panel === "home" && <HomePanel />}
+
+          {panel === "career" && <CareerPanel />}
 
           {panel === "projects" && <ProjectsPanel />}
 
