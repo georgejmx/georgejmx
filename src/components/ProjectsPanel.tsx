@@ -1,15 +1,15 @@
-import projectsData from "../models/projects.json";
-import type { Project } from "../types";
-import ProjectCard from "./ProjectCard";
+import projectsData from "../models/side-projects.json";
+import type { SideProject } from "../types";
+import SideProjectCard from "./SideProjectCard";
 
 export default function ProjectsPanel(): JSX.Element {
-  const projects: Project[] = projectsData;
+  const projects: SideProject[] = projectsData;
 
   return (
     <>
       <div className="md:flex md:flex-row">
-        {projects.map((item: Project) => (
-          <ProjectCard {...item} />
+        {projects.map((item: SideProject) => (
+          <SideProjectCard {...item} />
         ))}
       </div>
       <p className="text-white font-mono mb-6">
