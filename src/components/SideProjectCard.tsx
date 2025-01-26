@@ -16,7 +16,6 @@ export default function SideProjectCard(props: SideProject): JSX.Element {
           alt="A paperclip icon"
           src="images/logos/link.png"
           className="w-6"
-          alt="Image of link to the project url"
         />
       </a>
       <p className="font-mono text-white text-sm py-2">{props.description}</p>
