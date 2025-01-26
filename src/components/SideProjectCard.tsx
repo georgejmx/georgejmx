@@ -4,6 +4,7 @@ export default function SideProjectCard(props: SideProject): JSX.Element {
   return (
     <div className="flex flex-col max-w-sm md:max-w-md border-2 border-yellow-500 bg-black p-2 md:p-6 mb-6 md:mr-6">
       <img
+        alt={`A screenshot of ${props.url}`}
         src={`images/projects/${props.imageName}`}
         className="max-h-70 p-2"
       />
@@ -12,6 +13,7 @@ export default function SideProjectCard(props: SideProject): JSX.Element {
       </div>
       <a href={props.url} target="_blank">
         <img
+          alt="A paperclip icon"
           src="images/logos/link.png"
           className="w-6"
           alt="Image of link to the project url"

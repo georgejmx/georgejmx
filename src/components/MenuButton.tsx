@@ -1,15 +1,14 @@
 type Props = {
   colour: string;
   text: string;
+  isActive: boolean;
   onClick: () => void;
 };
-
-const HOVER_COLOUR = "#360202";
 
 export default function MenuButton(props: Props): JSX.Element {
   return (
     <button
-      className={`text-${props.colour} bg-black font-bold font-mono py-2 px-4 mb-1 border rounded border-b-4 border-${props.colour} hover:bg-[${HOVER_COLOUR}] mr-2`}
+      className={`text-${props.colour} bg-${props.isActive ? "[#080820] border-b-4" : "black"} font-bold py-2 px-4 mb-1 border rounded border-${props.colour} mr-2`}
       onClick={props.onClick}
     >
       {props.text}

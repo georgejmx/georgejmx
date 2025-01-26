@@ -11,10 +11,10 @@ export default function SkillsPanel(): JSX.Element {
 
   return (
     <>
-      <h2 className="text-lg text-white font-mono py-2 mt-4 font-bold">
+      <h2 className="text-lg text-white py-2 font-bold">
         Strongest Competencies
       </h2>
-      <p className="text-slate-300 font-mono bg-black md:text-sm">
+      <p className="text-slate-300 bg-black md:text-sm">
         Top competencies I will bring to any organisation, ranked by which
         skills I have developed the most. As is the nature of any engineering
         role, this comprises a combination of{" "}

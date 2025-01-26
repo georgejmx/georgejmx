@@ -9,13 +9,29 @@ export default function HomePanel(): JSX.Element {
 
   return (
     <>
-      <p className="text-slate-300 font-mono bg-black md:text-sm">
+      <h1
+        lang="de"
+        className="text-xl text-white py-2 font-bold outline-black outline-2"
+      >
+        Gründlicher Entwickler, um neuen Herausforderungen zu begegnen
+      </h1>
+      <p className="text-slate-300 bg-black md:text-sm py-3">
         DIY developer with a passion for technology and creativity. Maths
         graduate currently pursuing my career in full-stack software
         development. Motivated by the potential of technology to drive positive
         change, and also the opportunity to be creative in and out of work
       </p>
-      <h2 className="text-lg text-white font-mono py-2 font-bold">Find Me</h2>
+      <p className="text-white my-2 italic bg-black max-w-72">
+        View my Lebenslauf/CV
+        <a
+          href="/lebenslauf.pdf"
+          target="_blank"
+          className="ml-2 font-mono text-yellow-200 hover:text-yellow-500"
+        >
+          here
+        </a>
+      </p>
+      <h2 className="text-lg text-white py-2 font-bold">Find Me</h2>
       <table className="table-auto">
         <tbody>
           <SocialLinkRow
@@ -40,7 +56,7 @@ export default function HomePanel(): JSX.Element {
           />
         </tbody>
       </table>
-      <h2 className="text-lg text-white font-mono py-2 mt-4 font-bold">
+      <h2 className="text-lg text-white py-2 mt-4 font-bold">
         Hit Me Up about..
       </h2>
       <div>
@@ -48,10 +64,14 @@ export default function HomePanel(): JSX.Element {
           <FascinationBar {...item} />
         ))}
       </div>
-      <div className="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm bg-black font-mono font-bold my-4">
-        <img className="inline mx-2" src="images/logos/spotify-16.png" />
-        <p className="inline text-orange-400 text-sm font-mono font-bold">
-          21 pilots, ski aggu, prince
+      <div className="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm bg-black font-bold my-4">
+        <img
+          className="inline mx-2"
+          alt="Spotify logo"
+          src="images/logos/spotify-16.png"
+        />
+        <p className="inline text-orange-400 text-sm font-bold">
+          21 pilots, Lena, Prince
         </p>
       </div>
       <QuoteFinder />
