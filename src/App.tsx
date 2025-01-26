@@ -27,31 +27,28 @@ export default function App(): JSX.Element {
             <MenuButton
               colour="orange-400"
               text="Home"
+              isActive={panel === "home"}
               onClick={() => setPanel("home")}
             />
             <MenuButton
               colour="orange-600"
               text="Career Highlights"
+              isActive={panel === "career"}
               onClick={() => setPanel("career")}
             />
             <MenuButton
               colour="yellow-500"
               text="Side Projects"
+              isActive={panel === "projects"}
               onClick={() => setPanel("projects")}
             />
             <MenuButton
               colour="orange-400"
               text="Skills"
+              isActive={panel === "skills"}
               onClick={() => setPanel("skills")}
             />
           </div>
-
-          <h1
-            lang="de"
-            className="text-xl text-white py-2 font-bold outline-black outline-2 mb-3"
-          >
-            Gründlicher Entwickler, um neuen Herausforderungen zu begegnen
-          </h1>
 
           {panel === "home" && <HomePanel />}
 

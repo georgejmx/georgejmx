@@ -7,6 +7,10 @@ export default function ProjectsPanel(): JSX.Element {
 
   return (
     <>
+      <h2 className="text-lg text-white py-2 font-bold">Recreational Coding</h2>
+      <p className="text-white font-mono mb-4">
+        Ideas I have explored in my free time include..
+      </p>
       <div className="md:flex md:flex-row">
         {projects.map((item: SideProject) => (
           <SideProjectCard {...item} />

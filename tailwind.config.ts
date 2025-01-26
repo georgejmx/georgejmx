@@ -23,5 +23,7 @@ export default {
     "border-orange-600",
     "border-yellow-500",
     "border-orange-400",
+    "bg-[#080820]",
+    "border-b-4",
   ],
 };

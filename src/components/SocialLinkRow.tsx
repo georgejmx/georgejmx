@@ -8,7 +8,11 @@ export default function SocialLinkRow(props: Props): JSX.Element {
   return (
     <tr>
       <td>
-        <img src={props.imageSrc} className="w-4" />
+        <img
+          alt={`${props} company logo`}
+          src={props.imageSrc}
+          className="w-4"
+        />
       </td>
       <td>
         <a

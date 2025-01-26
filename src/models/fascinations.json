@@ -2,21 +2,21 @@
   {
     "intensity": 6,
     "color": "orange-600",
-    "name": "william blake"
+    "name": "William Blake"
   },
   {
     "intensity": 5,
     "color": "yellow-500",
-    "name": "deno"
+    "name": "Deno"
   },
   {
     "intensity": 4,
     "color": "orange-400",
-    "name": "max liebermann"
+    "name": "Max Liebermann"
   },
   {
     "intensity": 7,
     "color": "orange-400",
-    "name": "summer"
+    "name": "Summer"
   }
 ]
