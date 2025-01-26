@@ -11,7 +11,7 @@ export default function CareerPanel(): JSX.Element {
         Top Professional Achievments
       </h2>
       <p className="text-white font-mono mb-4">
-        High-impact projects completed at work I was involved with are..
+        High-impact projects completed at work I led are..
       </p>
       <div className="py-4">
         {projects.map((item: CareerProject) => (
