@@ -23,6 +23,7 @@ jobs:
           node-version: 20.x
       - run: npm ci
       - run: npm run lint
+      - run: npm test
       - run: npm run build
 
       - name: Upload GitHub Pages artifact

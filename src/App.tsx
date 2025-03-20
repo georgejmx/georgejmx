@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 
 import type { Panel } from "./types";
 import MenuButton from "./components/MenuButton";
@@ -6,21 +6,20 @@ import HomePanel from "./components/HomePanel";
 import CareerPanel from "./components/CareerPanel";
 import ProjectsPanel from "./components/ProjectsPanel";
 import SkillsPanel from "./components/SkillsPanel";
-import loadBackground from "./helpers/loadBackground";
+import StaticBackground from "./components/background/StaticBackground";
+
+const AnimatedBackground = lazy(
+  () => import("./components/background/AnimatedBackground"),
+);
 
 export default function App(): JSX.Element {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [panel, setPanel] = useState<Panel>("home");
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      loadBackground(canvasRef.current, window, document);
-    }
-  }, []);
 
   return (
     <>
-      <canvas ref={canvasRef} className="fixed top-0 left-0"></canvas>
+      <Suspense fallback={<StaticBackground />}>
+        <AnimatedBackground />
+      </Suspense>
       <main className="relative w-3/4 font-mono">
         <div className="absolute left-0 top-20 p-6">
           <div className="py-4">
