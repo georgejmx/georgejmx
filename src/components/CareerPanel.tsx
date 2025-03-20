@@ -8,7 +8,7 @@ export default function CareerPanel(): JSX.Element {
   return (
     <>
       <h2 className="text-lg text-white py-2 font-bold">
-        Top Professional Achievments
+        Top Professional Achievements
       </h2>
       <p className="text-white font-mono mb-4">
         High-impact projects completed at work I led are..
