@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 
 import skillsData from "../models/skills.json";
-import { Skill } from "../types";
+import type { Skill } from "../types";
 import SkillBar from "./SkillBar";
 
 export default function SkillsPanel(): JSX.Element {
   const sortedSkills = useMemo(() => {
     return skillsData.slice().sort((x, y) => y.strength - x.strength);
-  }, [skillsData]) as Skill[];
+  }, []) as Skill[];
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function SkillsPanel(): JSX.Element {
       </p>
       <div className="py-4">
         {sortedSkills.map((item: Skill) => (
-          <SkillBar {...item} />
+          <SkillBar key={item.name} {...item} />
         ))}
       </div>
     </>

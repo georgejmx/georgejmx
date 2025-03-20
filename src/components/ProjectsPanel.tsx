@@ -13,7 +13,7 @@ export default function ProjectsPanel(): JSX.Element {
       </p>
       <div className="md:flex md:flex-row">
         {projects.map((item: SideProject) => (
-          <SideProjectCard {...item} />
+          <SideProjectCard key={item.name} {...item} />
         ))}
       </div>
       <p className="text-white font-mono mb-6">

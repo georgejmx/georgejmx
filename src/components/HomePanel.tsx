@@ -26,6 +26,7 @@ export default function HomePanel(): JSX.Element {
         <a
           href="/lebenslauf.pdf"
           target="_blank"
+          rel="noreferrer"
           className="ml-2 font-mono text-yellow-200 hover:text-yellow-500"
         >
           here
@@ -61,7 +62,7 @@ export default function HomePanel(): JSX.Element {
       </h2>
       <div>
         {fascinations.map((item: Fascination) => (
-          <FascinationBar {...item} />
+          <FascinationBar key={item.name} {...item} />
         ))}
       </div>
       <div className="py-2 max-w-sm w-full border-orange-400 text-orange-400 text-sm bg-black font-bold my-4">
