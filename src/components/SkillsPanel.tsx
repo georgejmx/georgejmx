@@ -15,10 +15,9 @@ export default function SkillsPanel(): JSX.Element {
         Strongest Competencies
       </h2>
       <p className="text-slate-300 bg-black md:text-sm">
-        Top competencies I will bring to any organisation, ranked by which
-        skills I have developed the most. As is the nature of any engineering
-        role, this comprises a combination of{" "}
-        <span className="text-orange-600">programming tools </span>,{" "}
+        My strongest skills, ranked by which skills I have developed the most.
+        As is the nature of any engineering role, this comprises a combination
+        of <span className="text-orange-600">programming tools </span>,{" "}
         <span className="text-orange-400">technical skills</span> and{" "}
         <span className="text-yellow-500">non technical skills</span>
       </p>

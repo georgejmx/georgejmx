@@ -11,7 +11,7 @@ export default function SideProjectCard(props: SideProject): JSX.Element {
       <div className="font-bold text-xl mb-2 font-mono text-yellow-500">
         {props.name}
       </div>
-      <a href={props.url} target="_blank">
+      <a href={props.url} target="_blank" rel="noreferrer">
         <img
           alt="A paperclip icon"
           src="images/logos/link.png"

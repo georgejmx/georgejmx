@@ -16,15 +16,15 @@ export default function HomePanel(): JSX.Element {
         Gründlicher Entwickler, um neuen Herausforderungen zu begegnen
       </h1>
       <p className="text-slate-300 bg-black md:text-sm py-3">
-        DIY developer with a passion for technology and creativity. Maths
-        graduate currently pursuing my career in full-stack software
-        development. Motivated by the potential of technology to drive positive
-        change, and also the opportunity to be creative in and out of work
+        Developer with a passion for technology and creativity. Maths graduate
+        currently pursuing my career in full-stack software development.
+        Motivated by the potential of technology to drive positive change, and
+        also the opportunity to be creative in and out of work
       </p>
       <p className="text-white my-2 italic bg-black max-w-72">
-        View my Lebenslauf/CV
+        View my CV/Lebenslauf
         <a
-          href="/lebenslauf.pdf"
+          href="/cv.pdf"
           target="_blank"
           rel="noreferrer"
           className="ml-2 font-mono text-yellow-200 hover:text-yellow-500"
