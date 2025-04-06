@@ -13,7 +13,7 @@ export default function HomePanel(): JSX.Element {
         lang="de"
         className="text-xl text-white py-2 font-bold outline-black outline-2"
       >
-        Gründlicher Entwickler, um neuen Herausforderungen zu begegnen
+        Gründlicher Entwickler
       </h1>
       <p className="text-slate-300 bg-black md:text-sm py-3">
         Developer with a passion for technology and creativity. Maths graduate
@@ -46,11 +46,6 @@ export default function HomePanel(): JSX.Element {
             text="GitHub"
           />
           <SocialLinkRow
-            imageSrc="images/logos/twitter.jpg"
-            linkTarget="https://x.com/hologjm/"
-            text="X"
-          />
-          <SocialLinkRow
             imageSrc="images/logos/opensea.jpg"
             linkTarget="https://opensea.io/hologjm"
             text="OpenSea"
@@ -72,7 +67,7 @@ export default function HomePanel(): JSX.Element {
           src="images/logos/spotify-16.png"
         />
         <p className="inline text-orange-400 text-sm font-bold">
-          21 pilots, Lena, Prince
+          21 pilots, Alligatoah, Prince
         </p>
       </div>
       <QuoteFinder />
