@@ -9,11 +9,8 @@ export default function HomePanel(): JSX.Element {
 
   return (
     <>
-      <h1
-        lang="de"
-        className="text-xl text-white py-2 font-bold outline-black outline-2"
-      >
-        Gründlicher Entwickler
+      <h1 className="text-xl text-white py-2 font-bold outline-black outline-2">
+        Thorough Developer
       </h1>
       <p className="text-slate-300 bg-black md:text-sm py-3">
         Developer with a passion for technology and creativity. Maths graduate
@@ -21,8 +18,8 @@ export default function HomePanel(): JSX.Element {
         Motivated by the potential of technology to drive positive change, and
         also the opportunity to be creative in and out of work
       </p>
-      <p className="text-white my-2 italic bg-black max-w-72">
-        View my CV/Lebenslauf
+      <p className="text-white my-2 italic bg-black max-w-48">
+        View my CV
         <a
           href="/cv.pdf"
           target="_blank"
@@ -67,7 +64,7 @@ export default function HomePanel(): JSX.Element {
           src="images/logos/spotify-16.png"
         />
         <p className="inline text-orange-400 text-sm font-bold">
-          21 pilots, Alligatoah, Prince
+          21 pilots, NF, Prince
         </p>
       </div>
       <QuoteFinder />

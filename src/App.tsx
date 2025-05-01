@@ -61,12 +61,9 @@ export default function App(): JSX.Element {
       <footer>
         <div className="fixed bottom-0 left-0 h-[30px] z-30 bg-orange-600 w-full text-center text-black">
           <p className="my-1 font-mono text-xs">
-            Solidarity with
-            <strong className="mx-2">Trans Youth,</strong>
-            <a
-              href="https://genderedintelligence.co.uk/services/publicengagement/our-campaigns.html"
-              className="underline"
-            >
+            Adovcating for
+            <strong className="mx-2">mental health awareness,</strong>
+            <a href="https://www.mind.org.uk" className="underline">
               find out more
             </a>
           </p>
